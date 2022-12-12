@@ -23,6 +23,7 @@ Please consider leaving a comment on the pending userstories before leaving. Tha
 | 1 | [Basic Landing Page](https://github.com/onebarloop/userStories/issues/1)  |
 | 1 | [Artists Page](https://github.com/onebarloop/userStories/issues/2)  |
 | 1 | [Filter Mainpage](https://github.com/onebarloop/userStories/issues/4)  |
+| 1 | [Like Button](https://github.com/onebarloop/userStories/issues/5)  |
 
 
 **Have a wonderful day** 🦄
