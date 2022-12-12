@@ -21,10 +21,10 @@ Please consider leaving a comment on the pending userstories before leaving.
 
 | Sprint  | Topic |
 | ------------- | ------------- |
-| 1 | [Basic Landing Page](https://github.com/onebarloop/userStories/issues/1)  |
-| 1 | [Artists Page](https://github.com/onebarloop/userStories/issues/2)  |
-| 1 | [Filter Mainpage](https://github.com/onebarloop/userStories/issues/4)  |
-| 1 | [Like Button](https://github.com/onebarloop/userStories/issues/5)  |
+| 1 | [Basic Landing Page](https://github.com/onebarloop/wannado/issues/1)  |
+| 1 | [Artists Page](https://github.com/onebarloop/wannado/issues/2)  |
+| 1 | [Filter Mainpage](https://github.com/onebarloop/wannado/issues/3)  |
+| 1 | [Like Button](https://github.com/onebarloop/wannado/issues/4) |
 
 ### Pull Requests
 You are also welcome to directly review my Code. Check the open [PR's](https://github.com/onebarloop/wannado/pulls). Since this is the first time I'm using typescript in an application, I am very happy about tips regarding the correct usage of types.
