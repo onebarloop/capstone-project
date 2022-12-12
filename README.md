@@ -10,7 +10,7 @@ This is the repository for my capstone project "Wannado"
 
 
 ### The basic Idea of the app:
-- Users can browse random wanadoos, i.e. small tattoo-ideas. They can filter them by location, price etc.
+- Users can browse random wannados, i.e. small tattoo-ideas. They can filter them by location, price etc.
 - Users can visit the pages of the tattoo artist and see their time schedule for making an appointment
 - Users can also see map with tattoo artists near them
 - Tattoo artists can create a profile and upload their wannados
