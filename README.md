@@ -2,7 +2,7 @@
 
 ## A Tattoo App
 
-**Welcome traveler** 
+**Welcome dear developers 👾** 
 
 This is the repository for my capstone project "Wannado"
 
