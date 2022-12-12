@@ -1,7 +1,14 @@
+import styled from "styled-components";
+
 export default function Header(): JSX.Element {
   return (
-    <header>
+    <StyledHeader>
       <h1>Wannado</h1>
-    </header>
+    </StyledHeader>
   );
 }
+
+const StyledHeader = styled.header`
+  background-color: black;
+  color: rgba(217, 217, 217, 1);
+`;
