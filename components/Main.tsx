@@ -1,10 +1,7 @@
 import styled from "styled-components";
-import Image from "next/image";
 import Picture from "./Picture";
-import artists from "../lib/artists";
 
 export default function Main(): JSX.Element {
-  console.log(artists);
   return (
     <StyledMain>
       <Picture width={140} length={140} source={"/img/bike.png"} />
