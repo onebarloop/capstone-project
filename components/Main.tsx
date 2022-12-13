@@ -1,57 +1,16 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Picture from "./Picture";
 
 export default function Main(): JSX.Element {
   return (
     <StyledMain>
-      <div>
-        <StyledImage
-          alt={"tattoo"}
-          src={"/img/triangle.png"}
-          width={150}
-          height={150}
-        />
-      </div>
-      <div>
-        <StyledImage
-          alt={"tattoo"}
-          src={"/img/moon.png"}
-          width={150}
-          height={150}
-        />
-      </div>
-      <div>
-        <StyledImage
-          alt={"tattoo"}
-          src={"/img/ice.png"}
-          width={150}
-          height={150}
-        />
-      </div>
-      <div>
-        <StyledImage
-          alt={"tattoo"}
-          src={"/img/bike.png"}
-          width={150}
-          height={150}
-        />
-      </div>
-      <div>
-        <StyledImage
-          alt={"tattoo"}
-          src={"/img/fox.png"}
-          width={150}
-          height={150}
-        />
-      </div>
-      <div>
-        <StyledImage
-          alt={"tattoo"}
-          src={"/img/tree.png"}
-          width={150}
-          height={150}
-        />
-      </div>
+      <Picture width={140} length={140} source={"/img/bike.png"} />
+      <Picture width={140} length={140} source={"/img/fox.png"} />
+      <Picture width={140} length={140} source={"/img/ice.png"} />
+      <Picture width={140} length={140} source={"/img/moon.png"} />
+      <Picture width={140} length={140} source={"/img/tree.png"} />
+      <Picture width={140} length={140} source={"/img/triangle.png"} />
     </StyledMain>
   );
 }
@@ -65,14 +24,6 @@ const StyledMain = styled.main`
   grid-template-columns: 1fr 1fr;
   align-content: space-around;
   justify-items: center;
+  align-items: start;
   gap: 5px;
-  div {
-    padding: 7px;
-    background-color: #d9d9d9;
-    border-radius: 30px;
-  }
-`;
-
-const StyledImage = styled(Image)`
-  border-radius: 30px;
 `;
