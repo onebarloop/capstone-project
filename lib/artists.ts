@@ -12,6 +12,7 @@ class Artist {
   slug: string;
   tattoos: string[];
   //Typescript end
+
   constructor(
     artistName: string,
     firstName: string,
@@ -29,9 +30,10 @@ class Artist {
 }
 
 const artists: Artist[] = [
-  new Artist("Internet Guy", "Vorname", "Nachname", "Manneim", [
-    "eins",
-    "zwei",
+  new Artist("Awesome Tats", "Vorname", "Nachname", "Mannheim", [
+    "/img/heart.png",
+    "/img/paper.png",
+    "/img/hand.png",
   ]),
   new Artist("Internet bekannschaft nummer 3", "foo", "bar", "Berlin", [
     "eins",
@@ -39,4 +41,4 @@ const artists: Artist[] = [
   ]),
 ];
 
-export default Artist;
+export default artists;

@@ -16,7 +16,6 @@ export default function Main(): JSX.Element {
 
 const StyledMain = styled.main`
   color: rgba(217, 217, 217, 1);
-  padding: 5px;
   height: 80vh;
   padding: 15px;
   display: grid;
