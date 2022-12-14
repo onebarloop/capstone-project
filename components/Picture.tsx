@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import Image from "next/image";
 
+//Typescript
 type PictureProps = {
   width: number;
   length: number;
   source: string;
 };
+//Typescript end
 
 export default function Picture({
   width,

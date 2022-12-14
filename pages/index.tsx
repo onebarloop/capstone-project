@@ -8,6 +8,9 @@ export default function Home(): JSX.Element {
     <>
       <Head>
         <title>Wannado</title>
+
+        <link rel="shortcut icon" href="/favicon.ico" />
+
       </Head>
 
       <Header />
