@@ -1,7 +1,14 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 export default function Footer(): JSX.Element {
-  return <StyledFooter></StyledFooter>;
+  return (
+    <StyledFooter>
+      <StyledLink href="/">
+        <p>HOME</p>
+      </StyledLink>
+    </StyledFooter>
+  );
 }
 
 const StyledFooter = styled.footer`
@@ -9,4 +16,23 @@ const StyledFooter = styled.footer`
   color: rgba(217, 217, 217, 1);
   padding: 15px;
   height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledLink = styled(Link)`
+  background-color: #d93378;
+  text-align: center;
+  padding: auto;
+  border-radius: 4px;
+  width: 97px;
+  height: 39px;
+  font-size: larger;
+  color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-family: Roboto;
 `;

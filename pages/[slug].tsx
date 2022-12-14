@@ -12,8 +12,8 @@ export default function ArtistPage(): JSX.Element {
   const { slug } = router.query;
 
   const artist = artists.find((artist) => artist.slug === slug);
-  console.log(artist?.tattoos[0]);
-  return (
+
+  return artist ? (
     <>
       <Header />
       <StyledMain>
@@ -43,6 +43,8 @@ export default function ArtistPage(): JSX.Element {
       </StyledMain>
       <Footer />
     </>
+  ) : (
+    <p style={{ color: "white" }}>Page not found</p>
   );
 }
 
