@@ -6,6 +6,7 @@ type PictureProps = {
   width: number;
   length: number;
   source: string;
+  className?: string;
 };
 //Typescript end
 
@@ -13,9 +14,10 @@ export default function Picture({
   width,
   length,
   source,
+  className,
 }: PictureProps): JSX.Element {
   return (
-    <StyledWrapper>
+    <StyledWrapper className={className}>
       <StyledImage alt={"tattoo"} src={source} width={width} height={length} />
     </StyledWrapper>
   );

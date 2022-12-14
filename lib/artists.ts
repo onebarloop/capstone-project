@@ -1,3 +1,5 @@
+import { nanoid } from "nanoid";
+
 function stringify(string: string): string {
   const noBlanks = string.replaceAll(" ", "");
   return noBlanks.toLowerCase();
@@ -11,6 +13,7 @@ class Artist {
   location: string;
   slug: string;
   tattoos: string[];
+  id: string;
   //Typescript end
 
   constructor(
@@ -26,6 +29,7 @@ class Artist {
     this.location = location;
     this.slug = stringify(artistName);
     this.tattoos = tatoos;
+    this.id = nanoid();
   }
 }
 
@@ -67,5 +71,5 @@ const artists: Artist[] = [
     "/img/tree.png",
   ]),
 ];
-
+console.log(artists);
 export default artists;
