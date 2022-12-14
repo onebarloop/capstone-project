@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
+//Typescript
 type ButtonProps = {
   name: string;
   onClick: React.MouseEventHandler;
 };
+//Typescript end
 
 export default function Button({ name, onClick }: ButtonProps): JSX.Element {
   return <StyledButton onClick={onClick}>{name}</StyledButton>;

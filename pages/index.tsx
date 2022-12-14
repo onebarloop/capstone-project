@@ -8,12 +8,13 @@ import { useState } from "react";
 import styled from "styled-components";
 
 export default function Home(): JSX.Element {
+  //Typescript
   type ViewPoint = { random: boolean; artists: boolean; favorites: boolean };
-
+  //Typescipt end
   const [viewPoint, setViewPoint] = useState<ViewPoint>({
-    random: true,
+    random: true, //the standard view. It's called "random" because later I will implement a function to show a random collection of tattoos
     artists: false,
-    favorites: false,
+    favorites: false, //I don't need this right now, but in the future
   });
 
   function handleSwitchView(prop: string): void {
