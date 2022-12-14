@@ -30,7 +30,7 @@ Please consider leaving a comment on the pending userstories before leaving.
 | # 2 | [Navigation Menu](https://github.com/onebarloop/wannado/issues/6) | <p align="center">❌<p>
 
 ### Pull Requests
-You are also welcome to directly review my Code. Check the open [PR's](https://github.com/onebarloop/wannado/pulls). Since this is the first time I'm using typescript in an application, I am very happy about tips regarding the correct usage of types. If you are not familiar with typescript, nevertheless please review my code!
+You are also welcome to directly review my Code. Check the open [PR's](https://github.com/onebarloop/wannado/pulls). Since this is the first time I'm using typescript in an application, I am very happy about tips regarding the correct usage of types. If you are not familiar with typescript, nevertheless please review my code! You can easily recognize typescript in my code via the corresponding comments or the inline type specification (foo: type).
 
 
 **Have a wonderful day** 🦄
