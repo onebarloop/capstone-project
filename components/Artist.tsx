@@ -38,7 +38,7 @@ export default function Artist({
       </StyledSchedule>
       <StyledGalery>
         {tattoos.map((tattoo) => (
-          <Picture width={140} length={140} source={tattoo} key={nanoid()} />
+          <Picture width={125} length={125} source={tattoo} key={nanoid()} />
         ))}
       </StyledGalery>
     </StyledMain>
@@ -49,7 +49,6 @@ const StyledMain = styled.div`
   color: rgba(217, 217, 217, 1);
   height: 80vh;
   padding: 15px;
-  display: grid;
   display: grid;
   grid-template-columns: 1fr 1fr;
 `;
@@ -72,6 +71,6 @@ const StyledGalery = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: flex-start;
-  align-content: space-evenly;
+  align-content: space-between;
   justify-items: center;
 `;

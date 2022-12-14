@@ -6,22 +6,22 @@ export default function Random(): JSX.Element {
   return (
     <StyledRandom>
       <Link href="/cheapbackpieces">
-        <Picture width={140} length={140} source={"/img/paper.png"} />
+        <Picture width={130} length={130} source={"/img/paper.png"} />
       </Link>
       <Link href="/customtattoosberlin">
-        <Picture width={140} length={140} source={"/img/triangle.png"} />
+        <Picture width={130} length={130} source={"/img/triangle.png"} />
       </Link>
       <Link href="/worldofpain">
-        <Picture width={140} length={140} source={"/img/moon.png"} />
+        <Picture width={130} length={130} source={"/img/moon.png"} />
       </Link>
       <Link href="/derbiberbau">
-        <Picture width={140} length={140} source={"/img/Xlink.png"} />
+        <Picture width={130} length={130} source={"/img/Xlink.png"} />
       </Link>
       <Link href="/peterskleinestattoostudio">
-        <Picture width={140} length={140} source={"/img/pen.png"} />
+        <Picture width={130} length={130} source={"/img/pen.png"} />
       </Link>
       <Link href="/stickandpoke">
-        <Picture width={140} length={140} source={"/img/Xsimba.png"} />
+        <Picture width={130} length={130} source={"/img/Xsimba.png"} />
       </Link>
     </StyledRandom>
   );
@@ -29,7 +29,7 @@ export default function Random(): JSX.Element {
 
 const StyledRandom = styled.main`
   color: rgba(217, 217, 217, 1);
-  height: 75vh;
+  height: 70vh;
   padding: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr;

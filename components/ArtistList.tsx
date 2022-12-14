@@ -12,7 +12,7 @@ export default function ArtistList(): JSX.Element {
             <StyledInfoBox>
               {artistName} <br /> {location}
             </StyledInfoBox>
-            <StyledPicture width={140} length={140} source={tattoos[0]} />
+            <StyledPicture width={130} length={130} source={tattoos[0]} />
           </StyledArtistCard>
         </StyledArtistList>
       ))}
@@ -23,7 +23,6 @@ export default function ArtistList(): JSX.Element {
 const StyledArtistList = styled.div`
   display: flex;
   flex-direction: column;
-
   padding: 15px;
 `;
 
@@ -46,5 +45,5 @@ const StyledInfoBox = styled.div`
 const StyledPicture = styled(Picture)`
   position: absolute;
   right: 10px;
-  top: 7px;
+  top: 10px;
 `;

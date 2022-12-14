@@ -17,4 +17,5 @@ const StyledButton = styled.button`
   border: none;
   color: #d9d9d9;
   height: 2em;
+  font-family: Roboto;
 `;
