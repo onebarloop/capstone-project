@@ -5,12 +5,24 @@ import Link from "next/link";
 export default function Main(): JSX.Element {
   return (
     <StyledMain>
-      <Picture width={140} length={140} source={"/img/bike.png"} />
-      <Picture width={140} length={140} source={"/img/fox.png"} />
-      <Picture width={140} length={140} source={"/img/ice.png"} />
-      <Picture width={140} length={140} source={"/img/moon.png"} />
-      <Picture width={140} length={140} source={"/img/tree.png"} />
-      <Picture width={140} length={140} source={"/img/triangle.png"} />
+      <Link href="/cheapbackpieces">
+        <Picture width={140} length={140} source={"/img/paper.png"} />
+      </Link>
+      <Link href="/customtattoosberlin">
+        <Picture width={140} length={140} source={"/img/triangle.png"} />
+      </Link>
+      <Link href="/worldofpain">
+        <Picture width={140} length={140} source={"/img/moon.png"} />
+      </Link>
+      <Link href="/derbiberbau">
+        <Picture width={140} length={140} source={"/img/Xlink.png"} />
+      </Link>
+      <Link href="/peterskleinestattoostudio">
+        <Picture width={140} length={140} source={"/img/pen.png"} />
+      </Link>
+      <Link href="/stickandpoke">
+        <Picture width={140} length={140} source={"/img/Xsimba.png"} />
+      </Link>
     </StyledMain>
   );
 }
