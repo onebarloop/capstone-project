@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import Picture from "../components/Picture";
 import Image from "next/image";
 import styled from "styled-components";
+import { nanoid } from "nanoid";
 
 export default function ArtistPage(): JSX.Element {
   const router = useRouter();
@@ -16,20 +17,28 @@ export default function ArtistPage(): JSX.Element {
     <>
       <Header />
       <StyledMain>
-        <ul>
-          <li>Artist: {artist?.artistName}</li>
-          <li>Location: {artist?.location}</li>
-        </ul>
-        <div></div>
+        <StyledInfoCard>
+          Information
+          <li>
+            Artist:
+            <br /> {artist?.artistName}
+          </li>
+          <li>
+            Location: <br />
+            {artist?.location}
+          </li>
+        </StyledInfoCard>
+        <StyledSchedule>
+          Timeschedule
+          <li>Monday, 13.12.</li>
+          <li>Monday, 13.12.</li>
+          <li>Monday, 13.12.</li>
+          <li>Monday, 13.12.</li>
+        </StyledSchedule>
         <StyledGalery>
-          {artist && (
-            <>
-              <Picture width={140} length={140} source={artist?.tattoos[0]} />
-              <Picture width={140} length={140} source={artist?.tattoos[1]} />
-              <Picture width={140} length={140} source={artist?.tattoos[2]} />
-              <Picture width={140} length={140} source={"/img/moon.png"} />
-            </>
-          )}
+          {artist?.tattoos.map((tattoo) => (
+            <Picture width={140} length={140} source={tattoo} key={nanoid()} />
+          ))}
         </StyledGalery>
       </StyledMain>
       <Footer />
@@ -44,10 +53,19 @@ const StyledMain = styled.div`
   display: grid;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  ul {
-    list-style: none;
-    padding: 0;
+`;
+
+const StyledInfoCard = styled.ul`
+  list-style: none;
+  padding: 0;
+  font-size: 1.2em;
+  li {
+    margin: 0.5em;
   }
+`;
+
+const StyledSchedule = styled(StyledInfoCard)`
+  justify-self: end;
 `;
 
 const StyledGalery = styled.div`
@@ -55,5 +73,6 @@ const StyledGalery = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: flex-start;
+  align-content: space-evenly;
   justify-items: center;
 `;

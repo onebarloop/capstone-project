@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Picture from "./Picture";
+import Link from "next/link";
 
 export default function Main(): JSX.Element {
   return (
