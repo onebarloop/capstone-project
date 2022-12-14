@@ -5,7 +5,7 @@ export default function Header(): JSX.Element {
   return (
     <StyledHeader>
       <h1>Wannado</h1>
-      <StyledLogo alt="logo" src="/logo.svg" height={75} width={75} />
+      <Image alt="logo" src="/logo.svg" height={70} width={70} />
     </StyledHeader>
   );
 }
@@ -21,9 +21,4 @@ const StyledHeader = styled.header`
   h1 {
     font-size: 2.5rem;
   }
-`;
-
-const StyledLogo = styled(Image)`
-  position: relative;
-  bottom: 7px;
 `;

@@ -28,7 +28,7 @@ class Artist {
   }
 }
 
-const artists = [
+const artists: Artist[] = [
   new Artist("Internet Guy", "Vorname", "Nachname", "Manneim", [
     "eins",
     "zwei",
