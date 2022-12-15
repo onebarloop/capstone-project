@@ -27,4 +27,5 @@ const StyledButton = styled.button`
   color: #d9d9d9;
   height: 2em;
   font-family: Roboto;
+  cursor: pointer;
 `;
