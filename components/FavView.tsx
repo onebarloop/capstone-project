@@ -2,16 +2,13 @@ import artists from "../lib/artists";
 import List from "./List";
 
 //Typescript
-type ArtistListProps = {
-  onLike: (id: any) => void;
+type ViewProps = {
+  onLike: (id: string) => void;
   likes: string[];
 };
 //typescrip End
 
-export default function FavView({
-  onLike,
-  likes,
-}: ArtistListProps): JSX.Element {
+export default function FavView({ onLike, likes }: ViewProps): JSX.Element {
   return (
     <>
       {artists.map(

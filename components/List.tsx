@@ -5,8 +5,8 @@ import Picture from "./Picture";
 import Button from "./Button";
 
 //Typescript
-type ArtistListProps = {
-  onLike: (id: any) => void;
+type ListProps = {
+  onLike: (id: string) => void;
   likes: string[];
   id: string;
   tattoos: string[];
@@ -24,7 +24,7 @@ export default function List({
   slug,
   artistName,
   location,
-}: ArtistListProps): JSX.Element {
+}: ListProps): JSX.Element {
   return (
     <StyledArtistList key={id}>
       <StyledArtistCard>
