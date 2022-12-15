@@ -1,37 +1,4 @@
-import { nanoid } from "nanoid";
-
-function stringify(string: string): string {
-  const noBlanks = string.replaceAll(" ", "");
-  return noBlanks.toLowerCase();
-}
-
-class Artist {
-  //Typescript
-  artistName: string;
-  firstName: string;
-  lastName: string;
-  location: string;
-  slug: string;
-  tattoos: string[];
-  id: string;
-  //Typescript end
-
-  constructor(
-    artistName: string,
-    firstName: string,
-    lastName: string,
-    location: string,
-    tatoos: string[]
-  ) {
-    this.artistName = artistName;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.location = location;
-    this.slug = stringify(artistName);
-    this.tattoos = tatoos;
-    this.id = nanoid();
-  }
-}
+import Artist from "./ArtistClass";
 
 const artists: Artist[] = [
   new Artist("Cheap Backpieces", "Vorname", "Nachname", "Mannheim", [
@@ -71,5 +38,5 @@ const artists: Artist[] = [
     "/img/tree.png",
   ]),
 ];
-console.log(artists);
+
 export default artists;

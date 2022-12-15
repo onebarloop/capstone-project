@@ -1,7 +1,6 @@
 import Picture from "../components/Picture";
 import styled from "styled-components";
 import { nanoid } from "nanoid";
-import { ReactPropTypes } from "react";
 
 //Typescript
 type ArtistProps = {

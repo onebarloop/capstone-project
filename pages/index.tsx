@@ -2,11 +2,11 @@ import Head from "next/head";
 import RandomView from "../components/RandomView";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import ArtistView from "../components/ArtistView";
 import Button from "../components/Button";
 import { useState } from "react";
 import styled from "styled-components";
-import FavView from "../components/FavView";
+import artists from "../lib/artists";
+import List from "../components/List";
 
 type HomeProps = {
   onLike: () => void;
@@ -54,9 +54,21 @@ export default function Home({ onLike, likes }: HomeProps): JSX.Element {
           name={"Favorites"}
         />
       </StyledButtonWrapper>
+
+      {/* Switching between the three different views */}
+
       {viewPoint.random && <RandomView />}
-      {viewPoint.artists && <ArtistView onLike={onLike} likes={likes} />}
-      {viewPoint.favorites && <FavView onLike={onLike} likes={likes} />}
+      {viewPoint.artists &&
+        artists.map((artist) => (
+          <List key={artist.id} {...artist} onLike={onLike} likes={likes} />
+        ))}
+      {viewPoint.favorites &&
+        artists.map(
+          (artist) =>
+            likes.includes(artist.id) && (
+              <List key={artist.id} {...artist} onLike={onLike} likes={likes} />
+            )
+        )}
       <Footer />
     </>
   );
