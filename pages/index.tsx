@@ -3,11 +3,17 @@ import Random from "../components/Random";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import ArtistList from "../components/ArtistList";
+import FavList from "../components/FavList";
 import Button from "../components/Button";
 import { useState } from "react";
 import styled from "styled-components";
 
-export default function Home(): JSX.Element {
+type HomeProps = {
+  onLike: () => void;
+  likes: string[];
+};
+
+export default function Home({ onLike, likes }: HomeProps): JSX.Element {
   //Typescript
   type ViewPoint = { random: boolean; artists: boolean; favorites: boolean };
   //Typescipt end
@@ -42,9 +48,14 @@ export default function Home(): JSX.Element {
           onClick={() => handleSwitchView("artists")}
           name={"Artist view"}
         />
+        <Button
+          onClick={() => handleSwitchView("favorites")}
+          name={"Favorites"}
+        />
       </StyledButtonWrapper>
       {viewPoint.random && <Random />}
-      {viewPoint.artists && <ArtistList />}
+      {viewPoint.artists && <ArtistList onLike={onLike} />}
+      {viewPoint.favorites && <FavList onLike={onLike} likes={likes} />}
       <Footer />
     </>
   );

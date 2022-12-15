@@ -7,25 +7,32 @@ import Button from "./Button";
 //Typescript
 type ArtistListProps = {
   onLike: (id: any) => void;
+  likes: string[];
 };
 //typescrip End
 
-export default function ArtistList({ onLike }: ArtistListProps): JSX.Element {
+export default function FavList({
+  onLike,
+  likes,
+}: ArtistListProps): JSX.Element {
   return (
     <>
-      {artists.map(({ id, artistName, location, tattoos, slug }) => (
-        <StyledArtistList key={id}>
-          <StyledArtistCard>
-            <StyledInfoBox>
-              {artistName} <br /> {location}
-              <Button name={"Like"} onClick={() => onLike(id)} />
-            </StyledInfoBox>
-            <Link href={`/${slug}`}>
-              <StyledPicture width={130} length={130} source={tattoos[0]} />
-            </Link>
-          </StyledArtistCard>
-        </StyledArtistList>
-      ))}
+      {artists.map(
+        ({ id, artistName, location, tattoos, slug }) =>
+          likes.includes(id) && (
+            <StyledArtistList key={id}>
+              <StyledArtistCard>
+                <StyledInfoBox>
+                  {artistName} <br /> {location}
+                  <Button name={"Like"} onClick={() => onLike(id)} />
+                </StyledInfoBox>
+                <Link href={`/${slug}`}>
+                  <StyledPicture width={130} length={130} source={tattoos[0]} />
+                </Link>
+              </StyledArtistCard>
+            </StyledArtistList>
+          )
+      )}
     </>
   );
 }
