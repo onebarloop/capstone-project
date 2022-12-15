@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Random from "../components/Random";
+import RandomView from "../components/RandomView";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import ArtistView from "../components/ArtistView";
@@ -54,7 +54,7 @@ export default function Home({ onLike, likes }: HomeProps): JSX.Element {
           name={"Favorites"}
         />
       </StyledButtonWrapper>
-      {viewPoint.random && <Random />}
+      {viewPoint.random && <RandomView />}
       {viewPoint.artists && <ArtistView onLike={onLike} likes={likes} />}
       {viewPoint.favorites && <FavView onLike={onLike} likes={likes} />}
       <Footer />
