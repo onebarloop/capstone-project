@@ -61,7 +61,7 @@ const StyledInfoBox = styled.div`
   width: 100vw;
   height: 170px;
   background-color: #848484;
-  border-radius: 30px;
+  border-radius: 10px;
   padding: 10px;
   display: flex;
   flex-direction: column;
