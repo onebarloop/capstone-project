@@ -2,10 +2,19 @@ import artists from "../lib/artists";
 import styled from "styled-components";
 import Link from "next/link";
 import Picture from "./Picture";
+import { useState } from "react";
 
 export default function ArtistList(): JSX.Element {
+  const [likes, setLikes] = useState<string[]>([]);
+  function handleLike(id: string): void {
+    setLikes((prev) => [...prev, id]);
+  }
+
+  console.log(likes);
+
   return (
     <>
+      <button onClick={() => handleLike("30")}>Click</button>
       {artists.map(({ id, artistName, location, tattoos, slug }) => (
         <StyledArtistList key={id}>
           <StyledArtistCard href={`/${slug}`}>
