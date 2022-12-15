@@ -2,26 +2,32 @@ import artists from "../lib/artists";
 import styled from "styled-components";
 import Link from "next/link";
 import Picture from "./Picture";
+import Button from "./Button";
 import { useState } from "react";
 
 export default function ArtistList(): JSX.Element {
   const [likes, setLikes] = useState<string[]>([]);
+
   function handleLike(id: string): void {
-    setLikes((prev) => [...prev, id]);
+    likes.includes(id)
+      ? setLikes((prev) => prev.filter((like) => like !== id))
+      : setLikes((prev) => [...prev, id]);
   }
 
   console.log(likes);
 
   return (
     <>
-      <button onClick={() => handleLike("30")}>Click</button>
       {artists.map(({ id, artistName, location, tattoos, slug }) => (
         <StyledArtistList key={id}>
-          <StyledArtistCard href={`/${slug}`}>
+          <StyledArtistCard>
             <StyledInfoBox>
               {artistName} <br /> {location}
+              <Button name={"Like"} onClick={() => handleLike(id)} />
             </StyledInfoBox>
-            <StyledPicture width={130} length={130} source={tattoos[0]} />
+            <Link href={`/${slug}`}>
+              <StyledPicture width={130} length={130} source={tattoos[0]} />
+            </Link>
           </StyledArtistCard>
         </StyledArtistList>
       ))}
@@ -35,7 +41,7 @@ const StyledArtistList = styled.div`
   padding: 15px;
 `;
 
-const StyledArtistCard = styled(Link)`
+const StyledArtistCard = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: row;

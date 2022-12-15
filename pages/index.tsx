@@ -17,12 +17,12 @@ export default function Home(): JSX.Element {
     favorites: false, //I don't need this right now, but in the future
   });
 
-  function handleSwitchView(prop: string): void {
+  function handleSwitchView(view: string): void {
     setViewPoint({
       random: false,
       artists: false,
       favorites: false,
-      [prop]: true,
+      [view]: true,
     });
   }
 
