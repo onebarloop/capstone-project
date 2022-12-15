@@ -5,7 +5,7 @@ export default function Header(): JSX.Element {
   return (
     <StyledHeader>
       <h1>Wannado</h1>
-      <Image alt="logo" src="/logo.svg" height={70} width={70} />
+      <Image alt="logo" src="/logo.svg" height={60} width={60} />
     </StyledHeader>
   );
 }

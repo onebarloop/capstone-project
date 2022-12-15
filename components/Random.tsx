@@ -2,39 +2,39 @@ import styled from "styled-components";
 import Picture from "./Picture";
 import Link from "next/link";
 
-export default function Main(): JSX.Element {
+export default function Random(): JSX.Element {
   return (
-    <StyledMain>
+    <StyledRandom>
       <Link href="/cheapbackpieces">
-        <Picture width={140} length={140} source={"/img/paper.png"} />
+        <Picture width={120} length={120} source={"/img/paper.png"} />
       </Link>
       <Link href="/customtattoosberlin">
-        <Picture width={140} length={140} source={"/img/triangle.png"} />
+        <Picture width={120} length={120} source={"/img/triangle.png"} />
       </Link>
       <Link href="/worldofpain">
-        <Picture width={140} length={140} source={"/img/moon.png"} />
+        <Picture width={120} length={120} source={"/img/moon.png"} />
       </Link>
       <Link href="/derbiberbau">
-        <Picture width={140} length={140} source={"/img/Xlink.png"} />
+        <Picture width={120} length={120} source={"/img/Xlink.png"} />
       </Link>
       <Link href="/peterskleinestattoostudio">
-        <Picture width={140} length={140} source={"/img/pen.png"} />
+        <Picture width={120} length={120} source={"/img/pen.png"} />
       </Link>
       <Link href="/stickandpoke">
-        <Picture width={140} length={140} source={"/img/Xsimba.png"} />
+        <Picture width={120} length={120} source={"/img/Xsimba.png"} />
       </Link>
-    </StyledMain>
+    </StyledRandom>
   );
 }
 
-const StyledMain = styled.main`
+const StyledRandom = styled.main`
   color: rgba(217, 217, 217, 1);
-  height: 80vh;
+  height: 75vh;
   padding: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-content: space-around;
   justify-items: center;
   align-items: start;
-  gap: 5px;
+  gap: 15px;
 `;
