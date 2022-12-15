@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Picture from "./Picture";
 import Link from "next/link";
 
-export default function Random(): JSX.Element {
+export default function RandomView(): JSX.Element {
   return (
     <StyledRandom>
       <Link href="/cheapbackpieces">

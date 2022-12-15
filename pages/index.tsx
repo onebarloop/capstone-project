@@ -1,28 +1,35 @@
 import Head from "next/head";
-import Random from "../components/Random";
+import RandomView from "../components/RandomView";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import ArtistList from "../components/ArtistList";
+import ArtistView from "../components/ArtistView";
 import Button from "../components/Button";
 import { useState } from "react";
 import styled from "styled-components";
+import FavView from "../components/FavView";
 
-export default function Home(): JSX.Element {
+type HomeProps = {
+  onLike: () => void;
+  likes: string[];
+};
+
+export default function Home({ onLike, likes }: HomeProps): JSX.Element {
   //Typescript
   type ViewPoint = { random: boolean; artists: boolean; favorites: boolean };
   //Typescipt end
+
   const [viewPoint, setViewPoint] = useState<ViewPoint>({
     random: true, //the standard view. It's called "random" because later I will implement a function to show a random collection of tattoos
     artists: false,
-    favorites: false, //I don't need this right now, but in the future
+    favorites: false,
   });
 
-  function handleSwitchView(prop: string): void {
+  function handleSwitchView(view: string): void {
     setViewPoint({
       random: false,
       artists: false,
       favorites: false,
-      [prop]: true,
+      [view]: true,
     });
   }
 
@@ -42,9 +49,14 @@ export default function Home(): JSX.Element {
           onClick={() => handleSwitchView("artists")}
           name={"Artist view"}
         />
+        <Button
+          onClick={() => handleSwitchView("favorites")}
+          name={"Favorites"}
+        />
       </StyledButtonWrapper>
-      {viewPoint.random && <Random />}
-      {viewPoint.artists && <ArtistList />}
+      {viewPoint.random && <RandomView />}
+      {viewPoint.artists && <ArtistView onLike={onLike} likes={likes} />}
+      {viewPoint.favorites && <FavView onLike={onLike} likes={likes} />}
       <Footer />
     </>
   );

@@ -4,11 +4,20 @@ import styled from "styled-components";
 type ButtonProps = {
   name: string;
   onClick: React.MouseEventHandler;
+  className?: string;
 };
 //Typescript end
 
-export default function Button({ name, onClick }: ButtonProps): JSX.Element {
-  return <StyledButton onClick={onClick}>{name}</StyledButton>;
+export default function Button({
+  name,
+  onClick,
+  className,
+}: ButtonProps): JSX.Element {
+  return (
+    <StyledButton className={className} onClick={onClick}>
+      {name}
+    </StyledButton>
+  );
 }
 
 const StyledButton = styled.button`
@@ -18,4 +27,5 @@ const StyledButton = styled.button`
   color: #d9d9d9;
   height: 2em;
   font-family: Roboto;
+  cursor: pointer;
 `;
