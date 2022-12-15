@@ -11,6 +11,7 @@ type ArtistListProps = {
 };
 //typescrip End
 
+//the following will be refactored in an coming update together with ArtistList. Redundant code.
 export default function FavList({
   onLike,
   likes,
@@ -24,7 +25,10 @@ export default function FavList({
               <StyledArtistCard>
                 <StyledInfoBox>
                   {artistName} <br /> {location}
-                  <Button name={"Like"} onClick={() => onLike(id)} />
+                  <StyledLikeButton
+                    name={likes.includes(id) ? "Dislike" : "Like"}
+                    onClick={() => onLike(id)}
+                  />
                 </StyledInfoBox>
                 <Link href={`/${slug}`}>
                   <StyledPicture width={130} length={130} source={tattoos[0]} />
@@ -57,10 +61,18 @@ const StyledInfoBox = styled.div`
   background-color: #848484;
   border-radius: 30px;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
 `;
 
 const StyledPicture = styled(Picture)`
   position: absolute;
   right: 10px;
   top: 10px;
+`;
+
+const StyledLikeButton = styled(Button)`
+  background-color: black;
 `;

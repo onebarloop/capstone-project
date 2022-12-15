@@ -54,7 +54,7 @@ export default function Home({ onLike, likes }: HomeProps): JSX.Element {
         />
       </StyledButtonWrapper>
       {viewPoint.random && <Random />}
-      {viewPoint.artists && <ArtistList onLike={onLike} />}
+      {viewPoint.artists && <ArtistList onLike={onLike} likes={likes} />}
       {viewPoint.favorites && <FavList onLike={onLike} likes={likes} />}
       <Footer />
     </>

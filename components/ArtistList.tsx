@@ -7,10 +7,15 @@ import Button from "./Button";
 //Typescript
 type ArtistListProps = {
   onLike: (id: any) => void;
+  likes: string[];
 };
 //typescrip End
 
-export default function ArtistList({ onLike }: ArtistListProps): JSX.Element {
+//the following will be refactored in an coming update together with FavList. Redundant code.
+export default function ArtistList({
+  onLike,
+  likes,
+}: ArtistListProps): JSX.Element {
   return (
     <>
       {artists.map(({ id, artistName, location, tattoos, slug }) => (
@@ -18,7 +23,10 @@ export default function ArtistList({ onLike }: ArtistListProps): JSX.Element {
           <StyledArtistCard>
             <StyledInfoBox>
               {artistName} <br /> {location}
-              <Button name={"Like"} onClick={() => onLike(id)} />
+              <StyledLikeButton
+                name={likes.includes(id) ? "Dislike" : "Like"}
+                onClick={() => onLike(id)}
+              />
             </StyledInfoBox>
             <Link href={`/${slug}`}>
               <StyledPicture width={130} length={130} source={tattoos[0]} />
@@ -48,12 +56,20 @@ const StyledInfoBox = styled.div`
   width: 100vw;
   height: 170px;
   background-color: #848484;
-  border-radius: 30px;
+  border-radius: 10px;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
 `;
 
 const StyledPicture = styled(Picture)`
   position: absolute;
   right: 10px;
   top: 10px;
+`;
+
+const StyledLikeButton = styled(Button)`
+  background-color: black;
 `;

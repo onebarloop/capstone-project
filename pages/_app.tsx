@@ -3,6 +3,7 @@ import GlobalStyles from "../globalStyles";
 import { useState } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
+  // Function for handling the favorites. Needs to be here, since the state is needed all over the app
   const [likes, setLikes] = useState<string[]>([]);
 
   function handleLike(id: string): void {
