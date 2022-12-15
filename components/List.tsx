@@ -8,36 +8,38 @@ import Button from "./Button";
 type ArtistListProps = {
   onLike: (id: any) => void;
   likes: string[];
+  id: string;
+  tattoos: string[];
+  slug: string;
+  artistName: string;
+  location: string;
 };
 //typescrip End
 
-//the following will be refactored in an coming update together with ArtistList. Redundant code.
-export default function FavList({
+export default function List({
   onLike,
   likes,
+  id,
+  tattoos,
+  slug,
+  artistName,
+  location,
 }: ArtistListProps): JSX.Element {
   return (
-    <>
-      {artists.map(
-        ({ id, artistName, location, tattoos, slug }) =>
-          likes.includes(id) && (
-            <StyledArtistList key={id}>
-              <StyledArtistCard>
-                <StyledInfoBox>
-                  {artistName} <br /> {location}
-                  <StyledLikeButton
-                    name={likes.includes(id) ? "Dislike" : "Like"}
-                    onClick={() => onLike(id)}
-                  />
-                </StyledInfoBox>
-                <Link href={`/${slug}`}>
-                  <StyledPicture width={130} length={130} source={tattoos[0]} />
-                </Link>
-              </StyledArtistCard>
-            </StyledArtistList>
-          )
-      )}
-    </>
+    <StyledArtistList key={id}>
+      <StyledArtistCard>
+        <StyledInfoBox>
+          {artistName} <br /> {location}
+          <StyledLikeButton
+            name={likes.includes(id) ? "Dislike" : "Like"}
+            onClick={() => onLike(id)}
+          />
+        </StyledInfoBox>
+        <Link href={`/${slug}`}>
+          <StyledPicture width={130} length={130} source={tattoos[0]} />
+        </Link>
+      </StyledArtistCard>
+    </StyledArtistList>
   );
 }
 
