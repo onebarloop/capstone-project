@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 //Typescript
 type ButtonProps = {
-  name: string;
+  name?: string;
   onClick(event: React.MouseEvent<HTMLButtonElement>): void;
   className?: string;
-  inactive?: boolean;
+  inactive?: boolean | undefined;
 };
 //Typescript end
 
@@ -22,7 +22,7 @@ export default function Button({
   );
 }
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<ButtonProps>`
   background: ${(props) =>
     props.inactive ? "rgba(217, 51, 120, 0.56)" : "#D93378"};
   border-radius: 4px;
