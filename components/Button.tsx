@@ -3,7 +3,7 @@ import styled from "styled-components";
 //Typescript
 type ButtonProps = {
   name: string;
-  onClick: React.MouseEventHandler;
+  onClick(event: React.MouseEvent<HTMLButtonElement>): void;
   className?: string;
 };
 //Typescript end

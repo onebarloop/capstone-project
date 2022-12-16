@@ -1,28 +1,26 @@
 import styled from "styled-components";
 import Picture from "./Picture";
 import Link from "next/link";
+import artists from "../lib/artists";
 
 export default function RandomView(): JSX.Element {
+  const randomArtists = artists
+    .sort(() => Math.random() - Math.random())
+    .slice(0, 6);
+
   return (
     <StyledRandom>
-      <Link href="/cheapbackpieces">
-        <Picture width={120} length={120} source={"/img/paper.png"} />
-      </Link>
-      <Link href="/customtattoosberlin">
-        <Picture width={120} length={120} source={"/img/triangle.png"} />
-      </Link>
-      <Link href="/worldofpain">
-        <Picture width={120} length={120} source={"/img/moon.png"} />
-      </Link>
-      <Link href="/derbiberbau">
-        <Picture width={120} length={120} source={"/img/Xlink.png"} />
-      </Link>
-      <Link href="/peterskleinestattoostudio">
-        <Picture width={120} length={120} source={"/img/pen.png"} />
-      </Link>
-      <Link href="/stickandpoke">
-        <Picture width={120} length={120} source={"/img/Xsimba.png"} />
-      </Link>
+      {randomArtists?.map((artist) => (
+        <Link key={artist.id} href={`/${artist.slug}`}>
+          <Picture
+            width={120}
+            length={120}
+            source={
+              artist.tattoos[Math.floor(Math.random() * artist.tattoos.length)]
+            }
+          />
+        </Link>
+      ))}
     </StyledRandom>
   );
 }
