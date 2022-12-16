@@ -6,9 +6,8 @@ import { useState, useEffect } from "react";
 import Artist from "../lib/ArtistClass";
 
 export default function RandomView(): JSX.Element {
-  //The calculation of a random Artist List must be made via hook, otherwise it would come to hydration error -> https://nextjs.org/docs/messages/react-hydration-error
+  //The calculation of a random Artist List needs to be done via hook, otherwise it would come to hydration error -> https://nextjs.org/docs/messages/react-hydration-error
   const [randomArtists, setRandomArtists] = useState<Artist[]>();
-
   useEffect(
     () =>
       setRandomArtists(
