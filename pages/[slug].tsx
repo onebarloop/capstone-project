@@ -17,7 +17,7 @@ export default function ArtistPage(): JSX.Element {
         <title>Wannado</title>
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
-      <Header />
+      <Header heading={artist.artistName} />
       <Artist {...artist} />
       <Footer />
     </>

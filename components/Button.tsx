@@ -5,7 +5,7 @@ type ButtonProps = {
   name?: string;
   onClick(event: React.MouseEvent<HTMLButtonElement>): void;
   className?: string;
-  inactive?: boolean | undefined;
+  inactive?: boolean;
 };
 //Typescript end
 

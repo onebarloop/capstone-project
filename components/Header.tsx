@@ -2,10 +2,20 @@ import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Header(): JSX.Element {
+type HeaderProps = {
+  heading?: string;
+};
+
+export default function Header({
+  heading = "Wannado",
+}: HeaderProps): JSX.Element {
+  const length: number = heading.length;
+
   return (
-    <StyledHeader>
-      <h1>Wannado</h1>
+    <StyledHeader length={length}>
+      <Link href="/">
+        <h1>{heading}</h1>{" "}
+      </Link>
       <Link href="/">
         <Image alt="logo" src="/logo.svg" height={60} width={60} />
       </Link>
@@ -13,15 +23,21 @@ export default function Header(): JSX.Element {
   );
 }
 
-const StyledHeader = styled.header`
+type StyledHeaderProps = {
+  length?: number;
+};
+
+const StyledHeader = styled.header<StyledHeaderProps>`
   background-color: black;
-  color: rgba(217, 217, 217, 1);
   padding: 20px;
   height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   h1 {
-    font-size: 2.5rem;
+    font-size: ${(props) =>
+      props.length ? (props.length < 13 ? "2.5rem" : "1.5rem") : "2.5rem"};
+    color: rgba(217, 217, 217, 1);
   }
 `;

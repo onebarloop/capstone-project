@@ -29,7 +29,7 @@ export default function List({
       <StyledArtistCard>
         <StyledInfoBox>
           {artistName} <br /> {location}
-          <StyledLikeButton
+          <Button
             name={likes.includes(id) ? "Dislike" : "Like"}
             onClick={() => onLike(id)}
           />
@@ -72,8 +72,4 @@ const StyledPicture = styled(Picture)`
   position: absolute;
   right: 10px;
   top: 10px;
-`;
-
-const StyledLikeButton = styled(Button)`
-  background-color: black;
 `;
