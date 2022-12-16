@@ -1,4 +1,3 @@
-import artists from "../lib/artists";
 import styled from "styled-components";
 import Link from "next/link";
 import Picture from "./Picture";
@@ -14,7 +13,7 @@ type ListProps = {
   artistName: string;
   location: string;
 };
-//typescrip End
+//Typescript End
 
 export default function List({
   onLike,

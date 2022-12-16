@@ -29,7 +29,7 @@ export default function Artist({
         </li>
       </StyledInfoCard>
       <StyledSchedule>
-        Timeschedule
+        Timeschedule (Hardcode)
         <li>Monday, 13.12.</li>
         <li>Monday, 13.12.</li>
         <li>Monday, 13.12.</li>

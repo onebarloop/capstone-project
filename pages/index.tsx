@@ -43,7 +43,7 @@ export default function Home({ onLike, likes }: HomeProps): JSX.Element {
       <StyledButtonWrapper>
         <Button
           onClick={() => handleSwitchView("random")}
-          name={"SURPRISE ME"}
+          name={"Standard View"}
         />
         <Button
           onClick={() => handleSwitchView("artists")}

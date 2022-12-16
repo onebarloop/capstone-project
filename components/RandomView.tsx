@@ -2,11 +2,23 @@ import styled from "styled-components";
 import Picture from "./Picture";
 import Link from "next/link";
 import artists from "../lib/artists";
+import { useState, useEffect } from "react";
+import Artist from "../lib/ArtistClass";
 
 export default function RandomView(): JSX.Element {
-  const randomArtists = artists
-    .sort(() => Math.random() - Math.random())
-    .slice(0, 6);
+  //The calculation of a random Artist List must be made via hook, otherwise it would come to hydration error -> https://nextjs.org/docs/messages/react-hydration-error
+  const [randomArtists, setRandomArtists] = useState<Artist[]>();
+
+  useEffect(
+    () =>
+      setRandomArtists(
+        artists
+          .slice()
+          .sort(() => Math.random() - Math.random())
+          .slice(0, 6)
+      ),
+    []
+  );
 
   return (
     <StyledRandom>
