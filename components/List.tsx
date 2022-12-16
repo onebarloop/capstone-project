@@ -1,4 +1,3 @@
-import artists from "../lib/artists";
 import styled from "styled-components";
 import Link from "next/link";
 import Picture from "./Picture";
@@ -14,7 +13,7 @@ type ListProps = {
   artistName: string;
   location: string;
 };
-//typescrip End
+//Typescript End
 
 export default function List({
   onLike,
@@ -30,13 +29,13 @@ export default function List({
       <StyledArtistCard>
         <StyledInfoBox>
           {artistName} <br /> {location}
-          <StyledLikeButton
+          <Button
             name={likes.includes(id) ? "Dislike" : "Like"}
             onClick={() => onLike(id)}
           />
         </StyledInfoBox>
         <Link href={`/${slug}`}>
-          <StyledPicture width={130} length={130} source={tattoos[0]} />
+          <StyledPicture width={130} height={130} source={tattoos[0]} />
         </Link>
       </StyledArtistCard>
     </StyledArtistList>
@@ -73,8 +72,4 @@ const StyledPicture = styled(Picture)`
   position: absolute;
   right: 10px;
   top: 10px;
-`;
-
-const StyledLikeButton = styled(Button)`
-  background-color: black;
 `;

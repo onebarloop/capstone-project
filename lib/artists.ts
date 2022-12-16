@@ -1,44 +1,11 @@
-import { nanoid } from "nanoid";
-
-function stringify(string: string): string {
-  const noBlanks = string.replaceAll(" ", "");
-  return noBlanks.toLowerCase();
-}
-
-class Artist {
-  //Typescript
-  artistName: string;
-  firstName: string;
-  lastName: string;
-  location: string;
-  slug: string;
-  tattoos: string[];
-  id: string;
-  //Typescript end
-
-  constructor(
-    artistName: string,
-    firstName: string,
-    lastName: string,
-    location: string,
-    tatoos: string[]
-  ) {
-    this.artistName = artistName;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.location = location;
-    this.slug = stringify(artistName);
-    this.tattoos = tatoos;
-    this.id = nanoid();
-  }
-}
+import Artist from "./ArtistClass";
 
 const artists: Artist[] = [
   new Artist("Cheap Backpieces", "Vorname", "Nachname", "Mannheim", [
     "/img/heart.png",
     "/img/paper.png",
     "/img/hand.png",
-    "/img/Xskull.png",
+    "/img/Xflower.png",
   ]),
   new Artist("Custom Tattoos Berlin", "foo", "bar", "Berlin", [
     "/img/Xalien.png",
@@ -56,7 +23,7 @@ const artists: Artist[] = [
     "/img/bike.png",
     "/img/fox.png",
     "/img/Xlink.png",
-    "/img/moon.png",
+    "/img/Xbulb.png",
   ]),
   new Artist("Peters kleines Tattoostudio", "foo", "bar", "Ludwigshafen", [
     "/img/pen.png",
@@ -70,6 +37,12 @@ const artists: Artist[] = [
     "/img/Xape.png",
     "/img/tree.png",
   ]),
+  new Artist("Get wasted", "foo", "bar", "Bremen", [
+    "/img/Xcloud.png",
+    "/img/Xdog.png",
+    "/img/Xflower.png",
+    "/img/Xpipe.png",
+  ]),
 ];
-console.log(artists);
+
 export default artists;

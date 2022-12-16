@@ -2,11 +2,11 @@ import Head from "next/head";
 import RandomView from "../components/RandomView";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import ArtistView from "../components/ArtistView";
 import Button from "../components/Button";
 import { useState } from "react";
 import styled from "styled-components";
-import FavView from "../components/FavView";
+import artists from "../lib/artists";
+import List from "../components/List";
 
 type HomeProps = {
   onLike: () => void;
@@ -19,7 +19,7 @@ export default function Home({ onLike, likes }: HomeProps): JSX.Element {
   //Typescipt end
 
   const [viewPoint, setViewPoint] = useState<ViewPoint>({
-    random: true, //the standard view. It's called "random" because later I will implement a function to show a random collection of tattoos
+    random: true,
     artists: false,
     favorites: false,
   });
@@ -41,22 +41,37 @@ export default function Home({ onLike, likes }: HomeProps): JSX.Element {
       </Head>
       <Header />
       <StyledButtonWrapper>
-        <Button
+        <StyledButton
           onClick={() => handleSwitchView("random")}
-          name={"Standard View"}
+          name={"Surprise Me!"}
+          inactive={!viewPoint.random && true}
         />
-        <Button
+        <StyledButton
           onClick={() => handleSwitchView("artists")}
-          name={"Artist view"}
+          name={"Browse Artists"}
+          inactive={!viewPoint.artists && true}
         />
-        <Button
+        <StyledButton
           onClick={() => handleSwitchView("favorites")}
           name={"Favorites"}
+          inactive={!viewPoint.favorites && true}
         />
       </StyledButtonWrapper>
+
+      {/* Switching between the three different views */}
+
       {viewPoint.random && <RandomView />}
-      {viewPoint.artists && <ArtistView onLike={onLike} likes={likes} />}
-      {viewPoint.favorites && <FavView onLike={onLike} likes={likes} />}
+      {viewPoint.artists &&
+        artists.map((artist) => (
+          <List key={artist.id} {...artist} onLike={onLike} likes={likes} />
+        ))}
+      {viewPoint.favorites &&
+        artists.map(
+          (artist) =>
+            likes.includes(artist.id) && (
+              <List key={artist.id} {...artist} onLike={onLike} likes={likes} />
+            )
+        )}
       <Footer />
     </>
   );
@@ -67,4 +82,8 @@ const StyledButtonWrapper = styled.div`
   flex-direction: row;
   gap: 20px;
   margin: 20px 0 15px 25px;
+`;
+
+const StyledButton = styled(Button)`
+  font-size: 0.7em;
 `;
