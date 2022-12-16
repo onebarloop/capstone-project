@@ -5,7 +5,7 @@ const artists: Artist[] = [
     "/img/heart.png",
     "/img/paper.png",
     "/img/hand.png",
-    "/img/Xskull.png",
+    "/img/Xflower.png",
   ]),
   new Artist("Custom Tattoos Berlin", "foo", "bar", "Berlin", [
     "/img/Xalien.png",
@@ -23,7 +23,7 @@ const artists: Artist[] = [
     "/img/bike.png",
     "/img/fox.png",
     "/img/Xlink.png",
-    "/img/moon.png",
+    "/img/Xbulb.png",
   ]),
   new Artist("Peters kleines Tattoostudio", "foo", "bar", "Ludwigshafen", [
     "/img/pen.png",
@@ -36,6 +36,12 @@ const artists: Artist[] = [
     "/img/Xpooh.png",
     "/img/Xape.png",
     "/img/tree.png",
+  ]),
+  new Artist("Get wasted", "foo", "bar", "Bremen", [
+    "/img/Xcloud.png",
+    "/img/Xdog.png",
+    "/img/Xflower.png",
+    "/img/Xpipe.png",
   ]),
 ];
 

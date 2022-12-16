@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Head from "next/head";
 import artists from "../lib/artists";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -12,6 +13,10 @@ export default function ArtistPage(): JSX.Element {
 
   return artist ? (
     <>
+      <Head>
+        <title>Wannado</title>
+        <link rel="shortcut icon" href="/favicon.ico" />
+      </Head>
       <Header />
       <Artist {...artist} />
       <Footer />

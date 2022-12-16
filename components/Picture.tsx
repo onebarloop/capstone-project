@@ -4,7 +4,7 @@ import Image from "next/image";
 //Typescript
 type PictureProps = {
   width: number;
-  length: number;
+  height: number;
   source: string;
   className?: string;
 };
@@ -12,13 +12,13 @@ type PictureProps = {
 
 export default function Picture({
   width,
-  length,
+  height,
   source,
   className,
 }: PictureProps): JSX.Element {
   return (
     <StyledWrapper className={className}>
-      <StyledImage alt={"tattoo"} src={source} width={width} height={length} />
+      <StyledImage alt={"tattoo"} src={source} width={width} height={height} />
     </StyledWrapper>
   );
 }

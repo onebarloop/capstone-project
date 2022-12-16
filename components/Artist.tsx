@@ -37,7 +37,7 @@ export default function Artist({
       </StyledSchedule>
       <StyledGalery>
         {tattoos.map((tattoo) => (
-          <Picture width={125} length={125} source={tattoo} key={nanoid()} />
+          <Picture width={125} height={125} source={tattoo} key={nanoid()} />
         ))}
       </StyledGalery>
     </StyledMain>
