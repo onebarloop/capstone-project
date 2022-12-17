@@ -44,17 +44,17 @@ export default function Home({ onLike, likes }: HomeProps): JSX.Element {
         <StyledButton
           onClick={() => handleSwitchView("random")}
           name={"Surprise Me!"}
-          inactive={!viewPoint.random && true}
+          inactive={!viewPoint.random}
         />
         <StyledButton
           onClick={() => handleSwitchView("artists")}
           name={"Browse Artists"}
-          inactive={!viewPoint.artists && true}
+          inactive={!viewPoint.artists}
         />
         <StyledButton
           onClick={() => handleSwitchView("favorites")}
           name={"Favorites"}
-          inactive={!viewPoint.favorites && true}
+          inactive={!viewPoint.favorites}
         />
       </StyledButtonWrapper>
 
