@@ -5,7 +5,7 @@ import useFetch from "../lib/useFetch";
 
 export default function App({ Component, pageProps }: AppProps) {
   //Initial fetch
-  const artists = useFetch("http://localhost:3000/api");
+  const artists = useFetch("/api");
 
   const [likes, setLikes] = useState<string[]>([]);
 
