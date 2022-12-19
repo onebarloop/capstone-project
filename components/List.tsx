@@ -7,7 +7,7 @@ import Button from "./Button";
 type ListProps = {
   onLike: (id: string) => void;
   likes: string[];
-  id: string;
+  _id: string;
   tattoos: string[];
   slug: string;
   artistName: string;
@@ -18,20 +18,20 @@ type ListProps = {
 export default function List({
   onLike,
   likes,
-  id,
+  _id,
   tattoos,
   slug,
   artistName,
   location,
 }: ListProps): JSX.Element {
   return (
-    <StyledArtistList key={id}>
+    <StyledArtistList key={_id}>
       <StyledArtistCard>
         <StyledInfoBox>
           {artistName} <br /> {location}
           <Button
-            name={likes.includes(id) ? "Dislike" : "Like"}
-            onClick={() => onLike(id)}
+            name={likes.includes(_id) ? "Dislike" : "Like"}
+            onClick={() => onLike(_id)}
           />
         </StyledInfoBox>
         <Link href={`/${slug}`}>

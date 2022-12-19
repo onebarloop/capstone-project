@@ -3,10 +3,12 @@ import RandomView from "../components/RandomView";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Button from "../components/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import artists from "../lib/artists";
+//import artists from "../lib/artists";
 import List from "../components/List";
+import useFetch from "../lib/useFetch";
+import Artist from "../lib/ArtistClass";
 
 type HomeProps = {
   onLike: () => void;
@@ -32,6 +34,12 @@ export default function Home({ onLike, likes }: HomeProps): JSX.Element {
       [view]: true,
     });
   }
+
+  const [artists, setArtists] = useState<Artist[]>([]);
+
+  const art = useFetch("http://localhost:3000/api");
+
+  useEffect(() => setArtists(art), [art]);
 
   return (
     <>
@@ -59,17 +67,22 @@ export default function Home({ onLike, likes }: HomeProps): JSX.Element {
       </StyledButtonWrapper>
 
       {/* Switching between the three different views */}
-
-      {viewPoint.random && <RandomView />}
+      <RandomView artists={artists} />
+      {viewPoint.random && <RandomView artists={artists} />}
       {viewPoint.artists &&
         artists.map((artist) => (
-          <List key={artist.id} {...artist} onLike={onLike} likes={likes} />
+          <List key={artist._id} {...artist} onLike={onLike} likes={likes} />
         ))}
       {viewPoint.favorites &&
         artists.map(
           (artist) =>
-            likes.includes(artist.id) && (
-              <List key={artist.id} {...artist} onLike={onLike} likes={likes} />
+            likes.includes(artist._id) && (
+              <List
+                key={artist._id}
+                {...artist}
+                onLike={onLike}
+                likes={likes}
+              />
             )
         )}
       <Footer />

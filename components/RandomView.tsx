@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import Picture from "./Picture";
 import Link from "next/link";
-import artists from "../lib/artists";
 import { useState, useEffect } from "react";
 import Artist from "../lib/ArtistClass";
 
-export default function RandomView(): JSX.Element {
+type RandomProps = {
+  artists: Artist[];
+};
+
+export default function RandomView({ artists }: RandomProps): JSX.Element {
   //The calculation of a random Artist List needs to be done via hook, otherwise it would come to hydration error -> https://nextjs.org/docs/messages/react-hydration-error
-  const [randomArtists, setRandomArtists] = useState<Artist[]>();
+  const [randomArtists, setRandomArtists] = useState<Artist[]>([]);
   useEffect(
     () =>
       setRandomArtists(
@@ -21,8 +24,8 @@ export default function RandomView(): JSX.Element {
 
   return (
     <StyledRandom>
-      {randomArtists?.map((artist) => (
-        <Link key={artist.id} href={`/${artist.slug}`}>
+      {randomArtists.map((artist) => (
+        <Link key={artist._id} href={`/${artist.slug}`}>
           <Picture
             width={120}
             height={120}

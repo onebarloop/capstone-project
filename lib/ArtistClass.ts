@@ -14,6 +14,7 @@ export default class Artist {
   slug: string;
   tattoos: string[];
   id: string;
+  _id: any;
   //Typescript end
 
   constructor(
@@ -30,5 +31,6 @@ export default class Artist {
     this.slug = stringify(artistName);
     this.tattoos = tatoos;
     this.id = nanoid();
+    this._id = null;
   }
 }

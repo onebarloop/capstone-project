@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import Artist from "./ArtistClass";
 
-export default function useFetch(url) {
-  const [data, setData] = useState();
+export default function useFetch(url: string): Artist[] {
+  const [data, setData] = useState<Artist[]>([]);
   useEffect(() => {
-    async function catchItem() {
+    async function fetchData() {
       try {
         const response = await fetch(url);
         setData(await response.json());
@@ -11,7 +12,7 @@ export default function useFetch(url) {
         console.log(error);
       }
     }
-    catchItem();
+    fetchData();
   }, [url]);
   return data;
 }
