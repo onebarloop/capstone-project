@@ -19,7 +19,7 @@ export default function RandomView({ artists }: RandomProps): JSX.Element {
           .sort(() => Math.random() - Math.random())
           .slice(0, 6)
       ),
-    []
+    [artists]
   );
 
   return (
