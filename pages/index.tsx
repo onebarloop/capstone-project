@@ -3,9 +3,9 @@ import RandomView from "../components/RandomView";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Button from "../components/Button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-//import artists from "../lib/artists";
+
 import List from "../components/List";
 import useFetch from "../lib/useFetch";
 import Artist from "../lib/ArtistClass";
@@ -13,9 +13,14 @@ import Artist from "../lib/ArtistClass";
 type HomeProps = {
   onLike: () => void;
   likes: string[];
+  artists: Artist[];
 };
 
-export default function Home({ onLike, likes }: HomeProps): JSX.Element {
+export default function Home({
+  onLike,
+  likes,
+  artists,
+}: HomeProps): JSX.Element {
   //Typescript
   type ViewPoint = { random: boolean; artists: boolean; favorites: boolean };
   //Typescipt end
@@ -35,11 +40,9 @@ export default function Home({ onLike, likes }: HomeProps): JSX.Element {
     });
   }
 
-  const [artists, setArtists] = useState<Artist[]>([]);
+  // const [artists, setArtists] = useState<Artist[]>([]);
 
-  const art = useFetch("http://localhost:3000/api");
-
-  useEffect(() => setArtists(art), [art]);
+  // useEffect(() => setArtists(art), [art]);
 
   return (
     <>
@@ -67,7 +70,7 @@ export default function Home({ onLike, likes }: HomeProps): JSX.Element {
       </StyledButtonWrapper>
 
       {/* Switching between the three different views */}
-      <RandomView artists={artists} />
+
       {viewPoint.random && <RandomView artists={artists} />}
       {viewPoint.artists &&
         artists.map((artist) => (

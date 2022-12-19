@@ -1,9 +1,11 @@
 import type { AppProps } from "next/app";
 import GlobalStyles from "../globalStyles";
 import { useState } from "react";
+import useFetch from "../lib/useFetch";
 
 export default function App({ Component, pageProps }: AppProps) {
-  // Function for handling the favorites. Needs to live here, since the state is needed all over the app
+  const artists = useFetch("http://localhost:3000/api");
+
   const [likes, setLikes] = useState<string[]>([]);
 
   function handleLike(_id: string): void {
@@ -12,10 +14,17 @@ export default function App({ Component, pageProps }: AppProps) {
       : setLikes((prev) => [...prev, _id]);
   }
 
+  console.log(artists);
+
   return (
     <>
       <GlobalStyles />
-      <Component {...pageProps} onLike={handleLike} likes={likes} />
+      <Component
+        {...pageProps}
+        onLike={handleLike}
+        likes={likes}
+        artists={artists}
+      />
     </>
   );
 }

@@ -13,7 +13,6 @@ export default class Artist {
   location: string;
   slug: string;
   tattoos: string[];
-  id: string;
   _id: any;
   //Typescript end
 
@@ -30,7 +29,6 @@ export default class Artist {
     this.location = location;
     this.slug = stringify(artistName);
     this.tattoos = tatoos;
-    this.id = nanoid();
     this._id = null;
   }
 }

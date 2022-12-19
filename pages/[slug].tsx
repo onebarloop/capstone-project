@@ -1,11 +1,15 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
-import artists from "../lib/artists";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Artist from "../components/Artist";
+import { default as ArtistModel } from "../lib/ArtistClass";
 
-export default function ArtistPage(): JSX.Element {
+type slugProps = {
+  artists: ArtistModel[];
+};
+
+export default function ArtistPage({ artists }: slugProps): JSX.Element {
   const router = useRouter();
   const { slug } = router.query;
 
