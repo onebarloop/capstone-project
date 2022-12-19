@@ -6,7 +6,7 @@ import useFetch from "../lib/useFetch";
 export default function App({ Component, pageProps }: AppProps) {
   //Initial fetch
   const artists = useFetch(
-    "https://wannado-6afpz1vsf-onebarloop.vercel.app//api"
+    "https://wannado-6afpz1vsf-onebarloop.vercel.app/api"
   );
 
   const [likes, setLikes] = useState<string[]>([]);
