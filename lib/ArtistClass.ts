@@ -1,5 +1,3 @@
-import { nanoid } from "nanoid";
-
 function stringify(string: string): string {
   const noBlanks = string.replaceAll(" ", "");
   return noBlanks.toLowerCase();

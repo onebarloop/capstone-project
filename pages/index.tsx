@@ -5,9 +5,7 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import { useState } from "react";
 import styled from "styled-components";
-
 import List from "../components/List";
-import useFetch from "../lib/useFetch";
 import Artist from "../lib/ArtistClass";
 
 type HomeProps = {

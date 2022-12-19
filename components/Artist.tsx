@@ -1,6 +1,5 @@
 import Picture from "../components/Picture";
 import styled from "styled-components";
-import { nanoid } from "nanoid";
 
 //Typescript
 type ArtistProps = {
@@ -37,7 +36,7 @@ export default function Artist({
       </StyledSchedule>
       <StyledGalery>
         {tattoos.map((tattoo) => (
-          <Picture width={125} height={125} source={tattoo} key={nanoid()} />
+          <Picture width={125} height={125} source={tattoo} key={tattoo} />
         ))}
       </StyledGalery>
     </StyledMain>

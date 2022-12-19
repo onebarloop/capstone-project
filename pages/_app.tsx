@@ -4,6 +4,7 @@ import { useState } from "react";
 import useFetch from "../lib/useFetch";
 
 export default function App({ Component, pageProps }: AppProps) {
+  //Initial fetch
   const artists = useFetch("http://localhost:3000/api");
 
   const [likes, setLikes] = useState<string[]>([]);
@@ -13,8 +14,6 @@ export default function App({ Component, pageProps }: AppProps) {
       ? setLikes((prev) => prev.filter((like) => like !== _id))
       : setLikes((prev) => [...prev, _id]);
   }
-
-  console.log(artists);
 
   return (
     <>

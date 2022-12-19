@@ -17,14 +17,3 @@ const Artist =
   mongoose.models.Artist || mongoose.model<ArtistModel>("Artist", artistSchema);
 
 export default Artist;
-
-// const childSchema = new Schema({
-//   street: { type: String },
-//   country: { type: String },
-// });
-
-// const questionSchema = new Schema({
-//   text: { type: String, required: true },
-//   name: { type: String, required: true },
-//   adress: [childSchema],
-// });
