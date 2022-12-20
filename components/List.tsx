@@ -6,7 +6,7 @@ import Button from "./Button";
 //Typescript
 type ListProps = {
   onLike: (id: string) => void;
-  likes: string[];
+  isLiked: boolean;
   _id: string;
   tattoos: string[];
   slug: string;
@@ -17,7 +17,7 @@ type ListProps = {
 
 export default function List({
   onLike,
-  likes,
+  isLiked,
   _id,
   tattoos,
   slug,
@@ -30,7 +30,7 @@ export default function List({
         <StyledInfoBox>
           {artistName} <br /> {location}
           <Button
-            name={likes.includes(_id) ? "Dislike" : "Like"}
+            name={isLiked ? "Dislike" : "Like"}
             onClick={() => onLike(_id)}
           />
         </StyledInfoBox>
