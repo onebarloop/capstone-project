@@ -34,6 +34,7 @@ const StyledHeader = styled.header<StyledHeaderProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
 
   h1 {
     font-size: ${(props) =>
