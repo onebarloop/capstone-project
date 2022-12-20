@@ -3,7 +3,17 @@ function stringify(string: string): string {
   return noBlanks.toLowerCase();
 }
 
-export default class Artist {
+interface ArtistInterface {
+  artistName: string;
+  firstName: string;
+  lastName: string;
+  location: string;
+  slug: string;
+  tattoos: string[];
+  _id: any;
+}
+
+class Artist implements ArtistInterface {
   //Typescript
   artistName: string;
   firstName: string;
@@ -30,3 +40,5 @@ export default class Artist {
     this._id = null;
   }
 }
+
+export { Artist, type ArtistInterface };
