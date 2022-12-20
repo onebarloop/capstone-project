@@ -19,9 +19,7 @@ export default function Home({
   likes,
   artists,
 }: HomeProps): JSX.Element {
-  //Typescript
   type ViewPoint = { random: boolean; artists: boolean; favorites: boolean };
-  //Typescipt end
 
   const [viewPoint, setViewPoint] = useState<ViewPoint>({
     random: true,
