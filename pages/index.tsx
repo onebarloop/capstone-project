@@ -5,15 +5,20 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import { useState } from "react";
 import styled from "styled-components";
-import artists from "../lib/artists";
 import List from "../components/List";
+import Artist from "../lib/ArtistClass";
 
 type HomeProps = {
   onLike: () => void;
   likes: string[];
+  artists: Artist[];
 };
 
-export default function Home({ onLike, likes }: HomeProps): JSX.Element {
+export default function Home({
+  onLike,
+  likes,
+  artists,
+}: HomeProps): JSX.Element {
   //Typescript
   type ViewPoint = { random: boolean; artists: boolean; favorites: boolean };
   //Typescipt end
@@ -60,16 +65,21 @@ export default function Home({ onLike, likes }: HomeProps): JSX.Element {
 
       {/* Switching between the three different views */}
 
-      {viewPoint.random && <RandomView />}
+      {viewPoint.random && <RandomView artists={artists} />}
       {viewPoint.artists &&
         artists.map((artist) => (
-          <List key={artist.id} {...artist} onLike={onLike} likes={likes} />
+          <List
+            key={artist._id}
+            {...artist}
+            onLike={onLike}
+            isLiked={likes.includes(artist._id)}
+          />
         ))}
       {viewPoint.favorites &&
         artists.map(
           (artist) =>
-            likes.includes(artist.id) && (
-              <List key={artist.id} {...artist} onLike={onLike} likes={likes} />
+            likes.includes(artist._id) && (
+              <List key={artist._id} {...artist} onLike={onLike} isLiked />
             )
         )}
       <Footer />
