@@ -38,10 +38,6 @@ export default function Home({
     });
   }
 
-  // const [artists, setArtists] = useState<Artist[]>([]);
-
-  // useEffect(() => setArtists(art), [art]);
-
   return (
     <>
       <Head>
