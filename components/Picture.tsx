@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Image from "next/image";
+import { CldImage } from "next-cloudinary";
 
 //Typescript
 type PictureProps = {
@@ -30,6 +30,6 @@ const StyledWrapper = styled.div`
   box-sizing: content-box;
 `;
 
-const StyledImage = styled(Image)`
+const StyledImage = styled(CldImage)`
   border-radius: 0.2em;
 `;
