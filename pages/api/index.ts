@@ -1,7 +1,7 @@
-import dbConnect from "../../../db/dbConnect";
-import Artist from "../../../db/models/Artist";
+import dbConnect from "../../db/dbConnect";
+import Artist from "../../db/models/Artist";
 import type { NextApiRequest, NextApiResponse } from "next";
-import type { ArtistInterface } from "../../../lib/ArtistClass";
+import type { ArtistInterface } from "../../lib/ArtistClass";
 
 export default async function handler(
   req: NextApiRequest,

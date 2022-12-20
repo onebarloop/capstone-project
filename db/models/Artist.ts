@@ -10,7 +10,7 @@ const artistSchema = new Schema<ArtistInterface>({
   location: { type: String, required: true },
   slug: { type: String, required: true },
   tattoos: { type: [String], required: true },
-  _id: { type: String, required: false },
+  id: { type: String, required: true },
 });
 
 const Artist =

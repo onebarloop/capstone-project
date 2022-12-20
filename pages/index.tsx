@@ -6,12 +6,12 @@ import Button from "../components/Button";
 import { useState } from "react";
 import styled from "styled-components";
 import List from "../components/List";
-import Artist from "../lib/ArtistClass";
+import type { ArtistInterface } from "../lib/ArtistClass";
 
 type HomeProps = {
   onLike: () => void;
   likes: string[];
-  artists: Artist[];
+  artists: ArtistInterface[];
 };
 
 export default function Home({
@@ -69,17 +69,17 @@ export default function Home({
       {viewPoint.artists &&
         artists.map((artist) => (
           <List
-            key={artist._id}
+            key={artist.id}
             {...artist}
             onLike={onLike}
-            isLiked={likes.includes(artist._id)}
+            isLiked={likes.includes(artist.id)}
           />
         ))}
       {viewPoint.favorites &&
         artists.map(
           (artist) =>
-            likes.includes(artist._id) && (
-              <List key={artist._id} {...artist} onLike={onLike} isLiked />
+            likes.includes(artist.id) && (
+              <List key={artist.id} {...artist} onLike={onLike} isLiked />
             )
         )}
       <Footer />
