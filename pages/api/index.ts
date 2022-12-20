@@ -1,7 +1,6 @@
 import dbConnect from "../../db/dbConnect";
 import Artist from "../../db/models/Artist";
 import type { NextApiRequest, NextApiResponse } from "next";
-import type { ArtistInterface } from "../../lib/ArtistClass";
 
 export default async function handler(
   req: NextApiRequest,
@@ -13,8 +12,8 @@ export default async function handler(
     try {
       const artists = await Artist.find();
       res.status(200).json(artists);
-    } catch {
-      res.status(500).json("Server Error");
+    } catch (error) {
+      res.status(500).json(error);
     }
   }
   if (req.method === "POST") {
