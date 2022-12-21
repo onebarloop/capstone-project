@@ -21,7 +21,8 @@
     "**/*.tsx",
     "globalStyles.js",
     "pages/api/index.ts",
-    "db/Artist.js"
+    "db/Artist.js",
+    "lib/upload.js"
   ],
   "exclude": ["node_modules", "codesnippets"]
 }
