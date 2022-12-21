@@ -8,44 +8,15 @@ import styled from "styled-components";
 import Button from "../components/Button";
 import { useState } from "react";
 import Router from "next/router";
+import upload from "../lib/upload";
 
-export default function ArtistPage(): JSX.Element {
+export default function ArtistPage() {
   const [isloading, setLoading] = useState(false);
 
-  async function onSubmit(event: React.SyntheticEvent) {
-    setLoading(true);
-
+  async function handleSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
-
-    const { artistname, firstname, lastname, location, pics } =
-      event.target as typeof event.target & {
-        artistname: { value: string };
-        firstname: { value: string };
-        lastname: { value: string };
-        location: { value: string };
-        pics: { files: Blob[] };
-      };
-
-    const urls = await cloudUpload(pics.files);
-
-    const newArtist = new Artist(
-      artistname.value,
-      firstname.value,
-      lastname.value,
-      location.value,
-      urls
-    );
-    try {
-      const response = await fetch("/api", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newArtist),
-      });
-
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
+    setLoading(true);
+    await upload(event);
     setLoading(false);
     Router.reload();
   }
@@ -57,7 +28,7 @@ export default function ArtistPage(): JSX.Element {
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <StyledForm onSubmit={onSubmit}>
+      <StyledForm onSubmit={handleSubmit}>
         <input name="artistname" placeholder="Artistname" required />
         <input name="firstname" placeholder="Firstname" />
         <input name="lastname" placeholder="Lastname" />
