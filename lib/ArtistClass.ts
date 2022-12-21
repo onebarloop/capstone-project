@@ -13,14 +13,12 @@ interface ArtistInterface {
 }
 
 class Artist {
-  //Typescript
   artistName: string;
   firstName: string;
   lastName: string;
   location: string;
   slug: string;
   tattoos: string[];
-  //Typescript end
 
   constructor(
     artistName: string,

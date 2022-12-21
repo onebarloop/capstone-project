@@ -3,7 +3,7 @@ import { Artist } from "./ArtistClass";
 
 export default async function upload(
   event: React.SyntheticEvent
-): Promise<void> {
+): Promise<string> {
   // Event targets are destructured and typed
   const { artistname, firstname, lastname, location, pics } =
     event.target as typeof event.target & {
@@ -57,4 +57,5 @@ export default async function upload(
   } catch (error) {
     console.log(error);
   }
+  return newArtist.slug;
 }

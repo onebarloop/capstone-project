@@ -14,9 +14,9 @@ export default function NewUserPage(): JSX.Element {
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
     setLoading(true);
-    await upload(event);
+    const url = await upload(event);
     setLoading(false);
-    Router.reload();
+    Router.push(`/${url}`).then(() => Router.reload());
   }
 
   return (
