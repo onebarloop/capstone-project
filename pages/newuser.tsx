@@ -1,8 +1,6 @@
 import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { Artist } from "../lib/ArtistClass";
-import cloudUpload from "../lib/upload";
 import React from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
@@ -13,7 +11,7 @@ import upload from "../lib/upload";
 export default function ArtistPage() {
   const [isloading, setLoading] = useState(false);
 
-  async function handleSubmit(event: React.SyntheticEvent) {
+  async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
     setLoading(true);
     await upload(event);

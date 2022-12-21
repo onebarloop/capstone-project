@@ -4,7 +4,7 @@ import { Artist } from "./ArtistClass";
 export default async function upload(
   event: React.SyntheticEvent
 ): Promise<void> {
-  // Event targets are destructured
+  // Event targets are destructured and typed
   const { artistname, firstname, lastname, location, pics } =
     event.target as typeof event.target & {
       artistname: { value: string };
