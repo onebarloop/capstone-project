@@ -6,10 +6,8 @@ import useFetch from "../lib/useFetch";
 export default function App({ Component, pageProps }: AppProps) {
   //Initial fetch
   const artists = useFetch("/api");
-  console.log(artists);
 
   const [likes, setLikes] = useState<string[]>([]);
-  console.log(likes);
 
   function handleLike(_id: string): void {
     likes.includes(_id)
