@@ -1,8 +1,5 @@
-import { nanoid } from "nanoid";
-
-function stringify(string: string): string {
-  const noBlanks = string.replaceAll(" ", "");
-  return noBlanks.toLowerCase();
+function normalize(string: string): string {
+  return string.replaceAll(" ", "").toLowerCase();
 }
 
 interface ArtistInterface {
@@ -12,10 +9,10 @@ interface ArtistInterface {
   location: string;
   slug: string;
   tattoos: string[];
-  id: string;
+  _id: string;
 }
 
-class Artist implements ArtistInterface {
+class Artist {
   //Typescript
   artistName: string;
   firstName: string;
@@ -23,7 +20,6 @@ class Artist implements ArtistInterface {
   location: string;
   slug: string;
   tattoos: string[];
-  id: string;
   //Typescript end
 
   constructor(
@@ -37,9 +33,8 @@ class Artist implements ArtistInterface {
     this.firstName = firstName;
     this.lastName = lastName;
     this.location = location;
-    this.slug = stringify(artistName);
+    this.slug = normalize(artistName);
     this.tattoos = tatoos;
-    this.id = nanoid();
   }
 }
 

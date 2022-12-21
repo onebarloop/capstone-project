@@ -6,13 +6,15 @@ import useFetch from "../lib/useFetch";
 export default function App({ Component, pageProps }: AppProps) {
   //Initial fetch
   const artists = useFetch("/api");
+  console.log(artists);
 
   const [likes, setLikes] = useState<string[]>([]);
+  console.log(likes);
 
-  function handleLike(id: string): void {
-    likes.includes(id)
-      ? setLikes((prev) => prev.filter((like) => like !== id))
-      : setLikes((prev) => [...prev, id]);
+  function handleLike(_id: string): void {
+    likes.includes(_id)
+      ? setLikes((prev) => prev.filter((like) => like !== _id))
+      : setLikes((prev) => [...prev, _id]);
   }
 
   return (

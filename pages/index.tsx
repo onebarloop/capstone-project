@@ -67,17 +67,17 @@ export default function Home({
       {viewPoint.artists &&
         artists.map((artist) => (
           <List
-            key={artist.id}
+            key={artist._id}
             {...artist}
             onLike={onLike}
-            isLiked={likes.includes(artist.id)}
+            isLiked={likes.includes(artist._id)}
           />
         ))}
       {viewPoint.favorites &&
         artists.map(
           (artist) =>
-            likes.includes(artist.id) && (
-              <List key={artist.id} {...artist} onLike={onLike} isLiked />
+            likes.includes(artist._id) && (
+              <List key={artist._id} {...artist} onLike={onLike} isLiked />
             )
         )}
       <Footer />
