@@ -14,7 +14,9 @@ export default async function upload(
       pics: { files: Blob[] };
     };
 
-  // Upload function for Cloudinary
+  // Upload function for Cloudinary. Since Cloudinary doesn't allow multiple files to be uploaded at once,
+  // we have to make multiple API-calls for each item in the "pics"-array
+
   async function fileupload(files: Blob[]): Promise<string[]> {
     let urls = [];
     for (const file of files) {
