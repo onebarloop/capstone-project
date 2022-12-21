@@ -1,4 +1,4 @@
-export default async function cloudUpload(files) {
+export default async function cloudUpload(files: Blob[]): Promise<string[]> {
   let urls = [];
 
   for (const file of files) {

@@ -22,7 +22,7 @@
     "globalStyles.js",
     "pages/api/index.ts",
     "db/Artist.js",
-    "lib/upload.js"
+    "lib/upload.ts"
   ],
   "exclude": ["node_modules", "codesnippets"]
 }
