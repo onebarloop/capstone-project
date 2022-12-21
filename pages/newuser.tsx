@@ -2,15 +2,29 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Artist } from "../lib/ArtistClass";
-import type { ArtistInterface } from "../lib/ArtistClass";
 import cloudUpload from "../lib/upload";
 import React from "react";
+import styled from "styled-components";
+import Button from "../components/Button";
+import { useState } from "react";
+import Router from "next/router";
 
 export default function ArtistPage(): JSX.Element {
+  const [isloading, setLoading] = useState(false);
+
   async function onSubmit(event: React.SyntheticEvent) {
+    setLoading(true);
+
     event.preventDefault();
 
-    const { artistname, firstname, lastname, location, pics } = event.target;
+    const { artistname, firstname, lastname, location, pics } =
+      event.target as typeof event.target & {
+        artistname: { value: string };
+        firstname: { value: string };
+        lastname: { value: string };
+        location: { value: string };
+        pics: { files: Blob[] };
+      };
 
     const urls = await cloudUpload(pics.files);
 
@@ -21,14 +35,19 @@ export default function ArtistPage(): JSX.Element {
       location.value,
       urls
     );
+    try {
+      const response = await fetch("/api", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newArtist),
+      });
 
-    const responseDB = await fetch("/api", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newArtist),
-    });
-
-    console.log(responseDB);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+    Router.reload();
   }
 
   return (
@@ -38,16 +57,25 @@ export default function ArtistPage(): JSX.Element {
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <form onSubmit={onSubmit}>
-        <input name="artistname" placeholder="Name" required />
+      <StyledForm onSubmit={onSubmit}>
+        <input name="artistname" placeholder="Artistname" required />
         <input name="firstname" placeholder="Firstname" />
         <input name="lastname" placeholder="Lastname" />
         <input name="location" placeholder="Ort" required />
         <input name="pics" type="file" multiple required />
-
-        <button type="submit">Submit</button>
-      </form>
+        <Button
+          name={`${isloading ? "Uploading" : "Sumbit"}`}
+          inactive={isloading ? true : false}
+        ></Button>
+      </StyledForm>
       <Footer />
     </>
   );
 }
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  gap: 20px;
+`;

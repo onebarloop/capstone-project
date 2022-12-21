@@ -7,6 +7,9 @@ export default function Footer(): JSX.Element {
       <StyledLink href="/">
         <p>HOME</p>
       </StyledLink>
+      <StyledLink href="/newuser">
+        <p>NEW USER</p>
+      </StyledLink>
     </StyledFooter>
   );
 }
@@ -17,7 +20,7 @@ const StyledFooter = styled.footer`
   padding: 15px;
   height: 10vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 `;
 
