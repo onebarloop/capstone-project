@@ -4,19 +4,31 @@ import Footer from "../components/Footer";
 import React from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Router from "next/router";
 import upload from "../lib/upload";
+import { ArtistInterface } from "../lib/ArtistClass";
 
-export default function NewUserPage(): JSX.Element {
+type NewUserProps = {
+  setArtists: (artists: ArtistInterface[]) => void;
+};
+
+export default function NewUserPage({ setArtists }: NewUserProps): JSX.Element {
   const [isloading, setLoading] = useState<boolean>(false);
 
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
     setLoading(true);
     const url = await upload(event);
+
+    //auslaugern!
+    async function fetchData() {
+      const response = await fetch("/api");
+      setArtists(await response.json());
+    }
+    fetchData();
     setLoading(false);
-    Router.push(`/${url}`).then(() => Router.reload());
+    Router.push(`/${url}`);
   }
 
   return (
