@@ -2,13 +2,7 @@ function normalize(string: string): string {
   return string.replaceAll(" ", "").toLowerCase();
 }
 
-interface ArtistInterface {
-  artistName: string;
-  firstName: string;
-  lastName: string;
-  location: string;
-  slug: string;
-  tattoos: string[];
+interface ArtistInterface extends Artist {
   _id: string;
 }
 
