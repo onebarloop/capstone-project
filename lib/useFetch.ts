@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Artist from "./ArtistClass";
+import type { ArtistInterface } from "./ArtistClass";
 
-export default function useFetch(url: string): Artist[] {
-  const [data, setData] = useState<Artist[]>([]);
+export default function useFetch(url: string): ArtistInterface[] {
+  const [data, setData] = useState<ArtistInterface[]>([]);
   useEffect(() => {
     async function fetchData(): Promise<void> {
       try {

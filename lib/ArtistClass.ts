@@ -1,18 +1,24 @@
-function stringify(string: string): string {
-  const noBlanks = string.replaceAll(" ", "");
-  return noBlanks.toLowerCase();
+function normalize(string: string): string {
+  return string.replaceAll(" ", "").toLowerCase();
 }
 
-export default class Artist {
-  //Typescript
+interface ArtistInterface {
   artistName: string;
   firstName: string;
   lastName: string;
   location: string;
   slug: string;
   tattoos: string[];
-  _id: any;
-  //Typescript end
+  _id: string;
+}
+
+class Artist {
+  artistName: string;
+  firstName: string;
+  lastName: string;
+  location: string;
+  slug: string;
+  tattoos: string[];
 
   constructor(
     artistName: string,
@@ -25,8 +31,9 @@ export default class Artist {
     this.firstName = firstName;
     this.lastName = lastName;
     this.location = location;
-    this.slug = stringify(artistName);
+    this.slug = normalize(artistName);
     this.tattoos = tatoos;
-    this._id = null;
   }
 }
+
+export { Artist, type ArtistInterface };

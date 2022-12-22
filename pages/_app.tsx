@@ -1,10 +1,11 @@
 import type { AppProps } from "next/app";
 import GlobalStyles from "../globalStyles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useFetch from "../lib/useFetch";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps): JSX.Element {
   //Initial fetch
+
   const artists = useFetch("/api");
 
   const [likes, setLikes] = useState<string[]>([]);

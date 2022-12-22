@@ -5,7 +5,7 @@ import Button from "./Button";
 
 //Typescript
 type ListProps = {
-  onLike: (id: string) => void;
+  onLike: (_id: string) => void;
   isLiked: boolean;
   _id: string;
   tattoos: string[];

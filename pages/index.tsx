@@ -6,12 +6,12 @@ import Button from "../components/Button";
 import { useState } from "react";
 import styled from "styled-components";
 import List from "../components/List";
-import Artist from "../lib/ArtistClass";
+import type { ArtistInterface } from "../lib/ArtistClass";
 
 type HomeProps = {
   onLike: () => void;
   likes: string[];
-  artists: Artist[];
+  artists: ArtistInterface[];
 };
 
 export default function Home({

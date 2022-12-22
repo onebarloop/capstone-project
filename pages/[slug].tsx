@@ -3,10 +3,10 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Artist from "../components/Artist";
-import { default as ArtistModel } from "../lib/ArtistClass";
+import type { ArtistInterface } from "../lib/ArtistClass";
 
 type slugProps = {
-  artists: ArtistModel[];
+  artists: ArtistInterface[];
 };
 
 export default function ArtistPage({ artists }: slugProps): JSX.Element {
