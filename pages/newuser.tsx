@@ -9,7 +9,7 @@ import Router from "next/router";
 import upload from "../lib/upload";
 
 export default function NewUserPage(): JSX.Element {
-  const [isloading, setLoading] = useState(false);
+  const [isloading, setLoading] = useState<boolean>(false);
 
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();

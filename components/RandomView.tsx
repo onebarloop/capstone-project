@@ -9,7 +9,8 @@ type RandomProps = {
 };
 
 export default function RandomView({ artists }: RandomProps): JSX.Element {
-  //The calculation of a random Artist List needs to be done via hook, otherwise it would come to hydration error -> https://nextjs.org/docs/messages/react-hydration-error
+  //The calculation of a random Artist List needs to be done via hook,
+  //otherwise it would come to hydration error -> https://nextjs.org/docs/messages/react-hydration-error
   const [randomArtists, setRandomArtists] = useState<ArtistInterface[]>([]);
   useEffect(
     () =>

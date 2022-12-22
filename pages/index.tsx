@@ -27,7 +27,9 @@ export default function Home({
     favorites: false,
   });
 
-  function handleSwitchView(view: string): void {
+  type View = "random" | "artists" | "favorites";
+
+  function handleSwitchView(view: View): void {
     setViewPoint({
       random: false,
       artists: false,
