@@ -13,21 +13,23 @@ type HomeProps = {
   likes: string[];
   artists: ArtistInterface[];
 };
+export type ViewPoint = {
+  random: boolean;
+  artists: boolean;
+  favorites: boolean;
+};
+type View = "random" | "artists" | "favorites";
 
 export default function Home({
   onLike,
   likes,
   artists,
 }: HomeProps): JSX.Element {
-  type ViewPoint = { random: boolean; artists: boolean; favorites: boolean };
-
   const [viewPoint, setViewPoint] = useState<ViewPoint>({
     random: true,
     artists: false,
     favorites: false,
   });
-
-  type View = "random" | "artists" | "favorites";
 
   function handleSwitchView(view: View): void {
     setViewPoint({
@@ -65,7 +67,9 @@ export default function Home({
 
       {/* Switching between the three different views */}
 
-      {viewPoint.random && <RandomView artists={artists} />}
+      {viewPoint.random && (
+        <RandomView artists={artists} viewPoint={viewPoint} />
+      )}
       {viewPoint.artists &&
         artists.map((artist) => (
           <List

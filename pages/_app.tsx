@@ -2,17 +2,14 @@ import type { AppProps } from "next/app";
 import GlobalStyles from "../globalStyles";
 import { useEffect, useState } from "react";
 import { ArtistInterface } from "../lib/ArtistClass";
+import fetchData from "../lib/fetchData";
 
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   const [artists, setArtists] = useState<ArtistInterface[]>();
 
+  //initial fetch
   useEffect(() => {
-    // Auslagern!
-    async function fetchData() {
-      const response = await fetch("/api");
-      setArtists(await response.json());
-    }
-    fetchData();
+    fetchData("/api", setArtists);
   }, []);
 
   const [likes, setLikes] = useState<string[]>([]);
@@ -27,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
     <>
       <GlobalStyles />
       {!artists ? (
-        <p>loading</p>
+        <h3 style={{ color: "white" }}>loading...</h3>
       ) : (
         <Component
           {...pageProps}

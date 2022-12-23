@@ -4,13 +4,15 @@ import Footer from "../components/Footer";
 import React from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Router from "next/router";
 import upload from "../lib/upload";
 import { ArtistInterface } from "../lib/ArtistClass";
+import fetchData from "../lib/fetchData";
+import { Dispatch, SetStateAction } from "react";
 
 type NewUserProps = {
-  setArtists: (artists: ArtistInterface[]) => void;
+  setArtists: Dispatch<SetStateAction<ArtistInterface[] | undefined>>;
 };
 
 export default function NewUserPage({ setArtists }: NewUserProps): JSX.Element {
@@ -20,13 +22,7 @@ export default function NewUserPage({ setArtists }: NewUserProps): JSX.Element {
     event.preventDefault();
     setLoading(true);
     const url = await upload(event);
-
-    //auslaugern!
-    async function fetchData() {
-      const response = await fetch("/api");
-      setArtists(await response.json());
-    }
-    fetchData();
+    fetchData("/api", setArtists);
     setLoading(false);
     Router.push(`/${url}`);
   }
