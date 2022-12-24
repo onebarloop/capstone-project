@@ -12,17 +12,19 @@ import fetchData from "../lib/fetchData";
 import { Dispatch, SetStateAction } from "react";
 
 type NewUserProps = {
-  setArtists: Dispatch<SetStateAction<ArtistInterface[] | undefined>>;
+  onSetArtists: Dispatch<SetStateAction<ArtistInterface[] | undefined>>;
 };
 
-export default function NewUserPage({ setArtists }: NewUserProps): JSX.Element {
+export default function NewUserPage({
+  onSetArtists,
+}: NewUserProps): JSX.Element {
   const [isloading, setLoading] = useState<boolean>(false);
 
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
     setLoading(true);
     const url = await upload(event);
-    fetchData("/api", setArtists);
+    fetchData("/api", onSetArtists);
     setLoading(false);
     Router.push(`/${url}`);
   }

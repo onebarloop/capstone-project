@@ -31,7 +31,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
           onLike={handleLike}
           likes={likes}
           artists={artists}
-          setArtists={setArtists}
+          onSetArtists={setArtists}
         />
       )}
     </>
