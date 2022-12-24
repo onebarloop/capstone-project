@@ -10,7 +10,12 @@ class Artist {
   artistName: string;
   firstName: string;
   lastName: string;
-  location: string;
+  location: {
+    postalCode: number;
+    city: string;
+    streetname: string;
+    number: number;
+  };
   slug: string;
   tattoos: string[];
 
@@ -18,13 +23,16 @@ class Artist {
     artistName: string,
     firstName: string,
     lastName: string,
-    location: string,
+    postalCode: number,
+    city: string,
+    streetname: string,
+    number: number,
     tatoos: string[]
   ) {
     this.artistName = artistName;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.location = location;
+    this.location = { postalCode, city, streetname, number };
     this.slug = normalize(artistName);
     this.tattoos = tatoos;
   }

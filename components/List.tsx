@@ -11,7 +11,12 @@ type ListProps = {
   tattoos: string[];
   slug: string;
   artistName: string;
-  location: string;
+  location: {
+    postalCode: number;
+    city: string;
+    streetname: string;
+    number: number;
+  };
 };
 //Typescript End
 
@@ -28,7 +33,7 @@ export default function List({
     <StyledArtistList key={_id}>
       <StyledArtistCard>
         <StyledInfoBox>
-          {artistName} <br /> {location}
+          {artistName} <br /> {location.city}
           <Button
             name={isLiked ? "Dislike" : "Like"}
             onClick={() => onLike(_id)}

@@ -40,7 +40,10 @@ export default function NewUserPage({
         <input name="artistname" placeholder="Artistname" required />
         <input name="firstname" placeholder="Firstname" />
         <input name="lastname" placeholder="Lastname" />
-        <input name="location" placeholder="Ort" required />
+        <input name="postalcode" placeholder="postalcode" required />
+        <input name="city" placeholder="city" required />
+        <input name="streetname" placeholder="streetname" required />
+        <input name="number" placeholder="number" required />
         <input name="pics" type="file" multiple required />
         <Button
           name={`${isloading ? "Uploading" : "Sumbit"}`}
