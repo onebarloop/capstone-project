@@ -18,7 +18,7 @@ export default async function upload(
   // we have to make multiple API-calls for each item in the "pics"-array
 
   async function fileupload(files: Blob[]): Promise<string[]> {
-    let urls = [];
+    let urls: string[] = [];
     for (const file of files) {
       const formData = new FormData();
       formData.append("file", file);

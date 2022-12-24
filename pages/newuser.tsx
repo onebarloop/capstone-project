@@ -7,16 +7,26 @@ import Button from "../components/Button";
 import { useState } from "react";
 import Router from "next/router";
 import upload from "../lib/upload";
+import { ArtistInterface } from "../lib/ArtistClass";
+import fetchData from "../lib/fetchData";
+import { Dispatch, SetStateAction } from "react";
 
-export default function NewUserPage(): JSX.Element {
+type NewUserProps = {
+  onSetArtists: Dispatch<SetStateAction<ArtistInterface[] | undefined>>;
+};
+
+export default function NewUserPage({
+  onSetArtists,
+}: NewUserProps): JSX.Element {
   const [isloading, setLoading] = useState<boolean>(false);
 
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
     setLoading(true);
     const url = await upload(event);
+    fetchData("/api", onSetArtists);
     setLoading(false);
-    Router.push(`/${url}`).then(() => Router.reload());
+    Router.push(`/${url}`);
   }
 
   return (

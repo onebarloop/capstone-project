@@ -18,7 +18,13 @@ export default function Picture({
 }: PictureProps): JSX.Element {
   return (
     <StyledWrapper className={className}>
-      <StyledImage alt={"tattoo"} src={source} width={width} height={height} />
+      <StyledImage
+        alt={"tattoo"}
+        src={source}
+        width={width}
+        height={height}
+        crop="fill"
+      />
     </StyledWrapper>
   );
 }

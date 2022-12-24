@@ -3,12 +3,17 @@ import Picture from "./Picture";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import type { ArtistInterface } from "../lib/ArtistClass";
+import type { ViewPoint } from "../pages";
 
 type RandomProps = {
   artists: ArtistInterface[];
+  viewPoint: ViewPoint;
 };
 
-export default function RandomView({ artists }: RandomProps): JSX.Element {
+export default function RandomView({
+  artists,
+  viewPoint,
+}: RandomProps): JSX.Element {
   //The calculation of a random Artist List needs to be done via hook,
   //otherwise it would come to hydration error -> https://nextjs.org/docs/messages/react-hydration-error
   const [randomArtists, setRandomArtists] = useState<ArtistInterface[]>([]);
@@ -20,7 +25,7 @@ export default function RandomView({ artists }: RandomProps): JSX.Element {
           .sort(() => Math.random() - Math.random())
           .slice(0, 6)
       ),
-    [artists]
+    [artists, viewPoint]
   );
 
   return (

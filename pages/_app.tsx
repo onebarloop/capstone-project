@@ -1,12 +1,16 @@
 import type { AppProps } from "next/app";
 import GlobalStyles from "../globalStyles";
 import { useEffect, useState } from "react";
-import useFetch from "../lib/useFetch";
+import { ArtistInterface } from "../lib/ArtistClass";
+import fetchData from "../lib/fetchData";
 
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
-  //Initial fetch
+  const [artists, setArtists] = useState<ArtistInterface[]>();
 
-  const artists = useFetch("/api");
+  //initial fetch
+  useEffect(() => {
+    fetchData("/api", setArtists);
+  }, []);
 
   const [likes, setLikes] = useState<string[]>([]);
 
@@ -19,12 +23,17 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <>
       <GlobalStyles />
-      <Component
-        {...pageProps}
-        onLike={handleLike}
-        likes={likes}
-        artists={artists}
-      />
+      {!artists ? (
+        <h3 style={{ color: "white" }}>loading...</h3>
+      ) : (
+        <Component
+          {...pageProps}
+          onLike={handleLike}
+          likes={likes}
+          artists={artists}
+          onSetArtists={setArtists}
+        />
+      )}
     </>
   );
 }
