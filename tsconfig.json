@@ -23,7 +23,7 @@
     "pages/api/index.ts",
     "db/Artist.js",
     "lib/upload.ts",
-    "pages/map.jsx"
+    "pages/map.tsx"
   ],
   "exclude": ["node_modules", "codesnippets"]
 }
