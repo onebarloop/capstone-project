@@ -48,11 +48,7 @@ export default async function upload(
 
   // Get Geoposition and add it to newArtist Object. I would love to do this via the class-constructor,
   // but I can't get asnyc functions to work while instantiating the object. Help appreciated!
-  newArtist.position = await fetchGeoData(
-    newArtist.location.city,
-    newArtist.location.streetname,
-    newArtist.location.number
-  );
+  newArtist.position = await fetchGeoData({ ...newArtist.location });
 
   // Upload Artist Object via custom API-call
   try {
