@@ -17,7 +17,7 @@ class Artist {
   };
   slug: string;
   tattoos: string[];
-  position: any; // This should be changed.
+  position: any; // Not ideal.
 
   constructor(
     artistName: string,

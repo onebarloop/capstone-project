@@ -2,6 +2,7 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { ArtistInterface } from "../lib/ArtistClass";
+import Link from "next/link";
 
 type MapProps = {
   artists: ArtistInterface[];
@@ -19,8 +20,8 @@ export default function Map({ artists }: MapProps) {
 
   return (
     <MapContainer
-      center={[49.1605613, 8.6335683]}
-      zoom={13}
+      center={[51.57158268136762, 10.200763543026689]}
+      zoom={6}
       scrollWheelZoom={false}
       style={{ height: "80vh", width: "100%" }}
     >
@@ -29,11 +30,11 @@ export default function Map({ artists }: MapProps) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {artists.map((artist) => (
-        <Marker
-          key={artist._id}
-          position={artist.position}
-          icon={myIcon}
-        ></Marker>
+        <Marker key={artist._id} position={artist.position} icon={myIcon}>
+          <Popup>
+            <Link href={`/${artist.slug}`}>{artist.artistName}</Link>
+          </Popup>
+        </Marker>
       ))}
     </MapContainer>
   );
