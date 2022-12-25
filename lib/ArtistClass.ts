@@ -1,5 +1,3 @@
-import { getGeoData } from "./getGeoData";
-
 function normalize(string: string): string {
   return string.replaceAll(" ", "").toLowerCase();
 }
@@ -30,7 +28,9 @@ class Artist {
     this.location = { city, streetname, number };
     this.slug = normalize(artistName);
     this.tattoos = tatoos;
-    this.position = null;
+    this.position = null; // Here I would like to call fetchGeoData.
+    //But asnyc functions don't work as expected during object instantiation.
+    //Instead GeoData is fetched inside the upload-function, AFTER the objec instantation.
   }
 }
 

@@ -4,12 +4,11 @@ import Footer from "../components/Footer";
 import React from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
-import { useState } from "react";
 import Router from "next/router";
-import upload from "../lib/upload";
+import upload from "../lib/uploadUserData";
 import { ArtistInterface } from "../lib/ArtistClass";
 import fetchData from "../lib/fetchData";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 type NewUserProps = {
   onSetArtists: Dispatch<SetStateAction<ArtistInterface[] | undefined>>;

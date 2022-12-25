@@ -1,6 +1,6 @@
 import React from "react";
 import { Artist } from "./ArtistClass";
-import { getGeoData } from "./getGeoData";
+import fetchGeoData from "./fetchGeoData";
 
 export default async function upload(
   event: React.SyntheticEvent
@@ -46,12 +46,12 @@ export default async function upload(
     urls
   );
 
-  // Get Geoposition
-
-  newArtist.position = await getGeoData(
+  // Get Geoposition and add it to newArtist Object. I would love to do this via the class-constructor,
+  // but I can't get asnyc functions to work while instantiating the object. Help appreciated!
+  newArtist.position = await fetchGeoData(
+    newArtist.location.city,
     newArtist.location.streetname,
-    newArtist.location.number,
-    newArtist.location.city
+    newArtist.location.number
   );
 
   // Upload Artist Object via custom API-call

@@ -3,7 +3,6 @@ import Link from "next/link";
 import Picture from "./Picture";
 import Button from "./Button";
 
-//Typescript
 type ListProps = {
   onLike: (_id: string) => void;
   isLiked: boolean;
@@ -17,7 +16,6 @@ type ListProps = {
     number: number;
   };
 };
-//Typescript End
 
 export default function List({
   onLike,

@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
-//Typescript
 type ButtonProps = {
   name?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
   inactive?: boolean;
 };
-//Typescript end
 
 export default function Button({
   name,
