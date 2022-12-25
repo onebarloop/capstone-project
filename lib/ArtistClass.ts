@@ -8,10 +8,7 @@ interface ArtistInterface extends Artist {
 
 class Artist {
   artistName: string;
-  firstName: string;
-  lastName: string;
   location: {
-    postalCode: number;
     city: string;
     streetname: string;
     number: number;
@@ -21,18 +18,13 @@ class Artist {
 
   constructor(
     artistName: string,
-    firstName: string,
-    lastName: string,
-    postalCode: number,
     city: string,
     streetname: string,
     number: number,
     tatoos: string[]
   ) {
     this.artistName = artistName;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.location = { postalCode, city, streetname, number };
+    this.location = { city, streetname, number };
     this.slug = normalize(artistName);
     this.tattoos = tatoos;
   }

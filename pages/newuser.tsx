@@ -38,9 +38,6 @@ export default function NewUserPage({
       <Header />
       <StyledForm onSubmit={handleSubmit}>
         <input name="artistname" placeholder="Artistname" required />
-        <input name="firstname" placeholder="Firstname" />
-        <input name="lastname" placeholder="Lastname" />
-        <input name="postalcode" placeholder="postalcode" required />
         <input name="city" placeholder="city" required />
         <input name="streetname" placeholder="streetname" required />
         <input name="number" placeholder="number" required />

@@ -5,25 +5,14 @@ export default async function upload(
   event: React.SyntheticEvent
 ): Promise<string> {
   // Event targets are destructured and typed
-  const {
-    artistname,
-    firstname,
-    lastname,
-    postalcode,
-    city,
-    streetname,
-    number,
-    pics,
-  } = event.target as typeof event.target & {
-    artistname: { value: string };
-    firstname: { value: string };
-    lastname: { value: string };
-    postalcode: { value: number };
-    city: { value: string };
-    streetname: { value: string };
-    number: { value: number };
-    pics: { files: Blob[] };
-  };
+  const { artistname, city, streetname, number, pics } =
+    event.target as typeof event.target & {
+      artistname: { value: string };
+      city: { value: string };
+      streetname: { value: string };
+      number: { value: number };
+      pics: { files: Blob[] };
+    };
 
   // Upload function for Cloudinary. Since Cloudinary doesn't allow multiple files to be uploaded at once,
   // we have to make multiple API-calls for each item in the "pics"-array
@@ -50,9 +39,6 @@ export default async function upload(
   // New Artist Object from the form elements plus the returnvalue of the cloudinary-upload is created
   const newArtist = new Artist(
     artistname.value,
-    firstname.value,
-    lastname.value,
-    postalcode.value,
     city.value,
     streetname.value,
     number.value,
