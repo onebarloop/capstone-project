@@ -14,6 +14,7 @@ const artistSchema = new Schema<ArtistInterface>({
   location: locationSchema,
   slug: { type: String, required: true },
   tattoos: { type: [String], required: true },
+  position: { type: [Number], required: true },
 });
 
 const Artist =

@@ -1,9 +1,13 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { getGeoData } from "../lib/getGeoData";
+import { ArtistInterface } from "../lib/ArtistClass";
 
-export default function Map({ artists }) {
+type MapProps = {
+  artists: ArtistInterface[];
+};
+
+export default function Map({ artists }: MapProps) {
   var myIcon = L.icon({
     iconUrl: "/logo.svg",
     iconSize: [38, 95],
@@ -26,12 +30,8 @@ export default function Map({ artists }) {
       />
       {artists.map((artist) => (
         <Marker
-          key={1}
-          position={getGeoData(
-            artist.location.street,
-            artist.location.housenumber,
-            artist.location.city
-          )}
+          key={artist._id}
+          position={artist.position}
           icon={myIcon}
         ></Marker>
       ))}

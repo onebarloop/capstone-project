@@ -17,6 +17,7 @@ class Artist {
   };
   slug: string;
   tattoos: string[];
+  position: any; // This should be changed.
 
   constructor(
     artistName: string,
@@ -29,6 +30,7 @@ class Artist {
     this.location = { city, streetname, number };
     this.slug = normalize(artistName);
     this.tattoos = tatoos;
+    this.position = null;
   }
 }
 

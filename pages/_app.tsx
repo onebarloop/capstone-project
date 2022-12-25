@@ -7,6 +7,8 @@ import fetchData from "../lib/fetchData";
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   const [artists, setArtists] = useState<ArtistInterface[]>();
 
+  console.log(artists);
+
   //initial fetch
   useEffect(() => {
     fetchData("/api", setArtists);

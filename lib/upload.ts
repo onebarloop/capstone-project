@@ -1,5 +1,6 @@
 import React from "react";
 import { Artist } from "./ArtistClass";
+import { getGeoData } from "./getGeoData";
 
 export default async function upload(
   event: React.SyntheticEvent
@@ -44,7 +45,15 @@ export default async function upload(
     number.value,
     urls
   );
-  console.log(newArtist);
+
+  // Get Geoposition
+
+  newArtist.position = await getGeoData(
+    newArtist.location.streetname,
+    newArtist.location.number,
+    newArtist.location.city
+  );
+
   // Upload Artist Object via custom API-call
   try {
     const response = await fetch("/api", {
