@@ -4,7 +4,6 @@ import styled from "styled-components";
 type ArtistProps = {
   artistName: string;
   location: {
-    postalCode: number;
     city: string;
     streetname: string;
     number: number;

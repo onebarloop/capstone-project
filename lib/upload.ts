@@ -44,7 +44,7 @@ export default async function upload(
     number.value,
     urls
   );
-
+  console.log(newArtist);
   // Upload Artist Object via custom API-call
   try {
     const response = await fetch("/api", {

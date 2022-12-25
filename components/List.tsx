@@ -12,7 +12,6 @@ type ListProps = {
   slug: string;
   artistName: string;
   location: {
-    postalCode: number;
     city: string;
     streetname: string;
     number: number;

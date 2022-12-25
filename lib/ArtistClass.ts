@@ -1,3 +1,5 @@
+import { getGeoData } from "./getGeoData";
+
 function normalize(string: string): string {
   return string.replaceAll(" ", "").toLowerCase();
 }
