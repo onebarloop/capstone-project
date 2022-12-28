@@ -9,7 +9,7 @@ type MapProps = {
 };
 
 export default function Map({ artists }: MapProps) {
-  var myIcon = L.icon({
+  const myIcon = L.icon({
     iconUrl: "/logo.svg",
     iconSize: [38, 95],
     iconAnchor: [22, 94],
@@ -20,7 +20,6 @@ export default function Map({ artists }: MapProps) {
     <MapContainer
       center={[51.57158268136762, 10.200763543026689]}
       zoom={6}
-      scrollWheelZoom={false}
       style={{ height: "80vh", width: "100%" }}
     >
       <TileLayer
