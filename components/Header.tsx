@@ -13,12 +13,15 @@ export default function Header({
 
   return (
     <StyledHeader length={length}>
+      <Link href="/">
+        <Image alt="logo" src="/logo.svg" height={45} width={45} />
+      </Link>
       <StyledLink href="/">
         <h1>{heading}</h1>
       </StyledLink>
-      <Link href="/">
-        <Image alt="logo" src="/logo.svg" height={60} width={60} />
-      </Link>
+      <StyledMenu>
+        <Image src="/menu.svg" alt="menu" height={50} width={50} />
+      </StyledMenu>
     </StyledHeader>
   );
 }
@@ -32,7 +35,8 @@ const StyledHeader = styled.header<StyledHeaderProps>`
   padding: 20px;
   height: 10vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 15px;
   align-items: center;
   position: sticky;
 
@@ -45,4 +49,10 @@ const StyledHeader = styled.header<StyledHeaderProps>`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+`;
+
+const StyledMenu = styled.button`
+  border: none;
+  background-color: transparent;
+  margin-left: auto;
 `;
