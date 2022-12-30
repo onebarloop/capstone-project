@@ -4,12 +4,11 @@ import Footer from "../components/Footer";
 import React from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
-import { useState } from "react";
 import Router from "next/router";
-import upload from "../lib/upload";
+import upload from "../lib/uploadUserData";
 import { ArtistInterface } from "../lib/ArtistClass";
 import fetchData from "../lib/fetchData";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 type NewUserProps = {
   onSetArtists: Dispatch<SetStateAction<ArtistInterface[] | undefined>>;
@@ -38,9 +37,9 @@ export default function NewUserPage({
       <Header />
       <StyledForm onSubmit={handleSubmit}>
         <input name="artistname" placeholder="Artistname" required />
-        <input name="firstname" placeholder="Firstname" />
-        <input name="lastname" placeholder="Lastname" />
-        <input name="location" placeholder="Ort" required />
+        <input name="city" placeholder="city" required />
+        <input name="streetname" placeholder="streetname" required />
+        <input name="number" placeholder="number" required />
         <input name="pics" type="file" multiple required />
         <Button
           name={`${isloading ? "Uploading" : "Sumbit"}`}

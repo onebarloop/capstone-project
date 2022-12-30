@@ -7,6 +7,9 @@ export default function Footer(): JSX.Element {
       <StyledLink href="/">
         <p>HOME</p>
       </StyledLink>
+      <StyledLink href="/map">
+        <p>MAP</p>
+      </StyledLink>
       <StyledLink href="/newuser">
         <p>NEW USER</p>
       </StyledLink>
@@ -29,9 +32,9 @@ const StyledLink = styled(Link)`
   text-align: center;
   padding: auto;
   border-radius: 4px;
-  width: 97px;
+  width: 70px;
   height: 39px;
-  font-size: larger;
+  font-size: 0.9em;
   color: #d9d9d9;
   display: flex;
   justify-content: center;

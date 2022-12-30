@@ -1,16 +1,17 @@
 import React from "react";
 import { Artist } from "./ArtistClass";
+import fetchGeoData from "./fetchGeoData";
 
 export default async function upload(
   event: React.SyntheticEvent
 ): Promise<string> {
   // Event targets are destructured and typed
-  const { artistname, firstname, lastname, location, pics } =
+  const { artistname, city, streetname, number, pics } =
     event.target as typeof event.target & {
       artistname: { value: string };
-      firstname: { value: string };
-      lastname: { value: string };
-      location: { value: string };
+      city: { value: string };
+      streetname: { value: string };
+      number: { value: number };
       pics: { files: Blob[] };
     };
 
@@ -39,11 +40,15 @@ export default async function upload(
   // New Artist Object from the form elements plus the returnvalue of the cloudinary-upload is created
   const newArtist = new Artist(
     artistname.value,
-    firstname.value,
-    lastname.value,
-    location.value,
+    city.value,
+    streetname.value,
+    number.value,
     urls
   );
+
+  // Get Geoposition and add it to newArtist Object. I would love to do this via the class-constructor,
+  // but I can't get asnyc functions to work while instantiating the object. Help appreciated!
+  newArtist.position = await fetchGeoData({ ...newArtist.location });
 
   // Upload Artist Object via custom API-call
   try {

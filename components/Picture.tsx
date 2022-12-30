@@ -1,14 +1,12 @@
 import styled from "styled-components";
 import { CldImage } from "next-cloudinary";
 
-//Typescript
 type PictureProps = {
   width: number;
   height: number;
   source: string;
   className?: string;
 };
-//Typescript end
 
 export default function Picture({
   width,

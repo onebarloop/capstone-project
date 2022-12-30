@@ -1,13 +1,15 @@
 import Picture from "../components/Picture";
 import styled from "styled-components";
 
-//Typescript
 type ArtistProps = {
   artistName: string;
-  location: string;
+  location: {
+    city: string;
+    streetname: string;
+    number: number;
+  };
   tattoos: string[];
 };
-//Typescript end
 
 export default function Artist({
   artistName,
@@ -24,7 +26,7 @@ export default function Artist({
         </li>
         <li>
           Location: <br />
-          {location}
+          {location.city}
         </li>
       </StyledInfoCard>
       <StyledSchedule>

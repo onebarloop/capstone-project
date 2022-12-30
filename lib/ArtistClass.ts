@@ -8,25 +8,29 @@ interface ArtistInterface extends Artist {
 
 class Artist {
   artistName: string;
-  firstName: string;
-  lastName: string;
-  location: string;
+  location: {
+    city: string;
+    streetname: string;
+    number: number;
+  };
   slug: string;
   tattoos: string[];
+  position: any; // Not ideal.
 
   constructor(
     artistName: string,
-    firstName: string,
-    lastName: string,
-    location: string,
+    city: string,
+    streetname: string,
+    number: number,
     tatoos: string[]
   ) {
     this.artistName = artistName;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.location = location;
+    this.location = { city, streetname, number };
     this.slug = normalize(artistName);
     this.tattoos = tatoos;
+    this.position = null; // Here I would like to call fetchGeoData.
+    //But asnyc functions don't work as expected during object instantiation.
+    //Instead GeoData is fetched inside the upload-function, AFTER the objec instantation.
   }
 }
 

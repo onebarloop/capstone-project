@@ -22,7 +22,8 @@
     "globalStyles.js",
     "pages/api/index.ts",
     "db/Artist.js",
-    "lib/upload.ts"
+    "lib/uploadUserData.ts",
+    "pages/map.tsx"
   ],
   "exclude": ["node_modules", "codesnippets"]
 }

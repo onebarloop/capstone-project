@@ -3,7 +3,6 @@ import Link from "next/link";
 import Picture from "./Picture";
 import Button from "./Button";
 
-//Typescript
 type ListProps = {
   onLike: (_id: string) => void;
   isLiked: boolean;
@@ -11,9 +10,12 @@ type ListProps = {
   tattoos: string[];
   slug: string;
   artistName: string;
-  location: string;
+  location: {
+    city: string;
+    streetname: string;
+    number: number;
+  };
 };
-//Typescript End
 
 export default function List({
   onLike,
@@ -28,7 +30,7 @@ export default function List({
     <StyledArtistList key={_id}>
       <StyledArtistCard>
         <StyledInfoBox>
-          {artistName} <br /> {location}
+          {artistName} <br /> {location.city}
           <Button
             name={isLiked ? "Dislike" : "Like"}
             onClick={() => onLike(_id)}
