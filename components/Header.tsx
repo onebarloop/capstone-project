@@ -13,9 +13,9 @@ export default function Header({
 
   return (
     <StyledHeader length={length}>
-      <Link href="/">
+      <StyledLink href="/">
         <h1>{heading}</h1>
-      </Link>
+      </StyledLink>
       <Link href="/">
         <Image alt="logo" src="/logo.svg" height={60} width={60} />
       </Link>
@@ -41,4 +41,8 @@ const StyledHeader = styled.header<StyledHeaderProps>`
       props.length ? (props.length < 13 ? "2.5rem" : "1.5rem") : "2.5rem"};
     color: rgba(217, 217, 217, 1);
   }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
