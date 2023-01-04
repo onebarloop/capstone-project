@@ -19,9 +19,6 @@ export default function Header({
       <StyledLink href="/">
         <h1>{heading}</h1>
       </StyledLink>
-      <StyledMenu>
-        <Image src="/menu.svg" alt="menu" height={50} width={50} />
-      </StyledMenu>
     </StyledHeader>
   );
 }
