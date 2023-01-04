@@ -26,6 +26,7 @@ export default function NewUserPage({
       setSelectedImage(e.target.files[0]);
     }
   }
+  console.log(selectedImage);
 
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
