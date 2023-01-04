@@ -79,13 +79,20 @@ export default function Home({
             isLiked={likes.includes(artist._id)}
           />
         ))}
-      {viewPoint.favorites &&
+      {viewPoint.favorites && likes.length === 0 ? (
+        <>
+          <StyledPlaceholder>No likes yet...</StyledPlaceholder>
+          <StyledPlaceholder>🥲</StyledPlaceholder>
+        </>
+      ) : (
         artists.map(
           (artist) =>
             likes.includes(artist._id) && (
               <List key={artist._id} {...artist} onLike={onLike} isLiked />
             )
-        )}
+        )
+      )}
+
       <Footer />
     </>
   );
@@ -95,7 +102,13 @@ const StyledButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
   gap: 20px;
-  margin: 20px 0 15px 25px;
+  margin-top: 20px;
+  justify-content: center;
+`;
+
+const StyledPlaceholder = styled.h2`
+  margin: 50px;
+  color: rgba(217, 217, 217, 1);
 `;
 
 const StyledButton = styled(Button)`
