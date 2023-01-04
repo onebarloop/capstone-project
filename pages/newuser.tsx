@@ -61,10 +61,10 @@ export default function NewUserPage({
         </StyledLabel>
 
         {selectedImages.length === 4 ? (
-          <StyledSubmit
+          <Button
             name={`${isloading ? "Uploading" : "Sumbit"}`}
             inactive={isloading ? true : false}
-          ></StyledSubmit>
+          ></Button>
         ) : (
           <StyledImgInput>
             Add Image
@@ -137,5 +137,3 @@ const StyledImgInput = styled.label`
     display: none;
   }
 `;
-
-const StyledSubmit = styled(Button)``;
