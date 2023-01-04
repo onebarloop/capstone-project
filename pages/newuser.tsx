@@ -68,7 +68,13 @@ export default function NewUserPage({
         ) : (
           <StyledImgInput>
             Add Image
-            <input onChange={changeImage} name="pics" type="file" required />
+            <input
+              onChange={changeImage}
+              name="pics"
+              type="file"
+              accept="image/png, image/jpeg"
+              required
+            />
           </StyledImgInput>
         )}
 
