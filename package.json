@@ -14,7 +14,6 @@
     "@types/react-dom": "18.0.9",
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.6",
-    "file-upload-with-preview": "^5.0.8",
     "leaflet": "^1.9.3",
     "mongoose": "^6.8.0",
     "nanoid": "^4.0.0",
