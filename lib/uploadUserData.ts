@@ -3,20 +3,20 @@ import { Artist } from "./ArtistClass";
 import fetchGeoData from "./fetchGeoData";
 
 export default async function upload(
-  event: React.SyntheticEvent
+  event: React.SyntheticEvent,
+  selectedImages: Blob[]
 ): Promise<string> {
   // Event targets are destructured and typed
-  const { artistname, city, streetname, number, pics } =
+  const { artistname, city, streetname, number } =
     event.target as typeof event.target & {
       artistname: { value: string };
       city: { value: string };
       streetname: { value: string };
       number: { value: number };
-      pics: { files: Blob[] };
     };
 
   // Upload function for Cloudinary. Since Cloudinary doesn't allow multiple files to be uploaded at once,
-  // we have to make multiple API-calls for each item in the "pics"-array
+  // we have to make multiple API-calls for each item in the "selectedImages"-array
 
   async function fileupload(files: Blob[]): Promise<string[]> {
     let urls: string[] = [];
@@ -35,7 +35,7 @@ export default async function upload(
   }
 
   // Upload function is called and returns the picture URLs
-  const urls = await fileupload(pics.files);
+  const urls = await fileupload(selectedImages);
 
   // New Artist Object from the form elements plus the returnvalue of the cloudinary-upload is created
   const newArtist = new Artist(

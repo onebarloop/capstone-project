@@ -10,6 +10,7 @@ import { ArtistInterface } from "../lib/ArtistClass";
 import fetchData from "../lib/fetchData";
 import { Dispatch, SetStateAction, useState } from "react";
 import Image from "next/image";
+import { nanoid } from "nanoid";
 
 type NewUserProps = {
   onSetArtists: Dispatch<SetStateAction<ArtistInterface[] | undefined>>;
@@ -19,19 +20,18 @@ export default function NewUserPage({
   onSetArtists,
 }: NewUserProps): JSX.Element {
   const [isloading, setLoading] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState();
+  const [selectedImages, setSelectedImages] = useState<Blob[]>([]);
 
-  function changeImage(e) {
-    if (e.target.files && e.target.files.length > 0) {
-      setSelectedImage(e.target.files[0]);
-    }
+  function changeImage(event: React.SyntheticEvent) {
+    const input = (event.target as HTMLInputElement).files;
+    setSelectedImages([...selectedImages, input![0]]);
   }
-  console.log(selectedImage);
+  console.log(selectedImages);
 
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
     setLoading(true);
-    const url = await upload(event);
+    const url = await upload(event, selectedImages);
     fetchData("/api", onSetArtists);
     setLoading(false);
     Router.push(`/${url}`);
@@ -49,21 +49,17 @@ export default function NewUserPage({
         <input name="city" placeholder="city" required />
         <input name="streetname" placeholder="streetname" required />
         <input name="number" placeholder="number" required />
-        <input
-          onChange={changeImage}
-          name="pics"
-          type="file"
-          multiple
-          required
-        />
-        {selectedImage && (
-          <Image
-            src={URL.createObjectURL(selectedImage)}
-            alt="preview image"
-            width={50}
-            height={50}
-          />
-        )}
+        <input onChange={changeImage} name="pics" type="file" required />
+        {selectedImages.length > 0 &&
+          selectedImages.map((image) => (
+            <Image
+              key={nanoid()}
+              src={URL.createObjectURL(image)}
+              alt="preview image"
+              width={50}
+              height={50}
+            />
+          ))}
         <Button
           name={`${isloading ? "Uploading" : "Sumbit"}`}
           inactive={isloading ? true : false}
