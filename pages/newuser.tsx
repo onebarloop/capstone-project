@@ -9,8 +9,8 @@ import upload from "../lib/uploadUserData";
 import { ArtistInterface } from "../lib/ArtistClass";
 import fetchData from "../lib/fetchData";
 import { Dispatch, SetStateAction, useState } from "react";
-import Image from "next/image";
 import { nanoid } from "nanoid";
+import Picture from "../components/Picture";
 
 type NewUserProps = {
   onSetArtists: Dispatch<SetStateAction<ArtistInterface[] | undefined>>;
@@ -43,28 +43,51 @@ export default function NewUserPage({
         <title>Wannado</title>
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
-      <Header />
+      <Header heading={"Add New Artist"} />
+
       <StyledForm onSubmit={handleSubmit}>
-        <input name="artistname" placeholder="Artistname" required />
-        <input name="city" placeholder="city" required />
-        <input name="streetname" placeholder="streetname" required />
-        <input name="number" placeholder="number" required />
-        <input onChange={changeImage} name="pics" type="file" required />
-        {selectedImages.length > 0 &&
-          selectedImages.map((image) => (
-            <Image
-              key={nanoid()}
-              src={URL.createObjectURL(image)}
-              alt="preview image"
-              width={50}
-              height={50}
-            />
-          ))}
-        <Button
-          name={`${isloading ? "Uploading" : "Sumbit"}`}
-          inactive={isloading ? true : false}
-        ></Button>
+        <StyledLabel>
+          <span>Artistname:</span>
+          <input name="artistname" required />
+        </StyledLabel>
+        <StyledLabel>
+          <span>City:</span>
+          <input name="city" required />
+        </StyledLabel>
+        <StyledLabel>
+          <span>Street:</span>
+          <input name="streetname" required />
+          <input name="number" placeholder="#" type="number" required />
+        </StyledLabel>
+
+        {selectedImages.length === 4 ? (
+          <StyledSubmit
+            name={`${isloading ? "Uploading" : "Sumbit"}`}
+            inactive={isloading ? true : false}
+          ></StyledSubmit>
+        ) : (
+          <StyledImgInput>
+            Add Image
+            <input onChange={changeImage} name="pics" type="file" required />
+          </StyledImgInput>
+        )}
+
+        {selectedImages.length <= 0 ? (
+          <StyledPlaceholder>Please Upload up to 4 pictures</StyledPlaceholder>
+        ) : (
+          <StyledGalery>
+            {selectedImages.map((image) => (
+              <Picture
+                key={nanoid()}
+                source={URL.createObjectURL(image)}
+                width={110}
+                height={110}
+              />
+            ))}
+          </StyledGalery>
+        )}
       </StyledForm>
+
       <Footer />
     </>
   );
@@ -73,6 +96,46 @@ export default function NewUserPage({
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 50px;
+  padding: 35px 40px 0px 40px;
   gap: 20px;
+  color: rgba(217, 217, 217, 1);
+  height: 80vh;
 `;
+
+const StyledPlaceholder = styled.h3`
+  margin-top: auto;
+  margin-bottom: auto;
+`;
+
+const StyledGalery = styled.div`
+  grid-column-end: span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-start;
+  align-content: space-between;
+  justify-items: center;
+  gap: 20px;
+  margin-top: 20px;
+`;
+
+const StyledLabel = styled.label`
+  display: grid;
+  grid-template-columns: 100px 195px;
+
+  & ~ & ~ & {
+    grid-template-columns: 100px 160px 35px;
+  }
+`;
+
+const StyledImgInput = styled.label`
+  border: 1px solid #ccc;
+  align-self: center;
+  padding: 6px 12px;
+  color: rgba(217, 217, 217, 1);
+
+  input[type="file"] {
+    display: none;
+  }
+`;
+
+const StyledSubmit = styled(Button)``;
