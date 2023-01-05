@@ -53,7 +53,7 @@ export default function NewUserPage({
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <Header heading={"Add New Artist"} />
-      <DatePick></DatePick>
+      <DatePick />
 
       <StyledForm onSubmit={handleSubmit}>
         <StyledLabel>
