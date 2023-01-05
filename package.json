@@ -20,14 +20,15 @@
     "next": "13.0.6",
     "next-cloudinary": "^1.4.0",
     "react": "18.2.0",
+    "react-datepicker": "^4.8.0",
     "react-dom": "18.2.0",
     "react-leaflet": "^4.2.0",
-    "react-multi-date-picker": "^3.3.4",
     "styled-components": "^5.3.6",
     "typescript": "4.9.4"
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.0",
+    "@types/react-datepicker": "^4.8.0",
     "@types/styled-components": "^5.1.26",
     "babel-plugin-styled-components": "^2.0.7"
   }

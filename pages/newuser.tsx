@@ -11,7 +11,7 @@ import fetchData from "../lib/fetchData";
 import { Dispatch, SetStateAction, useState } from "react";
 import { nanoid } from "nanoid";
 import Picture from "../components/Picture";
-import DatePick from "../components/DatePicker";
+import Datepick from "../components/DatePick";
 
 type NewUserProps = {
   onSetArtists: Dispatch<SetStateAction<ArtistInterface[] | undefined>>;
@@ -21,6 +21,10 @@ export default function NewUserPage({
   onSetArtists,
 }: NewUserProps): JSX.Element {
   const [isloading, setLoading] = useState<boolean>(false);
+
+  //state that keeps track of the chosen dates in the datepicker. Goes as prop to DatePick
+  const [dates, setDates] = useState<string[]>([]);
+  console.log(dates);
 
   //state array that keeps track of the selected image files
   const [selectedImages, setSelectedImages] = useState<Blob[]>([]);
@@ -53,8 +57,7 @@ export default function NewUserPage({
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <Header heading={"Add New Artist"} />
-      <DatePick />
-
+      <StyledDatepick dates={dates} onSetDates={setDates} />
       <StyledForm onSubmit={handleSubmit}>
         <StyledLabel>
           <span>Artistname:</span>
@@ -171,4 +174,10 @@ const StyledDelete = styled.button`
   height: 20px;
   width: 20px;
   border-radius: 5px;
+`;
+
+const StyledDatepick = styled(Datepick)`
+  background-color: red;
+  margin: 40px;
+  width: 10px;
 `;
