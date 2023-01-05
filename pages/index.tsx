@@ -47,6 +47,7 @@ export default function Home({
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <Header />
+
       <StyledButtonWrapper>
         <StyledButton
           onClick={() => handleSwitchView("random")}
@@ -70,33 +71,42 @@ export default function Home({
       {viewPoint.random && (
         <RandomView artists={artists} viewPoint={viewPoint} />
       )}
-      {viewPoint.artists &&
-        artists.map((artist) => (
-          <List
-            key={artist._id}
-            {...artist}
-            onLike={onLike}
-            isLiked={likes.includes(artist._id)}
-          />
-        ))}
+      {viewPoint.artists && (
+        <StyledList>
+          {artists.map((artist) => (
+            <List
+              key={artist._id}
+              {...artist}
+              onLike={onLike}
+              isLiked={likes.includes(artist._id)}
+            />
+          ))}
+        </StyledList>
+      )}
       {viewPoint.favorites && likes.length === 0 ? (
         <>
           <StyledPlaceholder>No likes yet...</StyledPlaceholder>
           <StyledPlaceholder>🥲</StyledPlaceholder>
         </>
       ) : (
-        artists.map(
-          (artist) =>
-            likes.includes(artist._id) && (
-              <List key={artist._id} {...artist} onLike={onLike} isLiked />
-            )
-        )
+        <StyledList>
+          {artists.map(
+            (artist) =>
+              likes.includes(artist._id) && (
+                <List key={artist._id} {...artist} onLike={onLike} isLiked />
+              )
+          )}
+        </StyledList>
       )}
 
       <Footer />
     </>
   );
 }
+
+const StyledList = styled.div`
+  margin-bottom: 60px;
+`;
 
 const StyledButtonWrapper = styled.div`
   display: flex;

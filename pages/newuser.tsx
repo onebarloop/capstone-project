@@ -86,7 +86,9 @@ export default function NewUserPage({
         )}
 
         {selectedImages.length <= 0 ? (
-          <StyledPlaceholder>Please Upload up to 4 pictures</StyledPlaceholder>
+          <StyledPlaceholder>
+            To submit your data, add 4 images from your collection
+          </StyledPlaceholder>
         ) : (
           <StyledGalery>
             {selectedImages.map((image) => (
