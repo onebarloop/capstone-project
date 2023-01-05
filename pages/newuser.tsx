@@ -11,7 +11,7 @@ import fetchData from "../lib/fetchData";
 import { Dispatch, SetStateAction, useState } from "react";
 import { nanoid } from "nanoid";
 import Picture from "../components/Picture";
-import Datepick from "../components/DatePick";
+import DatePick from "../components/DatePick";
 
 type NewUserProps = {
   onSetArtists: Dispatch<SetStateAction<ArtistInterface[] | undefined>>;
@@ -57,7 +57,7 @@ export default function NewUserPage({
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <Header heading={"Add New Artist"} />
-      <StyledDatepick dates={dates} onSetDates={setDates} />
+      <StyledDatePick dates={dates} onSetDates={setDates} />
       <StyledForm onSubmit={handleSubmit}>
         <StyledLabel>
           <span>Artistname:</span>
@@ -176,7 +176,7 @@ const StyledDelete = styled.button`
   border-radius: 5px;
 `;
 
-const StyledDatepick = styled(Datepick)`
+const StyledDatePick = styled(DatePick)`
   background-color: red;
   margin: 40px;
   width: 10px;

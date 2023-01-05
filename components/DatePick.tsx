@@ -11,7 +11,7 @@ type DatePickProps = {
   className?: string;
 };
 
-export default function Datepick({
+export default function DatePick({
   dates,
   onSetDates,
   className,
