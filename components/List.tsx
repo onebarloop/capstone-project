@@ -27,28 +27,20 @@ export default function List({
   location,
 }: ListProps): JSX.Element {
   return (
-    <StyledArtistList key={_id}>
-      <StyledArtistCard>
-        <StyledInfoBox>
-          {artistName} <br /> {location.city}
-          <Button
-            name={isLiked ? "Dislike" : "Like"}
-            onClick={() => onLike(_id)}
-          />
-        </StyledInfoBox>
-        <Link href={`/${slug}`}>
-          <StyledPicture width={130} height={130} source={tattoos[0]} />
-        </Link>
-      </StyledArtistCard>
-    </StyledArtistList>
+    <StyledArtistCard key={_id}>
+      <StyledInfoBox>
+        {artistName} <br /> {location.city}
+        <Button
+          name={isLiked ? "Dislike" : "Like"}
+          onClick={() => onLike(_id)}
+        />
+      </StyledInfoBox>
+      <Link href={`/${slug}`}>
+        <StyledPicture width={130} height={130} source={tattoos[0]} />
+      </Link>
+    </StyledArtistCard>
   );
 }
-
-const StyledArtistList = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-`;
 
 const StyledArtistCard = styled.div`
   display: flex;
@@ -56,6 +48,7 @@ const StyledArtistCard = styled.div`
   flex-direction: row;
   color: black;
   position: relative;
+  padding: 15px;
 `;
 
 const StyledInfoBox = styled.div`
@@ -72,6 +65,6 @@ const StyledInfoBox = styled.div`
 
 const StyledPicture = styled(Picture)`
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 25px;
+  top: 25px;
 `;

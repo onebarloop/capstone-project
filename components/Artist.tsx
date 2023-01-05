@@ -73,4 +73,6 @@ const StyledGalery = styled.div`
   align-items: flex-start;
   align-content: space-between;
   justify-items: center;
+
+  gap: 15px;
 `;
