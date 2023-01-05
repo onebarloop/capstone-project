@@ -22,11 +22,17 @@ export default function NewUserPage({
   const [isloading, setLoading] = useState<boolean>(false);
   const [selectedImages, setSelectedImages] = useState<Blob[]>([]);
 
+  console.log(selectedImages);
+
   function changeImage(event: React.SyntheticEvent) {
     const input = (event.target as HTMLInputElement).files;
     if (input && input.length > 0) {
       setSelectedImages([...selectedImages, input![0]]);
     }
+  }
+
+  function handleDelete(name: string): void {
+    setSelectedImages(selectedImages.filter((image) => image.name !== name));
   }
 
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
@@ -84,12 +90,16 @@ export default function NewUserPage({
         ) : (
           <StyledGalery>
             {selectedImages.map((image) => (
-              <Picture
-                key={nanoid()}
-                source={URL.createObjectURL(image)}
-                width={110}
-                height={110}
-              />
+              <div style={{ position: "relative" }} key={nanoid()}>
+                <Picture
+                  source={URL.createObjectURL(image)}
+                  width={110}
+                  height={110}
+                />
+                <StyledDelete onClick={() => handleDelete(image.name)}>
+                  X
+                </StyledDelete>
+              </div>
             ))}
           </StyledGalery>
         )}
@@ -143,4 +153,17 @@ const StyledImgInput = styled.label`
   input[type="file"] {
     display: none;
   }
+`;
+
+const StyledDelete = styled.button`
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  border: none;
+  background-color: #d93378;
+  opacity: 80%;
+  color: rgba(217, 217, 217, 1);
+  height: 20px;
+  width: 20px;
+  border-radius: 5px;
 `;
