@@ -11,6 +11,7 @@ import fetchData from "../lib/fetchData";
 import { Dispatch, SetStateAction, useState } from "react";
 import { nanoid } from "nanoid";
 import Picture from "../components/Picture";
+import DatePick from "../components/DatePicker";
 
 type NewUserProps = {
   onSetArtists: Dispatch<SetStateAction<ArtistInterface[] | undefined>>;
@@ -52,6 +53,7 @@ export default function NewUserPage({
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <Header heading={"Add New Artist"} />
+      <DatePick></DatePick>
 
       <StyledForm onSubmit={handleSubmit}>
         <StyledLabel>
