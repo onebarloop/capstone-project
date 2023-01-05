@@ -20,14 +20,15 @@ export default function NewUserPage({
   onSetArtists,
 }: NewUserProps): JSX.Element {
   const [isloading, setLoading] = useState<boolean>(false);
+
+  //state array that keeps track of the selected image files
   const [selectedImages, setSelectedImages] = useState<Blob[]>([]);
 
-  console.log(selectedImages);
-
-  function changeImage(event: React.SyntheticEvent) {
-    const input = (event.target as HTMLInputElement).files;
-    if (input && input.length > 0) {
-      setSelectedImages([...selectedImages, input![0]]);
+  // function for checking the selected img-files and updating the state-array
+  function changeImage(event: React.SyntheticEvent): void {
+    const imgList = (event.target as HTMLInputElement).files;
+    if (imgList && imgList.length > 0) {
+      setSelectedImages([...selectedImages, imgList![0]]);
     }
   }
 
