@@ -24,9 +24,10 @@ export default function NewUserPage({
 
   function changeImage(event: React.SyntheticEvent) {
     const input = (event.target as HTMLInputElement).files;
-    setSelectedImages([...selectedImages, input![0]]);
+    if (input && input.length > 0) {
+      setSelectedImages([...selectedImages, input![0]]);
+    }
   }
-  console.log(selectedImages);
 
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
