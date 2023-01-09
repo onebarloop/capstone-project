@@ -5,6 +5,7 @@ type ButtonProps = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
   inactive?: boolean;
+  disabled?: boolean;
 };
 
 export default function Button({
@@ -12,9 +13,15 @@ export default function Button({
   onClick,
   className,
   inactive,
+  disabled,
 }: ButtonProps): JSX.Element {
   return (
-    <StyledButton className={className} onClick={onClick} inactive={inactive}>
+    <StyledButton
+      className={className}
+      onClick={onClick}
+      inactive={inactive}
+      disabled={disabled}
+    >
       {name}
     </StyledButton>
   );

@@ -81,7 +81,8 @@ export default function NewUserPage({
             />
             <StyledSubmit
               name={`${isloading ? "Uploading" : "Sumbit"}`}
-              inactive={isloading ? true : false}
+              inactive={isloading}
+              disabled={isloading}
             ></StyledSubmit>
           </StyledButtonBar>
         ) : (
