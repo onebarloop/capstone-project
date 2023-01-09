@@ -1,5 +1,7 @@
 import Picture from "../components/Picture";
 import styled from "styled-components";
+import DatePick from "./DatePick";
+import Button from "./Button";
 
 type ArtistProps = {
   artistName: string;
@@ -9,48 +11,55 @@ type ArtistProps = {
     number: number;
   };
   tattoos: string[];
+  dates: string[];
 };
 
 export default function Artist({
   artistName,
   location,
   tattoos,
+  dates,
 }: ArtistProps): JSX.Element {
   return (
     <StyledMain>
-      <StyledInfoCard>
-        Information
-        <li>
-          Artist:
-          <br /> {artistName}
-        </li>
-        <li>
-          Location: <br />
-          {location.city}
-        </li>
-      </StyledInfoCard>
-      <StyledSchedule>
-        Timeschedule (Hardcode)
-        <li>Monday, 13.12.</li>
-        <li>Monday, 13.12.</li>
-        <li>Monday, 13.12.</li>
-        <li>Monday, 13.12.</li>
-      </StyledSchedule>
+      <StyledInfoBox>
+        <StyledInfoCard>
+          <li>{artistName}</li>
+          <li>
+            <Button name={"✉️"} onClick={() => alert("Hi!")} />
+          </li>
+        </StyledInfoCard>
+        <StyledInfoCard>
+          <li>{location.city}</li>
+          <li>{location.streetname + " " + location.number}</li>
+        </StyledInfoCard>
+      </StyledInfoBox>
       <StyledGalery>
         {tattoos.map((tattoo) => (
           <Picture width={125} height={125} source={tattoo} key={tattoo} />
         ))}
       </StyledGalery>
+
+      <StyledSchedule>
+        <DatePick dates={dates} inline />
+      </StyledSchedule>
     </StyledMain>
   );
 }
 
 const StyledMain = styled.div`
   color: rgba(217, 217, 217, 1);
-  height: 80vh;
+  margin-bottom: 60px;
   padding: 15px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledInfoBox = styled.div`
+  display: flex;
+  justify-content: space-around;
+  background-color: #474545;
+  margin-bottom: 20px; ;
 `;
 
 const StyledInfoCard = styled.ul`
@@ -62,8 +71,9 @@ const StyledInfoCard = styled.ul`
   }
 `;
 
-const StyledSchedule = styled(StyledInfoCard)`
-  justify-self: end;
+const StyledSchedule = styled.div`
+  align-self: center;
+  margin: 10px;
 `;
 
 const StyledGalery = styled.div`
@@ -73,6 +83,6 @@ const StyledGalery = styled.div`
   align-items: flex-start;
   align-content: space-between;
   justify-items: center;
-
   gap: 15px;
+  margin-bottom: 20px; ;
 `;

@@ -44,7 +44,7 @@ export default function NewUserPage({
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
     setLoading(true);
-    const url = await upload(event, selectedImages);
+    const url = await upload(event, selectedImages, dates);
     fetchData("/api", onSetArtists);
     setLoading(false);
     Router.push(`/${url}`);
@@ -57,7 +57,7 @@ export default function NewUserPage({
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <Header heading={"Add New Artist"} />
-      <StyledDatePick dates={dates} onSetDates={setDates} />
+
       <StyledForm onSubmit={handleSubmit}>
         <StyledLabel>
           <span>Artistname:</span>
@@ -79,16 +79,23 @@ export default function NewUserPage({
             inactive={isloading ? true : false}
           ></Button>
         ) : (
-          <StyledImgInput>
-            Add Image
-            <input
-              onChange={changeImage}
-              name="pics"
-              type="file"
-              accept="image/png, image/jpeg"
-              required
+          <StyledButtonBar>
+            <StyledImgInput>
+              Add Images
+              <input
+                onChange={changeImage}
+                name="pics"
+                type="file"
+                accept="image/png, image/jpeg"
+                required
+              />
+            </StyledImgInput>
+            <StyledDatePick
+              dates={dates}
+              onSetDates={setDates}
+              inline={false}
             />
-          </StyledImgInput>
+          </StyledButtonBar>
         )}
 
         {selectedImages.length <= 0 ? (
@@ -152,14 +159,30 @@ const StyledLabel = styled.label`
   }
 `;
 
+const StyledButtonBar = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+`;
+
 const StyledImgInput = styled.label`
   border: 1px solid #ccc;
-  align-self: center;
-  padding: 6px 12px;
+  padding: 10px;
   color: rgba(217, 217, 217, 1);
-
   input[type="file"] {
     display: none;
+  }
+`;
+
+const StyledDatePick = styled(DatePick)`
+  background-color: transparent;
+  border: #ccc 1px solid;
+  padding: 10px;
+  width: 100px;
+
+  &::placeholder {
+    color: rgba(217, 217, 217, 1);
+    font-family: Roboto;
   }
 `;
 
@@ -174,10 +197,4 @@ const StyledDelete = styled.button`
   height: 20px;
   width: 20px;
   border-radius: 5px;
-`;
-
-const StyledDatePick = styled(DatePick)`
-  background-color: red;
-  margin: 40px;
-  width: 10px;
 `;
