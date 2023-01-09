@@ -24,7 +24,6 @@ export default function NewUserPage({
 
   //state that keeps track of the chosen dates in the datepicker. Goes as prop to DatePick
   const [dates, setDates] = useState<string[]>([]);
-  console.log(dates);
 
   //state array that keeps track of the selected image files
   const [selectedImages, setSelectedImages] = useState<Blob[]>([]);

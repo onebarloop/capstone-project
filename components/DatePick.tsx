@@ -3,9 +3,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styled from "styled-components";
 
-// CSS Modules, react-datepicker-cssmodules.css
-//import "react-datepicker/dist/react-datepicker-cssmodules.css";
-
 type DatePickProps = {
   dates: string[];
   onSetDates?: Dispatch<SetStateAction<string[]>>;
@@ -32,6 +29,13 @@ export default function DatePick({
       : onSetDates!((prev) => [...prev, d]);
   }
 
+  function handleAppointment(date: Date): void {
+    const d: string = date.toDateString();
+    dates.includes(d)
+      ? alert(`Make an appointment for ${date} ?`)
+      : alert("Date not available");
+  }
+
   return (
     <StyledDatePicker>
       {inline === false ? (
@@ -46,7 +50,7 @@ export default function DatePick({
         <DatePicker
           inline
           highlightDates={datum}
-          onChange={(date) => console.log(date)}
+          onChange={(date: Date) => handleAppointment(date)}
         />
       )}
     </StyledDatePicker>
