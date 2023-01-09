@@ -73,12 +73,24 @@ export default function NewUserPage({
         </StyledLabel>
 
         {selectedImages.length === 4 ? (
-          <Button
-            name={`${isloading ? "Uploading" : "Sumbit"}`}
-            inactive={isloading ? true : false}
-          ></Button>
+          <StyledButtonBar>
+            <StyledDatePick
+              dates={dates}
+              onSetDates={setDates}
+              inline={false}
+            />
+            <StyledSubmit
+              name={`${isloading ? "Uploading" : "Sumbit"}`}
+              inactive={isloading ? true : false}
+            ></StyledSubmit>
+          </StyledButtonBar>
         ) : (
           <StyledButtonBar>
+            <StyledDatePick
+              dates={dates}
+              onSetDates={setDates}
+              inline={false}
+            />
             <StyledImgInput>
               Add Images
               <input
@@ -89,11 +101,6 @@ export default function NewUserPage({
                 required
               />
             </StyledImgInput>
-            <StyledDatePick
-              dates={dates}
-              onSetDates={setDates}
-              inline={false}
-            />
           </StyledButtonBar>
         )}
 
@@ -183,6 +190,11 @@ const StyledDatePick = styled(DatePick)`
     color: rgba(217, 217, 217, 1);
     font-family: Roboto;
   }
+`;
+
+const StyledSubmit = styled(Button)`
+  width: 100px;
+  height: 37px;
 `;
 
 const StyledDelete = styled.button`

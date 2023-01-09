@@ -11,7 +11,7 @@ export default function Footer(): JSX.Element {
         <p>MAP</p>
       </StyledLink>
       <StyledLink href="/newuser">
-        <p>NEW USER</p>
+        <p>USER</p>
       </StyledLink>
     </StyledFooter>
   );
