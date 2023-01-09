@@ -89,14 +89,16 @@ export default function Home({
           <StyledPlaceholder>🥲</StyledPlaceholder>
         </>
       ) : (
-        <StyledList>
-          {artists.map(
-            (artist) =>
-              likes.includes(artist._id) && (
-                <List key={artist._id} {...artist} onLike={onLike} isLiked />
-              )
-          )}
-        </StyledList>
+        viewPoint.favorites && (
+          <StyledList>
+            {artists.map(
+              (artist) =>
+                likes.includes(artist._id) && (
+                  <List key={artist._id} {...artist} onLike={onLike} isLiked />
+                )
+            )}
+          </StyledList>
+        )
       )}
 
       <Footer />

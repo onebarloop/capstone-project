@@ -47,9 +47,3 @@ const StyledHeader = styled.header<StyledHeaderProps>`
 const StyledLink = styled(Link)`
   text-decoration: none;
 `;
-
-const StyledMenu = styled.button`
-  border: none;
-  background-color: transparent;
-  margin-left: auto;
-`;
