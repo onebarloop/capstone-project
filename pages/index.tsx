@@ -3,41 +3,23 @@ import RandomView from "../components/RandomView";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Button from "../components/Button";
-import { useState } from "react";
 import styled from "styled-components";
 import List from "../components/List";
 import type { ArtistInterface } from "../lib/ArtistClass";
+import useLikes from "../lib/useLikes";
+import useView from "../lib/useView";
 
 type HomeProps = {
-  onLike: () => void;
-  likes: string[];
   artists: ArtistInterface[];
 };
-export type ViewPoint = {
-  random: boolean;
-  artists: boolean;
-  favorites: boolean;
-};
-type View = "random" | "artists" | "favorites";
 
-export default function Home({
-  onLike,
-  likes,
-  artists,
-}: HomeProps): JSX.Element {
-  const [viewPoint, setViewPoint] = useState<ViewPoint>({
-    random: true,
-    artists: false,
-    favorites: false,
-  });
+export default function Home({ artists }: HomeProps): JSX.Element {
+  const { likes, handleLike } = useLikes();
+  const { viewPoint, handleSwitchView } = useView();
 
-  function handleSwitchView(view: View): void {
-    setViewPoint({
-      random: false,
-      artists: false,
-      favorites: false,
-      [view]: true,
-    });
+  function handleRandom() {
+    handleSwitchView("reload");
+    handleSwitchView("random");
   }
 
   return (
@@ -50,7 +32,7 @@ export default function Home({
 
       <StyledButtonWrapper>
         <StyledButton
-          onClick={() => handleSwitchView("random")}
+          onClick={handleRandom}
           name={"Surprise Me!"}
           inactive={!viewPoint.random}
         />
@@ -66,18 +48,14 @@ export default function Home({
         />
       </StyledButtonWrapper>
 
-      {/* Switching between the three different views */}
-
-      {viewPoint.random && (
-        <RandomView artists={artists} viewPoint={viewPoint} />
-      )}
+      {viewPoint.random && <RandomView artists={artists} />}
       {viewPoint.artists && (
         <StyledList>
           {artists.map((artist) => (
             <List
               key={artist._id}
               {...artist}
-              onLike={onLike}
+              onLike={handleLike}
               isLiked={likes.includes(artist._id)}
             />
           ))}
@@ -94,7 +72,12 @@ export default function Home({
             {artists.map(
               (artist) =>
                 likes.includes(artist._id) && (
-                  <List key={artist._id} {...artist} onLike={onLike} isLiked />
+                  <List
+                    key={artist._id}
+                    {...artist}
+                    onLike={handleLike}
+                    isLiked
+                  />
                 )
             )}
           </StyledList>
