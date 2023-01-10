@@ -23,15 +23,15 @@ export default function DatePick({
   });
 
   function handleDate(date: Date): void {
-    const d: string = date.toDateString();
-    dates.includes(d)
-      ? onSetDates!((prev) => prev.filter((item) => item !== d))
-      : onSetDates!((prev) => [...prev, d]);
+    const dateString: string = date.toDateString();
+    dates.includes(dateString)
+      ? onSetDates!((prev) => prev.filter((item) => item !== dateString))
+      : onSetDates!((prev) => [...prev, dateString]);
   }
 
   function handleAppointment(date: Date): void {
-    const d: string = date.toDateString();
-    dates.includes(d)
+    const dateString: string = date.toDateString();
+    dates.includes(dateString)
       ? alert(`Make an appointment for ${date} ?`)
       : alert("Date not available");
   }
