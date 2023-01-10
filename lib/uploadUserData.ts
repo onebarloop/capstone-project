@@ -4,7 +4,8 @@ import fetchGeoData from "./fetchGeoData";
 
 export default async function upload(
   event: React.SyntheticEvent,
-  selectedImages: Blob[]
+  selectedImages: Blob[],
+  dates: string[]
 ): Promise<string> {
   // Event targets are destructured and typed
   const { artistname, city, streetname, number } =
@@ -43,7 +44,8 @@ export default async function upload(
     city.value,
     streetname.value,
     number.value,
-    urls
+    urls,
+    dates
   );
 
   // Get Geoposition and add it to newArtist Object. I would love to do this via the class-constructor,

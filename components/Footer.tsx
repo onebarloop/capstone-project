@@ -11,7 +11,7 @@ export default function Footer(): JSX.Element {
         <p>MAP</p>
       </StyledLink>
       <StyledLink href="/newuser">
-        <p>NEW USER</p>
+        <p>USER</p>
       </StyledLink>
     </StyledFooter>
   );
@@ -28,6 +28,7 @@ const StyledFooter = styled.footer`
   position: fixed;
   bottom: 0;
   width: 100%;
+  z-index: 1;
 `;
 
 const StyledLink = styled(Link)`

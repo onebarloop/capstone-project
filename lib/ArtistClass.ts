@@ -16,13 +16,15 @@ class Artist {
   slug: string;
   tattoos: string[];
   position: any; // Not ideal.
+  dates: string[];
 
   constructor(
     artistName: string,
     city: string,
     streetname: string,
     number: number,
-    tatoos: string[]
+    tatoos: string[],
+    dates: string[]
   ) {
     this.artistName = artistName;
     this.location = { city, streetname, number };
@@ -31,6 +33,7 @@ class Artist {
     this.position = null; // Here I would like to call fetchGeoData.
     //But asnyc functions don't work as expected during object instantiation.
     //Instead GeoData is fetched inside the upload-function, AFTER the objec instantation.
+    this.dates = dates;
   }
 }
 

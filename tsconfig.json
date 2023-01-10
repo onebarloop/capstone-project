@@ -23,7 +23,8 @@
     "pages/api/index.ts",
     "db/Artist.js",
     "lib/uploadUserData.ts",
-    "pages/map.tsx"
+    "pages/map.tsx",
+    "components/ArtistCalendar.jsx"
   ],
   "exclude": ["node_modules", "codesnippets"]
 }
