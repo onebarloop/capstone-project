@@ -3,18 +3,7 @@ import styled from "styled-components";
 import DatePick from "./DatePick";
 import Button from "./Button";
 import useLikes from "../lib/useLikes";
-
-type ArtistProps = {
-  _id: string;
-  artistName: string;
-  location: {
-    city: string;
-    streetname: string;
-    number: number;
-  };
-  tattoos: string[];
-  dates: string[];
-};
+import { ArtistInterface } from "../lib/ArtistClass";
 
 export default function Artist({
   _id,
@@ -22,7 +11,7 @@ export default function Artist({
   location,
   tattoos,
   dates,
-}: ArtistProps): JSX.Element {
+}: ArtistInterface): JSX.Element {
   const { handleLike, likes } = useLikes();
 
   return (

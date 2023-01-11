@@ -2,37 +2,25 @@ import styled from "styled-components";
 import Link from "next/link";
 import Picture from "./Picture";
 import Button from "./Button";
-
-type ListProps = {
-  onLike: (_id: string) => void;
-  isLiked: boolean;
-  _id: string;
-  tattoos: string[];
-  slug: string;
-  artistName: string;
-  location: {
-    city: string;
-    streetname: string;
-    number: number;
-  };
-};
+import useLikes from "../lib/useLikes";
+import { ArtistInterface } from "../lib/ArtistClass";
 
 export default function List({
-  onLike,
-  isLiked,
   _id,
   tattoos,
   slug,
   artistName,
   location,
-}: ListProps): JSX.Element {
+}: ArtistInterface): JSX.Element {
+  const { likes, handleLike } = useLikes();
+
   return (
     <StyledArtistCard key={_id}>
       <StyledInfoBox>
         {artistName} <br /> {location.city}
         <Button
-          name={isLiked ? "Dislike" : "Like"}
-          onClick={() => onLike(_id)}
+          name={likes.includes(_id) ? "Dislike" : "Like"}
+          onClick={() => handleLike(_id)}
         />
       </StyledInfoBox>
       <Link href={`/${slug}`}>

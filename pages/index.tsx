@@ -53,12 +53,7 @@ export default function Home({ artists }: HomeProps): JSX.Element {
       {viewPoint.artists && (
         <StyledList>
           {artists.map((artist) => (
-            <List
-              key={artist._id}
-              {...artist}
-              onLike={handleLike}
-              isLiked={likes.includes(artist._id)}
-            />
+            <List key={artist._id} {...artist} />
           ))}
         </StyledList>
       )}
@@ -73,12 +68,7 @@ export default function Home({ artists }: HomeProps): JSX.Element {
             {artists.map(
               (artist) =>
                 likes.includes(artist._id) && (
-                  <List
-                    key={artist._id}
-                    {...artist}
-                    onLike={handleLike}
-                    isLiked
-                  />
+                  <List key={artist._id} {...artist} />
                 )
             )}
           </StyledList>
