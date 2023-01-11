@@ -2,8 +2,10 @@ import Picture from "../components/Picture";
 import styled from "styled-components";
 import DatePick from "./DatePick";
 import Button from "./Button";
+import useLikes from "../lib/useLikes";
 
 type ArtistProps = {
+  _id: string;
   artistName: string;
   location: {
     city: string;
@@ -15,11 +17,14 @@ type ArtistProps = {
 };
 
 export default function Artist({
+  _id,
   artistName,
   location,
   tattoos,
   dates,
 }: ArtistProps): JSX.Element {
+  const { handleLike, likes } = useLikes();
+
   return (
     <StyledMain>
       <StyledInfoBox>
@@ -27,6 +32,10 @@ export default function Artist({
           <li>{artistName}</li>
           <li>
             <Button name={"✉️"} onClick={() => alert("Hi!")} />
+            <Button
+              name={likes.includes(_id) ? "Dislike" : "Like"}
+              onClick={() => handleLike(_id)}
+            />
           </li>
         </StyledInfoCard>
         <StyledInfoCard>

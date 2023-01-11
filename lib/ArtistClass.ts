@@ -1,3 +1,5 @@
+import fetchGeoData from "./fetchGeoData";
+
 function normalize(string: string): string {
   return string.replaceAll(" ", "").toLowerCase();
 }
@@ -15,10 +17,11 @@ class Artist {
   };
   slug: string;
   tattoos: string[];
-  position: any; // Not ideal.
+  position: any;
   dates: string[];
 
-  constructor(
+  // construcor set to private, since it is only needed inside the static factory-method
+  private constructor(
     artistName: string,
     city: string,
     streetname: string,
@@ -30,10 +33,27 @@ class Artist {
     this.location = { city, streetname, number };
     this.slug = normalize(artistName);
     this.tattoos = tatoos;
-    this.position = null; // Here I would like to call fetchGeoData.
-    //But asnyc functions don't work as expected during object instantiation.
-    //Instead GeoData is fetched inside the upload-function, AFTER the objec instantation.
     this.dates = dates;
+  }
+  // static ASYNC factory method.
+  public static async create(
+    artistName: string,
+    city: string,
+    streetname: string,
+    number: number,
+    tatoos: string[],
+    dates: string[]
+  ) {
+    const artist = new Artist(
+      artistName,
+      city,
+      streetname,
+      number,
+      tatoos,
+      dates
+    );
+    artist.position = await fetchGeoData({ ...artist.location });
+    return artist;
   }
 }
 
