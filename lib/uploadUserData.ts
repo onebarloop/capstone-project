@@ -38,19 +38,21 @@ export default async function upload(
   // Upload function is called and returns the picture URLs
   const urls = await fileupload(selectedImages);
 
-  // New Artist Object from the form elements plus the returnvalue of the cloudinary-upload is created
-  const newArtist = new Artist(
-    artistname.value,
-    city.value,
-    streetname.value,
-    number.value,
-    urls,
-    dates
-  );
+  // Declare async function that calls the static factory method (.create())of the Artist-class
+  async function createArtist() {
+    const artist = await Artist.create(
+      artistname.value,
+      city.value,
+      streetname.value,
+      number.value,
+      urls,
+      dates
+    );
+    return artist;
+  }
 
-  // Get Geoposition and add it to newArtist Object. I would love to do this via the class-constructor,
-  // but I can't get asnyc functions to work while instantiating the object. Help appreciated!
-  newArtist.position = await fetchGeoData({ ...newArtist.location });
+  // async function is called
+  const newArtist = await createArtist();
 
   // Upload Artist Object via custom API-call
   try {
