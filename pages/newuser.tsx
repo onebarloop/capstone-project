@@ -32,7 +32,7 @@ export default function NewUserPage({
   function changeImage(event: React.SyntheticEvent): void {
     const imgList = (event.target as HTMLInputElement).files;
     if (imgList && imgList.length > 0) {
-      setSelectedImages([...selectedImages, imgList![0]]);
+      setSelectedImages([...selectedImages, imgList[0]]);
     }
   }
 
