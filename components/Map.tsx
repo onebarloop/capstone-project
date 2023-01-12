@@ -53,19 +53,19 @@ export default function Map({ artists, userPosition }: MapProps) {
       <ClickMap />
       <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png" />
 
-      {artists.map((artist) => (
+      {artists.map(({ _id, position, slug, artistName }) => (
         <Marker
-          key={artist._id}
-          position={artist.position}
-          icon={select === artist._id ? userIcon : artistIcon}
+          key={_id}
+          position={position}
+          icon={select === _id ? userIcon : artistIcon}
           eventHandlers={{
             click: () => {
-              select === artist._id ? setSelect(null) : setSelect(artist._id);
+              select === _id ? setSelect(null) : setSelect(_id);
             },
           }}
         >
           <Popup closeButton={false}>
-            <Link href={`/${artist.slug}`}>{artist.artistName}</Link>
+            <Link href={`/${slug}`}>{artistName}</Link>
           </Popup>
         </Marker>
       ))}
