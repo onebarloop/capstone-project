@@ -15,7 +15,7 @@ export default function DatePick({
   onSetDates,
   className,
   inline,
-}: DatePickProps) {
+}: DatePickProps): JSX.Element {
   const datum: Array<Date> = [];
 
   dates.forEach((date) => {

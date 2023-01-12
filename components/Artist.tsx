@@ -3,18 +3,7 @@ import styled from "styled-components";
 import DatePick from "./DatePick";
 import Button from "./Button";
 import useLikes from "../lib/useLikes";
-
-type ArtistProps = {
-  _id: string;
-  artistName: string;
-  location: {
-    city: string;
-    streetname: string;
-    number: number;
-  };
-  tattoos: string[];
-  dates: string[];
-};
+import { ArtistInterface } from "../lib/ArtistClass";
 
 export default function Artist({
   _id,
@@ -22,26 +11,26 @@ export default function Artist({
   location,
   tattoos,
   dates,
-}: ArtistProps): JSX.Element {
+}: ArtistInterface): JSX.Element {
   const { handleLike, likes } = useLikes();
 
   return (
     <StyledMain>
       <StyledInfoBox>
-        <StyledInfoCard>
-          <li>{artistName}</li>
-          <li>
-            <Button name={"✉️"} onClick={() => alert("Hi!")} />
+        <section>
+          <div>{artistName}</div>
+          <div>
+            <Button name={"Contact"} onClick={() => alert("Hi!")} />
             <Button
               name={likes.includes(_id) ? "Dislike" : "Like"}
               onClick={() => handleLike(_id)}
             />
-          </li>
-        </StyledInfoCard>
-        <StyledInfoCard>
-          <li>{location.city}</li>
-          <li>{location.streetname + " " + location.number}</li>
-        </StyledInfoCard>
+          </div>
+        </section>
+        <section>
+          <div>{location.city}</div>
+          <div>{location.streetname + " " + location.number}</div>
+        </section>
       </StyledInfoBox>
       <StyledGalery>
         {tattoos.map((tattoo) => (
@@ -64,19 +53,22 @@ const StyledMain = styled.div`
   flex-direction: column;
 `;
 
-const StyledInfoBox = styled.div`
+const StyledInfoBox = styled.article`
   display: flex;
   justify-content: space-around;
   background-color: #474545;
-  margin-bottom: 20px; ;
-`;
+  margin-bottom: 20px;
+  font-size: 1.3em;
+  padding: 0.5em 0;
+  section {
+    width: 50%;
+  }
+  div {
+    margin: 1rem 0.5rem;
+  }
 
-const StyledInfoCard = styled.ul`
-  list-style: none;
-  padding: 0;
-  font-size: 1.2em;
-  li {
-    margin: 0.5em;
+  Button:first-child {
+    margin-right: 1em;
   }
 `;
 
