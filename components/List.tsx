@@ -24,7 +24,7 @@ export default function List({
         />
       </StyledInfoBox>
       <Link href={`/${slug}`}>
-        <StyledPicture width={130} height={130} source={tattoos[0]} />
+        <StyledPicture source={tattoos[0]} />
       </Link>
     </StyledArtistCard>
   );
