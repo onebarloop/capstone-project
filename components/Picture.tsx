@@ -6,7 +6,7 @@ type PictureProps = {
   height: number;
   source: string;
   className?: string;
-  big?: boolean;
+  big?: string;
 };
 
 export default function Picture({
@@ -40,6 +40,6 @@ const StyledWrapper = styled.div`
 const StyledImage = styled(CldImage)`
   border-radius: 0.2em;
   object-fit: contain;
-  width: ${(props) => (props.big ? "150px" : "125px")};
-  height: ${(props) => (props.big ? "150px" : "125px")};
+  width: ${(props) => (props.big === "true" ? "150px" : "125px")};
+  height: ${(props) => (props.big === "true" ? "150px" : "125px")};
 `;
