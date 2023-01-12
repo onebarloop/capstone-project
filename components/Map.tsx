@@ -63,7 +63,7 @@ export default function Map({ artists, userPosition }: MapProps) {
             },
           }}
         >
-          <Popup>
+          <Popup closeButton={false}>
             <Link href={`/${artist.slug}`}>{artist.artistName}</Link>
           </Popup>
         </Marker>
