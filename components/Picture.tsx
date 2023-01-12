@@ -6,6 +6,8 @@ type PictureProps = {
   height: number;
   source: string;
   className?: string;
+  //can't handle big-prop as boolean - it throws an error
+  big?: string;
 };
 
 export default function Picture({
@@ -13,6 +15,7 @@ export default function Picture({
   height,
   source,
   className,
+  big,
 }: PictureProps): JSX.Element {
   return (
     <StyledWrapper className={className}>
@@ -22,6 +25,7 @@ export default function Picture({
         width={width}
         height={height}
         crop="fill"
+        big={big}
       />
     </StyledWrapper>
   );
@@ -36,4 +40,7 @@ const StyledWrapper = styled.div`
 
 const StyledImage = styled(CldImage)`
   border-radius: 0.2em;
+  object-fit: contain;
+  width: ${(props) => (props.big === "true" ? "150px" : "125px")};
+  height: ${(props) => (props.big === "true" ? "150px" : "125px")};
 `;

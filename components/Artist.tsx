@@ -34,7 +34,13 @@ export default function Artist({
       </StyledInfoBox>
       <StyledGalery>
         {tattoos.map((tattoo) => (
-          <Picture width={125} height={125} source={tattoo} key={tattoo} />
+          <Picture
+            width={300}
+            height={300}
+            source={tattoo}
+            key={tattoo}
+            big="true"
+          />
         ))}
       </StyledGalery>
 
