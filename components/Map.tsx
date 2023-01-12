@@ -7,11 +7,19 @@ import styled from "styled-components";
 
 type MapProps = {
   artists: ArtistInterface[];
+  user: [number, number] | null;
 };
 
-export default function Map({ artists }: MapProps) {
-  const myIcon = L.icon({
+export default function Map({ artists, user }: MapProps) {
+  const artistIcon = L.icon({
     iconUrl: "/logo.svg",
+    iconSize: [38, 95],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76],
+  });
+
+  const userIcon = L.icon({
+    iconUrl: "/userIcon.svg",
     iconSize: [38, 95],
     iconAnchor: [22, 94],
     popupAnchor: [-3, -76],
@@ -24,13 +32,19 @@ export default function Map({ artists }: MapProps) {
       style={{ height: "80vh", width: "100%" }}
     >
       <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png" />
+
       {artists.map((artist) => (
-        <Marker key={artist._id} position={artist.position} icon={myIcon}>
+        <Marker key={artist._id} position={artist.position} icon={artistIcon}>
           <Popup>
             <Link href={`/${artist.slug}`}>{artist.artistName}</Link>
           </Popup>
         </Marker>
       ))}
+      {user !== null && (
+        <Marker position={user} icon={userIcon}>
+          <Popup>This is YOU!</Popup>
+        </Marker>
+      )}
     </StyledMapContainer>
   );
 }

@@ -6,6 +6,7 @@ function normalize(string: string): string {
 
 interface ArtistInterface extends Artist {
   _id: string;
+  position: [number, number];
 }
 
 class Artist {

@@ -6,6 +6,7 @@ type PictureProps = {
   height: number;
   source: string;
   className?: string;
+  //can't handle big-prop as boolean - it throws an error
   big?: string;
 };
 

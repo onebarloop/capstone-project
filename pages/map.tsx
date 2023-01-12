@@ -9,25 +9,16 @@ type MapProps = {
   artists: ArtistInterface[];
 };
 
-type Position = {
-  lat: number | null;
-  lon: number | null;
-};
-
 export default function MapPage({ artists }: MapProps) {
-  const [userPosition, setUserPosition] = useState<Position>({
-    lat: null,
-    lon: null,
-  });
+  const [userPosition, setUserPosition] = useState<[number, number] | null>(
+    null
+  );
 
   console.log(userPosition);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
-      setUserPosition({
-        lat: position.coords.latitude,
-        lon: position.coords.longitude,
-      });
+      setUserPosition([position.coords.latitude, position.coords.longitude]);
     });
   }, []);
 
@@ -42,7 +33,7 @@ export default function MapPage({ artists }: MapProps) {
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <Map artists={artists} />
+      <Map artists={artists} user={userPosition} />
       <Footer />
     </>
   );
