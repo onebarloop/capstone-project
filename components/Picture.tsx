@@ -2,8 +2,6 @@ import styled from "styled-components";
 import { CldImage } from "next-cloudinary";
 
 type PictureProps = {
-  width: number;
-  height: number;
   source: string;
   className?: string;
   //can't handle big-prop as boolean - it throws an error
@@ -11,8 +9,6 @@ type PictureProps = {
 };
 
 export default function Picture({
-  width,
-  height,
   source,
   className,
   big,
@@ -22,8 +18,8 @@ export default function Picture({
       <StyledImage
         alt={"tattoo"}
         src={source}
-        width={width}
-        height={height}
+        width={300}
+        height={300}
         crop="fill"
         big={big}
       />

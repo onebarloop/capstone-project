@@ -32,8 +32,6 @@ export default function RandomView({ artists }: RandomProps): JSX.Element {
       {randomArtists.map((artist) => (
         <Link key={artist._id} href={`/${artist.slug}`}>
           <Picture
-            width={120}
-            height={120}
             source={
               artist.tattoos[Math.floor(Math.random() * artist.tattoos.length)]
             }

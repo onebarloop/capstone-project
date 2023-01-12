@@ -113,11 +113,7 @@ export default function NewUserPage({
           <StyledGalery>
             {selectedImages.map((image) => (
               <div style={{ position: "relative" }} key={nanoid()}>
-                <Picture
-                  source={URL.createObjectURL(image)}
-                  width={110}
-                  height={110}
-                />
+                <Picture source={URL.createObjectURL(image)} />
                 <StyledDelete onClick={() => handleDelete(image.name)}>
                   X
                 </StyledDelete>
