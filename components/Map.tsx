@@ -34,7 +34,8 @@ export default function Map({ artists, userPosition }: MapProps) {
 
   const [select, setSelect] = useState<string | null>(null);
 
-  function ClickMap() {
+  //This function is needed to setup an event listener to the map itself. As a functional component it must return JSX, therefore the fragments.
+  function ClickMap(): JSX.Element {
     useMapEvents({
       click() {
         setSelect(null);
