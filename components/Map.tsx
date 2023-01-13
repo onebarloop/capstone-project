@@ -11,7 +11,8 @@ import { ArtistInterface } from "../lib/ArtistClass";
 import Link from "next/link";
 import styled from "styled-components";
 import { useState } from "react";
-import Select from "react-select";
+import Selector from "./Selector";
+import useSelect from "../lib/useSelect";
 
 type MapProps = {
   artists: ArtistInterface[];
@@ -49,53 +50,25 @@ export default function Map({ artists, userPosition }: MapProps) {
 
   const [select, setSelect] = useState<string | null>(null);
 
-  console.log(select);
+  const { selectedOption, setSelectedOption, options } = useSelect(artists);
 
   //This function is needed to setup an event listener to the map itself. As a functional component it must return JSX, therefore the fragments.
   function ClickMap(): JSX.Element {
     useMapEvents({
       click() {
         setSelect(null);
+        setSelectedOption({ value: null, label: null });
       },
     });
     return <></>;
   }
 
-  // the following code handles the Select Component
-  type Option = {
-    value: string | null;
-    label: string | null;
-  };
-
-  const options: Option[] = artists.map((artist) => ({
-    value: artist._id,
-    label: artist.artistName,
-  }));
-
-  const [selectedOption, setSelectedOption] = useState<Option>({
-    value: null,
-    label: null,
-  });
-
   return (
     <>
-      <StyledSelect
-        onChange={(option) => setSelectedOption(option as Option)}
+      <Selector
         options={options}
-        styles={{
-          singleValue: (baseStyles) => ({
-            ...baseStyles,
-            color: "rgba(217, 217, 217, 1)",
-          }),
-          option: (baseStyles, state) => ({
-            ...baseStyles,
-            color: state.isFocused ? "black" : "rgba(217, 217, 217, 1)",
-          }),
-          input: (baseStyles) => ({
-            ...baseStyles,
-            color: "rgba(217, 217, 217, 1)",
-          }),
-        }}
+        onSetSelectedOption={setSelectedOption}
+        selectedOption={selectedOption}
       />
       <StyledMapContainer
         center={[51.57, 10.2]}
@@ -139,14 +112,6 @@ export default function Map({ artists, userPosition }: MapProps) {
     </>
   );
 }
-
-const StyledSelect = styled(Select)`
-  z-index: 1001;
-
-  && > * {
-    background-color: rgba(50, 50, 50, 1);
-  }
-`;
 
 const StyledMapContainer = styled(MapContainer)`
   .leaflet-control {
