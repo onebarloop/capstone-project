@@ -13,12 +13,9 @@ export default function Header({
 
   return (
     <StyledHeader length={length}>
-      <Link href="/">
-        <Image alt="logo" src="/logo.svg" height={45} width={45} />
-      </Link>
-      <StyledLink href="/">
-        <h1>{heading}</h1>
-      </StyledLink>
+      <Image alt="logo" src="/logo.svg" height={45} width={45} />
+
+      <h1>{heading}</h1>
     </StyledHeader>
   );
 }
