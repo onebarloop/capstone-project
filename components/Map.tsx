@@ -10,8 +10,8 @@ import L from "leaflet";
 import { ArtistInterface } from "../lib/ArtistClass";
 import Link from "next/link";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
-import Select, { ActionMeta } from "react-select";
+import { useState } from "react";
+import Select from "react-select";
 
 type MapProps = {
   artists: ArtistInterface[];
@@ -20,7 +20,7 @@ type MapProps = {
 
 export default function Map({ artists, userPosition }: MapProps) {
   const artistIcon = L.icon({
-    iconUrl: "/logo.svg",
+    iconUrl: "/marker.svg",
     iconSize: [38, 95],
     iconAnchor: [22, 94],
     popupAnchor: [-3, -76],
@@ -29,6 +29,20 @@ export default function Map({ artists, userPosition }: MapProps) {
   const userIcon = L.icon({
     iconUrl: "/userIcon.svg",
     iconSize: [38, 95],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76],
+  });
+
+  const clickIcon = L.icon({
+    iconUrl: "/markerClick.svg",
+    iconSize: [38, 95],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76],
+  });
+
+  const selectIcon = L.icon({
+    iconUrl: "/logo.svg",
+    iconSize: [50, 95],
     iconAnchor: [22, 94],
     popupAnchor: [-3, -76],
   });
@@ -47,9 +61,10 @@ export default function Map({ artists, userPosition }: MapProps) {
     return <></>;
   }
 
+  // the following code handles the Select Component
   type Option = {
-    value: string;
-    label: string;
+    value: string | null;
+    label: string | null;
   };
 
   const options: Option[] = artists.map((artist) => ({
@@ -57,25 +72,35 @@ export default function Map({ artists, userPosition }: MapProps) {
     label: artist.artistName,
   }));
 
-  const [selectedOption, setSelectedOption] = useState<Option | null>(null);
-
-  useEffect(() => {
-    if (selectedOption !== null) {
-      setSelect(selectedOption.value);
-    } else return;
-  }, [selectedOption]);
+  const [selectedOption, setSelectedOption] = useState<Option>({
+    value: null,
+    label: null,
+  });
 
   return (
     <>
       <StyledSelect
-        defaultValue={selectedOption}
-        onChange={(option: Option | undefined) => setSelectedOption(option)}
+        onChange={(option) => setSelectedOption(option as Option)}
         options={options}
+        styles={{
+          singleValue: (baseStyles) => ({
+            ...baseStyles,
+            color: "rgba(217, 217, 217, 1)",
+          }),
+          option: (baseStyles, state) => ({
+            ...baseStyles,
+            color: state.isFocused ? "black" : "rgba(217, 217, 217, 1)",
+          }),
+          input: (baseStyles) => ({
+            ...baseStyles,
+            color: "rgba(217, 217, 217, 1)",
+          }),
+        }}
       />
       <StyledMapContainer
-        center={[51.57158268136762, 10.200763543026689]}
+        center={[51.57, 10.2]}
         zoom={6}
-        style={{ height: "80vh", width: "100%" }}
+        style={{ height: "75vh", width: "100%" }}
       >
         <ClickMap />
 
@@ -85,10 +110,18 @@ export default function Map({ artists, userPosition }: MapProps) {
           <Marker
             key={_id}
             position={position}
-            icon={select === _id ? userIcon : artistIcon}
+            icon={
+              select === _id
+                ? clickIcon
+                : selectedOption.value === _id
+                ? selectIcon
+                : artistIcon
+            }
             eventHandlers={{
               click: () => {
                 select === _id ? setSelect(null) : setSelect(_id);
+                select === selectedOption.value &&
+                  setSelectedOption({ value: null, label: null });
               },
             }}
           >
@@ -109,6 +142,10 @@ export default function Map({ artists, userPosition }: MapProps) {
 
 const StyledSelect = styled(Select)`
   z-index: 1001;
+
+  && > * {
+    background-color: rgba(50, 50, 50, 1);
+  }
 `;
 
 const StyledMapContainer = styled(MapContainer)`
