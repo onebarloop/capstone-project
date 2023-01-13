@@ -17,10 +17,6 @@ export default function Artist({
 
   const [popUp, setPopUp] = useState<string | null>(null);
 
-  // function handlePicture(tattoo: string | null = null) {
-  //   setPopUp(tattoo);
-  // }
-
   return (
     <StyledMain>
       {popUp !== null ? (
@@ -32,22 +28,22 @@ export default function Artist({
         <>
           <StyledInfoBox>
             <section>
-              <div>{artistName}</div>
-              <div>
+              <p>{artistName}</p>
+              <p>
                 <Button name={"Contact"} onClick={() => alert("Hi!")} />
                 <Button
                   name={likes.includes(_id) ? "Dislike" : "Like"}
                   onClick={() => handleLike(_id)}
                 />
-              </div>
+              </p>
             </section>
             <section>
-              <div>{location.city}</div>
-              <div>{location.streetname + " " + location.number}</div>
+              <p>{location.city}</p>
+              <p>{location.streetname + " " + location.number}</p>
             </section>
           </StyledInfoBox>
 
-          <StyledGalery>
+          <StyledGallery>
             {tattoos.map((tattoo) => (
               <Picture
                 source={tattoo}
@@ -56,7 +52,7 @@ export default function Artist({
                 onClick={() => setPopUp(tattoo)}
               />
             ))}
-          </StyledGalery>
+          </StyledGallery>
 
           <StyledSchedule>
             <DatePick dates={dates} inline />
@@ -85,7 +81,7 @@ const StyledInfoBox = styled.article`
   section {
     width: 50%;
   }
-  div {
+  p {
     margin: 1rem 0.5rem;
   }
 
@@ -99,7 +95,7 @@ const StyledSchedule = styled.div`
   margin: 10px;
 `;
 
-const StyledGalery = styled.div`
+const StyledGallery = styled.div`
   grid-column-end: span 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
