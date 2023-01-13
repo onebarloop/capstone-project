@@ -36,7 +36,7 @@ export default function Map({ artists, userPosition }: MapProps) {
 
   const clickIcon = L.icon({
     iconUrl: "/markerClick.svg",
-    iconSize: [38, 95],
+    iconSize: [50, 95],
     iconAnchor: [22, 94],
     popupAnchor: [-3, -76],
   });
@@ -93,8 +93,7 @@ export default function Map({ artists, userPosition }: MapProps) {
             eventHandlers={{
               click: () => {
                 select === _id ? setSelect(null) : setSelect(_id);
-                select === selectedOption.value &&
-                  setSelectedOption({ value: null, label: null });
+                setSelectedOption({ value: _id, label: artistName });
               },
             }}
           >
