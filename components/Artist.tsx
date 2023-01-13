@@ -4,6 +4,7 @@ import DatePick from "./DatePick";
 import Button from "./Button";
 import useLikes from "../lib/useLikes";
 import { ArtistInterface } from "../lib/ArtistClass";
+import { useState } from "react";
 
 export default function Artist({
   _id,
@@ -14,33 +15,50 @@ export default function Artist({
 }: ArtistInterface): JSX.Element {
   const { handleLike, likes } = useLikes();
 
+  const [popUp, setPopUp] = useState<string | null>(null);
+
   return (
     <StyledMain>
-      <StyledInfoBox>
-        <section>
-          <div>{artistName}</div>
-          <div>
-            <Button name={"Contact"} onClick={() => alert("Hi!")} />
-            <Button
-              name={likes.includes(_id) ? "Dislike" : "Like"}
-              onClick={() => handleLike(_id)}
-            />
-          </div>
-        </section>
-        <section>
-          <div>{location.city}</div>
-          <div>{location.streetname + " " + location.number}</div>
-        </section>
-      </StyledInfoBox>
-      <StyledGalery>
-        {tattoos.map((tattoo) => (
-          <Picture source={tattoo} key={tattoo} big="true" />
-        ))}
-      </StyledGalery>
+      {popUp !== null ? (
+        <StyledPopUp>
+          <Picture source={popUp} huge={"true"} />
+          <Button name="back" onClick={() => setPopUp(null)}></Button>
+        </StyledPopUp>
+      ) : (
+        <>
+          <StyledInfoBox>
+            <section>
+              <p>{artistName}</p>
+              <p>
+                <Button name={"Contact"} onClick={() => alert("Hi!")} />
+                <Button
+                  name={likes.includes(_id) ? "Dislike" : "Like"}
+                  onClick={() => handleLike(_id)}
+                />
+              </p>
+            </section>
+            <section>
+              <p>{location.city}</p>
+              <p>{location.streetname + " " + location.number}</p>
+            </section>
+          </StyledInfoBox>
 
-      <StyledSchedule>
-        <DatePick dates={dates} inline />
-      </StyledSchedule>
+          <StyledGallery>
+            {tattoos.map((tattoo) => (
+              <Picture
+                source={tattoo}
+                key={tattoo}
+                big="true"
+                onClick={() => setPopUp(tattoo)}
+              />
+            ))}
+          </StyledGallery>
+
+          <StyledSchedule>
+            <DatePick dates={dates} inline />
+          </StyledSchedule>
+        </>
+      )}
     </StyledMain>
   );
 }
@@ -63,7 +81,7 @@ const StyledInfoBox = styled.article`
   section {
     width: 50%;
   }
-  div {
+  p {
     margin: 1rem 0.5rem;
   }
 
@@ -77,7 +95,7 @@ const StyledSchedule = styled.div`
   margin: 10px;
 `;
 
-const StyledGalery = styled.div`
+const StyledGallery = styled.div`
   grid-column-end: span 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -86,4 +104,19 @@ const StyledGalery = styled.div`
   justify-items: center;
   gap: 15px;
   margin-bottom: 20px; ;
+`;
+
+const StyledPopUp = styled.div`
+  position: absolute;
+  height: 80vh;
+  width: 100vw;
+  background-color: #383636;
+  left: 0;
+  right: 0;
+  bottom: 66px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 40px;
+  gap: 40px;
 `;

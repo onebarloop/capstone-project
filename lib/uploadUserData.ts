@@ -1,6 +1,5 @@
 import React from "react";
 import { Artist } from "./ArtistClass";
-import fetchGeoData from "./fetchGeoData";
 
 export default async function upload(
   event: React.SyntheticEvent,
