@@ -119,4 +119,10 @@ const StyledPopUp = styled.div`
   flex-direction: column;
   padding-top: 40px;
   gap: 40px;
+
+  Button {
+    width: 80px;
+    height: 40px;
+    font-size: 1em;
+  }
 `;
