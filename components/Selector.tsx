@@ -13,7 +13,7 @@ export default function Selector({
   options,
   onSetSelectedOption,
   selectedOption,
-}: SelectorProps) {
+}: SelectorProps): JSX.Element {
   return (
     <StyledSelect
       onChange={(option) => onSetSelectedOption(option as Option)}

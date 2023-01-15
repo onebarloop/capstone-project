@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Artist from "../components/Artist";
 import type { ArtistInterface } from "../lib/ArtistClass";
+import useSelect from "../lib/useSelect";
 
 type slugProps = {
   artists: ArtistInterface[];
@@ -12,6 +13,8 @@ type slugProps = {
 export default function ArtistPage({ artists }: slugProps): JSX.Element {
   const router = useRouter();
   const { slug } = router.query;
+
+  const { setSelectedOption } = useSelect(artists);
 
   const artist = artists.find((artist) => artist.slug === slug);
 
@@ -22,7 +25,7 @@ export default function ArtistPage({ artists }: slugProps): JSX.Element {
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <Header heading={artist.artistName} />
-      <Artist {...artist} />
+      <Artist {...artist} onSelectedOption={setSelectedOption} />
       <Footer />
     </>
   ) : (

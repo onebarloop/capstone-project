@@ -4,7 +4,13 @@ import DatePick from "./DatePick";
 import Button from "./Button";
 import useLikes from "../lib/useLikes";
 import { ArtistInterface } from "../lib/ArtistClass";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
+import Router from "next/router";
+import { Option } from "../lib/useSelect";
+
+interface ArtistProps extends ArtistInterface {
+  onSelectedOption: Dispatch<SetStateAction<Option>>;
+}
 
 export default function Artist({
   _id,
@@ -12,8 +18,14 @@ export default function Artist({
   location,
   tattoos,
   dates,
-}: ArtistInterface): JSX.Element {
+  onSelectedOption,
+}: ArtistProps): JSX.Element {
   const { handleLike, likes } = useLikes();
+
+  function handleClick(artistname: string, id: string) {
+    onSelectedOption({ label: artistname, value: id });
+    Router.push("/map");
+  }
 
   const [popUp, setPopUp] = useState<string | null>(null);
 
@@ -34,6 +46,10 @@ export default function Artist({
                 <Button
                   name={likes.includes(_id) ? "Dislike" : "Like"}
                   onClick={() => handleLike(_id)}
+                />
+                <Button
+                  name="Map"
+                  onClick={() => handleClick(artistName, _id)}
                 />
               </p>
             </section>
@@ -78,6 +94,7 @@ const StyledInfoBox = styled.article`
   margin-bottom: 20px;
   font-size: 1.3em;
   padding: 0.5em 0;
+  padding-bottom: 0;
   section {
     width: 50%;
   }
@@ -85,8 +102,17 @@ const StyledInfoBox = styled.article`
     margin: 1rem 0.5rem;
   }
 
+  Button {
+    width: 68px;
+  }
+
   Button:first-child {
     margin-right: 1em;
+  }
+  Button:last-child {
+    margin-top: 0.8em;
+    margin-bottom: 0;
+    width: 149.3px;
   }
 `;
 

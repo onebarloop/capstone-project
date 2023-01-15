@@ -7,9 +7,9 @@ export type Option = {
 };
 
 export default function useSelect(artists: ArtistInterface[]) {
-  const options: Option[] = artists.map((artist) => ({
-    value: artist._id,
-    label: artist.artistName,
+  const options: Option[] = artists.map(({ _id, artistName }) => ({
+    value: _id,
+    label: artistName,
   }));
 
   const [selectedOption, setSelectedOption] = useLocalStorageState<Option>(
