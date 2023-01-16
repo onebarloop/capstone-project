@@ -14,7 +14,7 @@ type HomeProps = {
 };
 
 export default function Home({ artists }: HomeProps): JSX.Element {
-  const { likes, handleLike } = useLikes();
+  const { likes } = useLikes();
   const { viewPoint, handleSwitchView } = useView();
 
   // need an extra function to trigger the reload of the RandomView page.

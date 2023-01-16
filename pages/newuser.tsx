@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import React from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import upload from "../lib/uploadUserData";
 import { ArtistInterface } from "../lib/ArtistClass";
 import fetchData from "../lib/fetchData";
@@ -40,13 +40,15 @@ export default function NewUserPage({
     setSelectedImages(selectedImages.filter((image) => image.name !== name));
   }
 
+  const router = useRouter();
+
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
     setLoading(true);
     const url = await upload(event, selectedImages, dates);
     fetchData("/api", onSetArtists);
     setLoading(false);
-    Router.push(`/${url}`);
+    router.push(`/${url}`);
   }
 
   return (

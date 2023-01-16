@@ -11,6 +11,8 @@ import { ArtistInterface } from "../lib/ArtistClass";
 import Link from "next/link";
 import styled from "styled-components";
 import { useState } from "react";
+import Selector from "./Selector";
+import useSelect from "../lib/useSelect";
 
 type MapProps = {
   artists: ArtistInterface[];
@@ -19,7 +21,7 @@ type MapProps = {
 
 export default function Map({ artists, userPosition }: MapProps) {
   const artistIcon = L.icon({
-    iconUrl: "/logo.svg",
+    iconUrl: "/marker.svg",
     iconSize: [38, 95],
     iconAnchor: [22, 94],
     popupAnchor: [-3, -76],
@@ -32,49 +34,81 @@ export default function Map({ artists, userPosition }: MapProps) {
     popupAnchor: [-3, -76],
   });
 
+  const clickIcon = L.icon({
+    iconUrl: "/markerClick.svg",
+    iconSize: [50, 95],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76],
+  });
+
+  const selectIcon = L.icon({
+    iconUrl: "/logo.svg",
+    iconSize: [50, 95],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76],
+  });
+
   const [select, setSelect] = useState<string | null>(null);
+
+  const { selectedOption, setSelectedOption, options } = useSelect(artists);
 
   //This function is needed to setup an event listener to the map itself. As a functional component it must return JSX, therefore the fragments.
   function ClickMap(): JSX.Element {
     useMapEvents({
       click() {
         setSelect(null);
+        setSelectedOption({ value: null, label: null });
       },
     });
     return <></>;
   }
 
   return (
-    <StyledMapContainer
-      center={[51.57158268136762, 10.200763543026689]}
-      zoom={6}
-      style={{ height: "80vh", width: "100%" }}
-    >
-      <ClickMap />
-      <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png" />
+    <>
+      <Selector
+        options={options}
+        onSetSelectedOption={setSelectedOption}
+        selectedOption={selectedOption}
+      />
+      <StyledMapContainer
+        center={[51.57, 10.2]}
+        zoom={6}
+        style={{ height: "75vh", width: "100%" }}
+      >
+        <ClickMap />
 
-      {artists.map(({ _id, position, slug, artistName }) => (
-        <Marker
-          key={_id}
-          position={position}
-          icon={select === _id ? userIcon : artistIcon}
-          eventHandlers={{
-            click: () => {
-              select === _id ? setSelect(null) : setSelect(_id);
-            },
-          }}
-        >
-          <Popup closeButton={false}>
-            <Link href={`/${slug}`}>{artistName}</Link>
-          </Popup>
-        </Marker>
-      ))}
-      {userPosition !== null && (
-        <Marker position={userPosition} icon={userIcon}>
-          <Popup>This is YOU!</Popup>
-        </Marker>
-      )}
-    </StyledMapContainer>
+        <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png" />
+
+        {artists.map(({ _id, position, slug, artistName }) => (
+          <Marker
+            key={_id}
+            position={position}
+            icon={
+              select === _id
+                ? clickIcon
+                : selectedOption.value === _id
+                ? selectIcon
+                : artistIcon
+            }
+            eventHandlers={{
+              click: () => {
+                select === _id ? setSelect(null) : setSelect(_id);
+                setSelectedOption({ value: _id, label: artistName });
+              },
+            }}
+          >
+            <Popup closeButton={false}>
+              <Link href={`/${slug}`}>{artistName}</Link>
+            </Popup>
+          </Marker>
+        ))}
+        {userPosition !== null && (
+          <Marker position={userPosition} icon={userIcon}>
+            <Popup>This is YOU!</Popup>
+          </Marker>
+        )}
+      </StyledMapContainer>
+    </>
   );
 }
 
