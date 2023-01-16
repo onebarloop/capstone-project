@@ -5,7 +5,7 @@ import Button from "./Button";
 import useLikes from "../lib/useLikes";
 import { ArtistInterface } from "../lib/ArtistClass";
 import { Dispatch, SetStateAction, useState } from "react";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import { Option } from "../lib/useSelect";
 
 interface ArtistProps extends ArtistInterface {
@@ -22,9 +22,11 @@ export default function Artist({
 }: ArtistProps): JSX.Element {
   const { handleLike, likes } = useLikes();
 
+  const router = useRouter();
+
   function handleClick(artistname: string, id: string) {
     onSelectedOption({ label: artistname, value: id });
-    Router.push("/map");
+    router.push("/map");
   }
 
   const [popUp, setPopUp] = useState<string | null>(null);
