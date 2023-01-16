@@ -4,8 +4,7 @@ export default function usePosition() {
   const [position, setPosition] = useState<[number, number] | null | undefined>(
     undefined
   );
-  function error(error: GeolocationPositionError) {
-    console.log(error);
+  function error() {
     setPosition(null);
   }
   function success(position: GeolocationPosition) {
