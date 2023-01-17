@@ -29,14 +29,14 @@ export default function Artist({
     router.push("/map");
   }
 
-  const [popUp, setPopUp] = useState<string | null>(null);
+  const [largePic, setLargePic] = useState<string | null>(null);
 
   return (
     <StyledMain>
-      {popUp !== null ? (
+      {largePic !== null ? (
         <StyledPopUp>
-          <Picture source={popUp} huge={"true"} />
-          <Button name="back" onClick={() => setPopUp(null)}></Button>
+          <Picture source={largePic} huge={"true"} />
+          <Button name="back" onClick={() => setLargePic(null)}></Button>
         </StyledPopUp>
       ) : (
         <>
@@ -67,7 +67,7 @@ export default function Artist({
                 source={tattoo}
                 key={tattoo}
                 big="true"
-                onClick={() => setPopUp(tattoo)}
+                onClick={() => setLargePic(tattoo)}
               />
             ))}
           </StyledGallery>
