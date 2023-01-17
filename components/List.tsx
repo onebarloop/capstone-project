@@ -17,7 +17,8 @@ export default function List({
   return (
     <StyledArtistCard key={_id}>
       <StyledInfoBox>
-        {artistName} <br /> {location.city}
+        <p>{artistName}</p>
+        <p> {location.city}</p>
         <Button
           name={likes.includes(_id) ? "Dislike" : "Like"}
           onClick={() => handleLike(_id)}
@@ -48,7 +49,11 @@ const StyledInfoBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: space-around;
+  font-size: 1.1em;
+  p {
+    width: 180px;
+  }
 `;
 
 const StyledPicture = styled(Picture)`

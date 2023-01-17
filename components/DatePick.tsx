@@ -45,12 +45,14 @@ export default function DatePick({
           highlightDates={datum}
           placeholderText="Add Dates"
           className={className}
+          minDate={new Date()}
         />
       ) : (
         <DatePicker
           inline
           highlightDates={datum}
           onChange={(date: Date) => handleAppointment(date)}
+          minDate={new Date()}
         />
       )}
     </StyledDatePicker>
@@ -68,5 +70,9 @@ const StyledDatePicker = styled.div`
   }
   .react-datepicker__day--highlighted {
     background-color: #d93378;
+  }
+  .react-datepicker__day--disabled {
+    color: #898888;
+    background-color: black;
   }
 `;
