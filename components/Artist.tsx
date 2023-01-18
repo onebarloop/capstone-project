@@ -24,7 +24,7 @@ export default function Artist({
 
   const router = useRouter();
 
-  function handleClick(artistname: string, id: string) {
+  function handleClick(artistname: string, id: string): void {
     onSelectedOption({ label: artistname, value: id });
     router.push("/map");
   }

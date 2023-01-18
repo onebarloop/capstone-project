@@ -51,13 +51,19 @@ const StyledInfoBox = styled.div`
   align-items: flex-start;
   justify-content: space-around;
   font-size: 1.1em;
-  p {
+
+  p:first-child {
+    font-size: 1.2em;
     width: 180px;
+  }
+
+  p {
+    margin-top: 0;
   }
 `;
 
 const StyledPicture = styled(Picture)`
   position: absolute;
   right: 25px;
-  top: 25px;
+  top: 30px;
 `;

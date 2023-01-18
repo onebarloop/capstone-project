@@ -29,6 +29,7 @@ export default function Picture({
         big={big}
         huge={huge}
         onClick={onClick}
+        priority
       />
     </StyledWrapper>
   );
