@@ -39,7 +39,7 @@ The uploaded imgs are stored at cloudinary. The value of `artists.tattoos` is an
 ### TypeScript
 This is my first time using TypeScript. I typed component props in the beginning of every component file. The `ArtistInterface` (declared [here](https://github.com/onebarloop/capstone-project/blob/main/lib/ArtistClass.ts)) is imported in many places - its an extension of the `ArtistClass` 
 
-## FEEDBACK!
+## 📮 FEEDBACK!
 You are very welcome to comment on my usage of TypeScript and the genral structure and codequality of my app! I am a beginner after all, so I really appreciate feedback! Please comment [*HERE*](https://github.com/onebarloop/capstone-project/issues/39)
 
 **Have a wonderful day** 🦄
