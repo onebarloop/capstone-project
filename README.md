@@ -4,7 +4,8 @@
 
 **Welcome dear developers 👾** 
 
-This is the repository for my capstone project "Wannado"
+This is the repository for my capstone project "Wannado". 
+It was part of my three months frontend-bootcamp [@neuefische](https://www.neuefische.de/)
 
 <img src=https://user-images.githubusercontent.com/115539625/207014840-a93ede10-dd86-4268-9afd-15ad24b5bb92.JPG width="200">
 
@@ -17,18 +18,22 @@ This is the repository for my capstone project "Wannado"
 - Tattoo artists can publish their time schedule, so making appointments is easy for both sides
 - Tattoo artists can upload their sketches and tattoo-ideas, so users can browse them
 
-### User Stories
-Please consider leaving a comment on the pending userstories before leaving. 
+### Structure of the App
+ The App is sturctured in few different [/pages](https://github.com/onebarloop/capstone-project/tree/main/pages)
+  - [/index.tsx](https://github.com/onebarloop/capstone-project/blob/main/pages/index.tsx) renders, depending on state, three different views: The Random View , handled via [Random View Component](https://github.com/onebarloop/capstone-project/blob/main/components/RandomView.tsx), the All Artists List and the Favorite Artists List, both handled via the [List Component](https://github.com/onebarloop/capstone-project/blob/main/components/List.tsx)
+  - [/map.tsx](https://github.com/onebarloop/capstone-project/blob/main/pages/map.tsx) renders all components regarding the map feature, i.e. [Map.tsx, obciosuly](https://github.com/onebarloop/capstone-project/blob/main/components/Map.tsx) and [Selector.tsx](https://github.com/onebarloop/capstone-project/blob/main/components/Selector.tsx)
+  - [/newuser.tsx](https://github.com/onebarloop/capstone-project/blob/main/pages/newuser.tsx) is the form page. Here artists can upload their information, schedule and their work
+  - [/[slug].tsx](https://github.com/onebarloop/capstone-project/blob/main/pages/%5Bslug%5D.tsx) is the dynamic page: It renders the Artist the user is navigating. The slug ist the name of the artists without spaces and all lowercase. Its generated during artists creation and part of the artist object.
 
-| Sprint  | Topic | US-Check 
-| ------------- | ------------- | -------------
-| # 3 | [Map implementation](https://github.com/onebarloop/capstone-project/issues/23)  | <p align="center">✅<p>
-| # 3 | [Preview userimages before upload](https://github.com/onebarloop/capstone-project/issues/24)  | <p align="center">✅<p>
-| # 3 | [Calendar implementation](https://github.com/onebarloop/capstone-project/issues/26)| <p align="center">✅<p>
+### The Data
+The data, i.e. the Artist-Objects, are stored in a MongoDB. Basis of the object is the [ArtistClass.ts](https://github.com/onebarloop/capstone-project/blob/main/lib/ArtistClass.ts). 
+The uploaded imgs are stored at cloudinary. The value of `artists.tattoos` is an array with the public IDs of the uploaded pictures.
 
-### Pull Requests
-You are also welcome to directly review my Code. Check the open [PR's](https://github.com/onebarloop/wannado/pulls). Since this is the first time I'm using typescript in an application, I am very happy about tips regarding the correct usage of types. If you are not familiar with typescript, nevertheless please review my code! You can easily recognize typescript in my code via the corresponding comments or the inline type specification (foo: type).
+### TypeScript
+This is my first time using TypeScript. I typed component props in the beginning of every component file. The `ArtistInterface` (declared [here](https://github.com/onebarloop/capstone-project/blob/main/lib/ArtistClass.ts)) is imported in many places - its an extension of the `ArtistClass` 
 
+## FEEDBACK!
+You are very welcome to comment on my usage of TypeScript and the genral structure and codequality of my app! I am a beginner after all, so I really appreciate feedback!
 
 **Have a wonderful day** 🦄
 
