@@ -14,7 +14,7 @@ export default async function fetchGeoData({
 }: GeoDataProps): Promise<number[]> {
   const response = await fetch(
     `https://api.geoapify.com/v1/geocode/search?housenumber=${number}&street=${streetname}&city=${city}&format=json&apiKey=${APIKEY}`,
-    { method: "GET" }
+    { method: 'GET' }
   );
   const { results } = await response.json();
 
@@ -29,9 +29,9 @@ export async function fetchArtistPosition(artistLocation: {
   streetname: string;
   number: number;
 }): Promise<number[]> {
-  const response = await fetch("/api/geodata", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
+  const response = await fetch('/api/geodata', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(artistLocation),
   });
 

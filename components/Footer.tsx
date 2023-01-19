@@ -1,16 +1,16 @@
-import styled from "styled-components";
-import Link from "next/link";
+import styled from 'styled-components';
+import Link from 'next/link';
 
 export default function Footer(): JSX.Element {
   return (
     <StyledFooter>
-      <StyledLink href="/">
+      <StyledLink href='/'>
         <p>HOME</p>
       </StyledLink>
-      <StyledLink href="/map">
+      <StyledLink href='/map'>
         <p>MAP</p>
       </StyledLink>
-      <StyledLink href="/newuser">
+      <StyledLink href='/newuser'>
         <p>USER</p>
       </StyledLink>
     </StyledFooter>

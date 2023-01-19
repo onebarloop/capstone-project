@@ -1,7 +1,7 @@
-import { fetchArtistPosition } from "./fetchGeoData";
+import { fetchArtistPosition } from './fetchGeoData';
 
 function normalize(string: string): string {
-  return string.replaceAll(" ", "").toLowerCase();
+  return string.replaceAll(' ', '').toLowerCase();
 }
 
 interface ArtistInterface extends Artist {

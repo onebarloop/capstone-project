@@ -1,18 +1,18 @@
-import styled from "styled-components";
-import Image from "next/image";
+import styled from 'styled-components';
+import Image from 'next/image';
 
 type HeaderProps = {
   heading?: string;
 };
 
 export default function Header({
-  heading = "Wannado",
+  heading = 'Wannado',
 }: HeaderProps): JSX.Element {
   const length: number = heading.length;
 
   return (
     <StyledHeader length={length}>
-      <Image alt="logo" src="/logo.svg" height={45} width={45} />
+      <Image alt='logo' src='/logo.svg' height={45} width={45} />
 
       <h1>{heading}</h1>
     </StyledHeader>
@@ -35,7 +35,7 @@ const StyledHeader = styled.header<StyledHeaderProps>`
 
   h1 {
     font-size: ${(props) =>
-      props.length ? (props.length < 13 ? "2.5rem" : "1.5rem") : "2.5rem"};
+      props.length ? (props.length < 13 ? '2.5rem' : '1.5rem') : '2.5rem'};
     color: rgba(217, 217, 217, 1);
   }
 `;

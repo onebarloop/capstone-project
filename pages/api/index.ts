@@ -1,6 +1,6 @@
-import dbConnect from "../../db/dbConnect";
-import Artist from "../../db/models/Artist";
-import type { NextApiRequest, NextApiResponse } from "next";
+import dbConnect from '../../db/dbConnect';
+import Artist from '../../db/models/Artist';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
   req: NextApiRequest,
@@ -8,7 +8,7 @@ export default async function handler(
 ) {
   await dbConnect();
 
-  if (req.method === "GET") {
+  if (req.method === 'GET') {
     try {
       const artists = await Artist.find();
       res.status(200).json(artists);
@@ -16,7 +16,7 @@ export default async function handler(
       res.status(500).json(error);
     }
   }
-  if (req.method === "POST") {
+  if (req.method === 'POST') {
     const data = req.body;
 
     try {

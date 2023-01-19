@@ -1,17 +1,17 @@
-import Head from "next/head";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import React from "react";
-import styled from "styled-components";
-import Button from "../components/Button";
-import { useRouter } from "next/router";
-import upload from "../lib/uploadUserData";
-import { ArtistInterface } from "../lib/ArtistClass";
-import fetchData from "../lib/fetchData";
-import { Dispatch, SetStateAction, useState } from "react";
-import { nanoid } from "nanoid";
-import Picture from "../components/Picture";
-import DatePick from "../components/DatePick";
+import Head from 'next/head';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import React from 'react';
+import styled from 'styled-components';
+import Button from '../components/Button';
+import { useRouter } from 'next/router';
+import upload from '../lib/uploadUserData';
+import { ArtistInterface } from '../lib/ArtistClass';
+import fetchData from '../lib/fetchData';
+import { Dispatch, SetStateAction, useState } from 'react';
+import { nanoid } from 'nanoid';
+import Picture from '../components/Picture';
+import DatePick from '../components/DatePick';
 
 type NewUserProps = {
   onSetArtists: Dispatch<SetStateAction<ArtistInterface[] | undefined>>;
@@ -46,7 +46,7 @@ export default function NewUserPage({
     event.preventDefault();
     setLoading(true);
     const url = await upload(event, selectedImages, dates);
-    fetchData("/api", onSetArtists);
+    fetchData('/api', onSetArtists);
     setLoading(false);
     router.push(`/${url}`);
   }
@@ -55,23 +55,23 @@ export default function NewUserPage({
     <>
       <Head>
         <title>Wannado</title>
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel='shortcut icon' href='/favicon.ico' />
       </Head>
-      <Header heading={"Add New Artist"} />
+      <Header heading={'Add New Artist'} />
 
       <StyledForm onSubmit={handleSubmit}>
         <StyledLabel>
           <span>Artistname:</span>
-          <input name="artistname" required />
+          <input name='artistname' required />
         </StyledLabel>
         <StyledLabel>
           <span>City:</span>
-          <input name="city" required />
+          <input name='city' required />
         </StyledLabel>
         <StyledLabel>
           <span>Street:</span>
-          <input name="streetname" required />
-          <input name="number" placeholder="#" type="number" required />
+          <input name='streetname' required />
+          <input name='number' placeholder='#' type='number' required />
         </StyledLabel>
 
         {selectedImages.length === 4 ? (
@@ -82,7 +82,7 @@ export default function NewUserPage({
               inline={false}
             />
             <StyledSubmit
-              name={`${isloading ? "Uploading" : "Sumbit"}`}
+              name={`${isloading ? 'Uploading' : 'Sumbit'}`}
               inactive={isloading}
               disabled={isloading}
             ></StyledSubmit>
@@ -98,9 +98,9 @@ export default function NewUserPage({
               Add Images
               <input
                 onChange={changeImage}
-                name="pics"
-                type="file"
-                accept="image/png, image/jpeg"
+                name='pics'
+                type='file'
+                accept='image/png, image/jpeg'
                 required
               />
             </StyledImgInput>
@@ -114,7 +114,7 @@ export default function NewUserPage({
         ) : (
           <StyledGalery>
             {selectedImages.map((image) => (
-              <div style={{ position: "relative" }} key={nanoid()}>
+              <div style={{ position: 'relative' }} key={nanoid()}>
                 <Picture source={URL.createObjectURL(image)} />
                 <StyledDelete onClick={() => handleDelete(image.name)}>
                   X
@@ -174,7 +174,7 @@ const StyledImgInput = styled.label`
   border: 1px solid #ccc;
   padding: 10px;
   color: rgba(217, 217, 217, 1);
-  input[type="file"] {
+  input[type='file'] {
     display: none;
   }
 `;

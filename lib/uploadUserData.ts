@@ -1,5 +1,5 @@
-import React from "react";
-import { Artist } from "./ArtistClass";
+import React from 'react';
+import { Artist } from './ArtistClass';
 
 export default async function upload(
   event: React.SyntheticEvent,
@@ -22,11 +22,11 @@ export default async function upload(
     let urls: string[] = [];
     for (const file of files) {
       const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "b5zcklfu");
+      formData.append('file', file);
+      formData.append('upload_preset', 'b5zcklfu');
       const response = await fetch(
-        "https://api.cloudinary.com/v1_1/dt7yjhfbb/image/upload",
-        { method: "POST", body: formData }
+        'https://api.cloudinary.com/v1_1/dt7yjhfbb/image/upload',
+        { method: 'POST', body: formData }
       );
       const data = await response.json();
       urls.push(data.public_id);
@@ -55,9 +55,9 @@ export default async function upload(
 
   // Upload Artist Object via custom API-call
   try {
-    const response = await fetch("/api", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    const response = await fetch('/api', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newArtist),
     });
 

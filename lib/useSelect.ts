@@ -1,5 +1,5 @@
-import { ArtistInterface } from "./ArtistClass";
-import useLocalStorageState from "use-local-storage-state";
+import { ArtistInterface } from './ArtistClass';
+import useLocalStorageState from 'use-local-storage-state';
 
 export type Option = {
   value: string | null;
@@ -13,7 +13,7 @@ export default function useSelect(artists: ArtistInterface[]) {
   }));
 
   const [selectedOption, setSelectedOption] = useLocalStorageState<Option>(
-    "mapSelect",
+    'mapSelect',
     { defaultValue: { value: null, label: null } }
   );
 

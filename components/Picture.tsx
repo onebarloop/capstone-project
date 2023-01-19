@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { CldImage } from "next-cloudinary";
+import styled from 'styled-components';
+import { CldImage } from 'next-cloudinary';
 
 type PictureProps = {
   source: string;
@@ -19,11 +19,11 @@ export default function Picture({
   return (
     <StyledWrapper className={className}>
       <StyledImage
-        alt={"tattoo"}
+        alt={'tattoo'}
         src={source}
         width={300}
         height={300}
-        crop="fill"
+        crop='fill'
         big={big}
         huge={huge}
         onClick={onClick}
@@ -44,7 +44,7 @@ const StyledImage = styled(CldImage)`
   border-radius: 0.2em;
   object-fit: contain;
   width: ${(props) =>
-    props.big === "true" ? "150px" : props.huge === "true" ? "300px" : "125px"};
+    props.big === 'true' ? '150px' : props.huge === 'true' ? '300px' : '125px'};
   height: ${(props) =>
-    props.big === "true" ? "150px" : props.huge === "true" ? "300px" : "125px"};
+    props.big === 'true' ? '150px' : props.huge === 'true' ? '300px' : '125px'};
 `;

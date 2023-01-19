@@ -1,5 +1,5 @@
-import { ArtistInterface } from "./ArtistClass";
-import { Dispatch, SetStateAction } from "react";
+import { ArtistInterface } from './ArtistClass';
+import { Dispatch, SetStateAction } from 'react';
 
 export default async function fetchData(
   url: string,

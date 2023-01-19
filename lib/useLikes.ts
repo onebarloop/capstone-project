@@ -1,7 +1,7 @@
-import useLocalStorageState from "use-local-storage-state";
+import useLocalStorageState from 'use-local-storage-state';
 
 export default function useLikes() {
-  const [likes, setLikes] = useLocalStorageState<string[]>("likes", {
+  const [likes, setLikes] = useLocalStorageState<string[]>('likes', {
     defaultValue: [],
   });
 
