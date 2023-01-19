@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Image from "next/image";
-import Link from "next/link";
 
 type HeaderProps = {
   heading?: string;
@@ -39,8 +38,4 @@ const StyledHeader = styled.header<StyledHeaderProps>`
       props.length ? (props.length < 13 ? "2.5rem" : "1.5rem") : "2.5rem"};
     color: rgba(217, 217, 217, 1);
   }
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
 `;
