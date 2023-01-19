@@ -24,6 +24,12 @@ Random View             |   Artist Page             |  Map Page |  Upload Page
 :-------------------------:| :-------------------------:|:-------------------------:|:-------------------------:
 <img src=https://user-images.githubusercontent.com/115539625/213181247-973948e7-66e0-491a-81d8-f15d8ceb2d46.png width="200">| <img src =https://user-images.githubusercontent.com/115539625/213181364-b9bd3a95-b682-40c9-86ee-171d3ca27bbb.png width="200"> | <img src=https://user-images.githubusercontent.com/115539625/213182553-13e8dbd6-ca8f-48cf-85bb-21f3b1cfb5e5.png width="200"> | <img src=https://user-images.githubusercontent.com/115539625/213182832-8c9786f0-03d6-4645-9be8-9ccae445ae58.png width="200">
 
+### Technologies used
+
+| Framework      | Libraries | Other |
+| ----------- | ----------- | ----------- |
+| Next.js   |React <br> styled components <br> leaflet <br> react-datepicker  <br> react-select  | MongoDB <br> mongoose <br> cloudinary <br> |
+
 
 ### Structure of the App
  The App is sturctured in few different [/pages](https://github.com/onebarloop/capstone-project/tree/main/pages)
@@ -35,6 +41,9 @@ Random View             |   Artist Page             |  Map Page |  Upload Page
 ### The Data
 The data, i.e. the Artist-Objects, are stored in a MongoDB. Basis of the object is the [ArtistClass.ts](https://github.com/onebarloop/capstone-project/blob/main/lib/ArtistClass.ts). 
 The uploaded imgs are stored at cloudinary. The value of `artists.tattoos` is an array with the public IDs of the uploaded pictures.
+
+### API-routes
+
 
 ### TypeScript
 This is my first time using TypeScript. I typed component props in the beginning of every component file. The `ArtistInterface` (declared [here](https://github.com/onebarloop/capstone-project/blob/main/lib/ArtistClass.ts)) is imported in many places - its an extension of the `ArtistClass` 
