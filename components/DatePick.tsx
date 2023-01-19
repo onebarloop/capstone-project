@@ -1,7 +1,7 @@
-import React, { SetStateAction, Dispatch } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import styled from "styled-components";
+import React, { SetStateAction, Dispatch } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import styled from 'styled-components';
 
 type DatePickProps = {
   dates: string[];
@@ -33,7 +33,7 @@ export default function DatePick({
     const dateString: string = date.toDateString();
     dates.includes(dateString)
       ? alert(`Make an appointment for ${date} ?`)
-      : alert("Date not available");
+      : alert('Date not available');
   }
 
   return (
@@ -43,7 +43,7 @@ export default function DatePick({
           onChange={(date: Date) => handleDate(date)}
           shouldCloseOnSelect={false}
           highlightDates={datum}
-          placeholderText="Add Dates"
+          placeholderText='Add Dates'
           className={className}
           minDate={new Date()}
         />

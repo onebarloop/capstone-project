@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import type { ArtistInterface } from "../../lib/ArtistClass";
+import mongoose from 'mongoose';
+import type { ArtistInterface } from '../../lib/ArtistClass';
 
 const { Schema } = mongoose;
 
@@ -20,6 +20,6 @@ const artistSchema = new Schema<ArtistInterface>({
 
 const Artist =
   mongoose.models.Artist ||
-  mongoose.model<ArtistInterface>("Artist", artistSchema);
+  mongoose.model<ArtistInterface>('Artist', artistSchema);
 
 export default Artist;

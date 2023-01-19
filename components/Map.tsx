@@ -4,15 +4,15 @@ import {
   Popup,
   TileLayer,
   useMapEvents,
-} from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
-import { ArtistInterface } from "../lib/ArtistClass";
-import Link from "next/link";
-import styled from "styled-components";
-import { useState } from "react";
-import Selector from "./Selector";
-import useSelect from "../lib/useSelect";
+} from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+import { ArtistInterface } from '../lib/ArtistClass';
+import Link from 'next/link';
+import styled from 'styled-components';
+import { useState } from 'react';
+import Selector from './Selector';
+import useSelect from '../lib/useSelect';
 
 type MapProps = {
   artists: ArtistInterface[];
@@ -21,28 +21,28 @@ type MapProps = {
 
 export default function Map({ artists, userPosition }: MapProps) {
   const artistIcon = L.icon({
-    iconUrl: "/marker.svg",
+    iconUrl: '/marker.svg',
     iconSize: [38, 95],
     iconAnchor: [22, 94],
     popupAnchor: [-3, -76],
   });
 
   const userIcon = L.icon({
-    iconUrl: "/userIcon.svg",
+    iconUrl: '/userIcon.svg',
     iconSize: [38, 95],
     iconAnchor: [22, 94],
     popupAnchor: [-3, -76],
   });
 
   const clickIcon = L.icon({
-    iconUrl: "/markerClick.svg",
+    iconUrl: '/markerClick.svg',
     iconSize: [50, 95],
     iconAnchor: [22, 94],
     popupAnchor: [-3, -76],
   });
 
   const selectIcon = L.icon({
-    iconUrl: "/logo.svg",
+    iconUrl: '/logo.svg',
     iconSize: [50, 95],
     iconAnchor: [22, 94],
     popupAnchor: [-3, -76],
@@ -73,11 +73,11 @@ export default function Map({ artists, userPosition }: MapProps) {
       <StyledMapContainer
         center={[51.57, 10.2]}
         zoom={6}
-        style={{ height: "75vh", width: "100%" }}
+        style={{ height: '75vh', width: '100%' }}
       >
         <ClickMap />
 
-        <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png" />
+        <TileLayer url='https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png' />
 
         {artists.map(({ _id, position, slug, artistName }) => (
           <Marker

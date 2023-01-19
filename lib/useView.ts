@@ -1,4 +1,4 @@
-import useLocalStorageState from "use-local-storage-state";
+import useLocalStorageState from 'use-local-storage-state';
 
 export type ViewPoint = {
   random: boolean;
@@ -7,11 +7,11 @@ export type ViewPoint = {
   reload: boolean;
 };
 
-type View = "random" | "artists" | "favorites" | "reload";
+type View = 'random' | 'artists' | 'favorites' | 'reload';
 
 export default function useView() {
   const [viewPoint, setViewPoint] = useLocalStorageState<ViewPoint>(
-    "viewpoint",
+    'viewpoint',
     {
       defaultValue: {
         random: true,

@@ -1,1 +1,1 @@
-declare module "next-cloudinary";
+declare module 'next-cloudinary';

@@ -1,12 +1,12 @@
-import Picture from "../components/Picture";
-import styled from "styled-components";
-import DatePick from "./DatePick";
-import Button from "./Button";
-import useLikes from "../lib/useLikes";
-import { ArtistInterface } from "../lib/ArtistClass";
-import { Dispatch, SetStateAction, useState } from "react";
-import { useRouter } from "next/router";
-import { Option } from "../lib/useSelect";
+import Picture from '../components/Picture';
+import styled from 'styled-components';
+import DatePick from './DatePick';
+import Button from './Button';
+import useLikes from '../lib/useLikes';
+import { ArtistInterface } from '../lib/ArtistClass';
+import { Dispatch, SetStateAction, useState } from 'react';
+import { useRouter } from 'next/router';
+import { Option } from '../lib/useSelect';
 
 interface ArtistProps extends ArtistInterface {
   onSelectedOption: Dispatch<SetStateAction<Option>>;
@@ -24,19 +24,19 @@ export default function Artist({
 
   const router = useRouter();
 
-  function handleClick(artistname: string, id: string) {
+  function handleClick(artistname: string, id: string): void {
     onSelectedOption({ label: artistname, value: id });
-    router.push("/map");
+    router.push('/map');
   }
 
-  const [popUp, setPopUp] = useState<string | null>(null);
+  const [largePic, setLargePic] = useState<string | null>(null);
 
   return (
     <StyledMain>
-      {popUp !== null ? (
+      {largePic !== null ? (
         <StyledPopUp>
-          <Picture source={popUp} huge={"true"} />
-          <Button name="back" onClick={() => setPopUp(null)}></Button>
+          <Picture source={largePic} huge={'true'} />
+          <Button name='back' onClick={() => setLargePic(null)}></Button>
         </StyledPopUp>
       ) : (
         <>
@@ -44,20 +44,20 @@ export default function Artist({
             <section>
               <p>{artistName}</p>
               <p>
-                <Button name={"Contact"} onClick={() => alert("Hi!")} />
+                <Button name={'Contact'} onClick={() => alert('Hi!')} />
                 <Button
-                  name={likes.includes(_id) ? "Dislike" : "Like"}
+                  name={likes.includes(_id) ? 'Dislike' : 'Like'}
                   onClick={() => handleLike(_id)}
                 />
                 <Button
-                  name="Map"
+                  name='Map'
                   onClick={() => handleClick(artistName, _id)}
                 />
               </p>
             </section>
             <section>
               <p>{location.city}</p>
-              <p>{location.streetname + " " + location.number}</p>
+              <p>{location.streetname + ' ' + location.number}</p>
             </section>
           </StyledInfoBox>
 
@@ -66,8 +66,8 @@ export default function Artist({
               <Picture
                 source={tattoo}
                 key={tattoo}
-                big="true"
-                onClick={() => setPopUp(tattoo)}
+                big='true'
+                onClick={() => setLargePic(tattoo)}
               />
             ))}
           </StyledGallery>

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 type ButtonProps = {
   name?: string;
@@ -29,7 +29,7 @@ export default function Button({
 
 const StyledButton = styled.button<ButtonProps>`
   background: ${(props) =>
-    props.inactive ? "rgba(217, 51, 120, 0.56)" : "#D93378"};
+    props.inactive ? 'rgba(217, 51, 120, 0.56)' : '#D93378'};
   border-radius: 4px;
   border: none;
   color: #d9d9d9;

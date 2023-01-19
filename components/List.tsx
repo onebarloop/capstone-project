@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import Link from "next/link";
-import Picture from "./Picture";
-import Button from "./Button";
-import useLikes from "../lib/useLikes";
-import { ArtistInterface } from "../lib/ArtistClass";
+import styled from 'styled-components';
+import Link from 'next/link';
+import Picture from './Picture';
+import Button from './Button';
+import useLikes from '../lib/useLikes';
+import { ArtistInterface } from '../lib/ArtistClass';
 
 export default function List({
   _id,
@@ -20,7 +20,7 @@ export default function List({
         <p>{artistName}</p>
         <p> {location.city}</p>
         <Button
-          name={likes.includes(_id) ? "Dislike" : "Like"}
+          name={likes.includes(_id) ? 'Dislike' : 'Like'}
           onClick={() => handleLike(_id)}
         />
       </StyledInfoBox>
@@ -51,13 +51,19 @@ const StyledInfoBox = styled.div`
   align-items: flex-start;
   justify-content: space-around;
   font-size: 1.1em;
-  p {
+
+  p:first-child {
+    font-size: 1.2em;
     width: 180px;
+  }
+
+  p {
+    margin-top: 0;
   }
 `;
 
 const StyledPicture = styled(Picture)`
   position: absolute;
   right: 25px;
-  top: 25px;
+  top: 30px;
 `;

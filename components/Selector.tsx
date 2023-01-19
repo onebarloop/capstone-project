@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import Select from "react-select";
-import { Option } from "../lib/useSelect";
-import { Dispatch, SetStateAction } from "react";
+import styled from 'styled-components';
+import Select from 'react-select';
+import { Option } from '../lib/useSelect';
+import { Dispatch, SetStateAction } from 'react';
 
 type SelectorProps = {
   options: Option[];
@@ -22,15 +22,15 @@ export default function Selector({
       styles={{
         singleValue: (baseStyles) => ({
           ...baseStyles,
-          color: "rgba(217, 217, 217, 1)",
+          color: 'rgba(217, 217, 217, 1)',
         }),
         option: (baseStyles, state) => ({
           ...baseStyles,
-          color: state.isFocused ? "black" : "rgba(217, 217, 217, 1)",
+          color: state.isFocused ? 'black' : 'rgba(217, 217, 217, 1)',
         }),
         input: (baseStyles) => ({
           ...baseStyles,
-          color: "rgba(217, 217, 217, 1)",
+          color: 'rgba(217, 217, 217, 1)',
         }),
       }}
     />

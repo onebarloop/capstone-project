@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import Picture from "./Picture";
-import Link from "next/link";
-import { useState, useEffect } from "react";
-import type { ArtistInterface } from "../lib/ArtistClass";
-import useView from "../lib/useView";
+import styled from 'styled-components';
+import Picture from './Picture';
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import type { ArtistInterface } from '../lib/ArtistClass';
+import useView from '../lib/useView';
 
 type RandomProps = {
   artists: ArtistInterface[];

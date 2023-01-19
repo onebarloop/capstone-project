@@ -1,7 +1,7 @@
-import fetchGeoData from "./fetchGeoData";
+import { fetchArtistPosition } from './fetchGeoData';
 
 function normalize(string: string): string {
-  return string.replaceAll(" ", "").toLowerCase();
+  return string.replaceAll(' ', '').toLowerCase();
 }
 
 interface ArtistInterface extends Artist {
@@ -53,7 +53,7 @@ class Artist {
       tatoos,
       dates
     );
-    artist.position = await fetchGeoData({ ...artist.location });
+    artist.position = await fetchArtistPosition({ ...artist.location });
     return artist;
   }
 }
