@@ -11,7 +11,7 @@ type MapProps = {
 
 export default function MapPage({ artists, userPosition }: MapProps) {
   const Map = dynamic(() => import("../components/Map"), {
-    loading: () => <p>A map is loading</p>,
+    loading: () => <p style={{ color: "white" }}>...loading the map</p>,
     ssr: false,
   });
 
