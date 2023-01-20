@@ -37,21 +37,15 @@ export default async function upload(
   // Upload function is called and returns the picture URLs
   const urls = await fileupload(selectedImages);
 
-  // Declare async function that calls the static factory method (.create())of the Artist-class
-  async function createArtist() {
-    const artist = await Artist.create(
-      artistname.value,
-      city.value,
-      streetname.value,
-      number.value,
-      urls,
-      dates
-    );
-    return artist;
-  }
-
-  // async function is called
-  const newArtist = await createArtist();
+  // New Artist object is instantiated via calling the static factory method (.create())of the Artist-class
+  const newArtist = await Artist.create(
+    artistname.value,
+    city.value,
+    streetname.value,
+    number.value,
+    urls,
+    dates
+  );
 
   // Upload Artist Object via custom API-call
   try {
