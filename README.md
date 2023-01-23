@@ -19,7 +19,7 @@ Random View             |   Artist Page             |  Map Page |  Upload Page
 
 ---
 
-### The basic Idea of the app:
+### The basic Idea of the app
 - Users can browse random wannados, i.e. small tattoo-ideas. They can filter them by location, price etc.
 - Users can visit the pages of the tattoo artist and see their time schedule for making an appointment
 - Users can also see map with tattoo artists near them
@@ -28,14 +28,14 @@ Random View             |   Artist Page             |  Map Page |  Upload Page
 
 
 
-### Technologies used
+### Technologies 
 
 | Framework      | Libraries | Other |
 | ----------- | ----------- | ----------- |
 | Next.js   |React <br> styled components <br> next-cloudinary <br> leaflet <br> react-datepicker  <br> react-select  | TypeScript <br> MongoDB <br> mongoose <br> cloudinary <br> Geoapify API|
 
 
-### Structure of the App
+### Structure 
  The App is sturctured in few different [/pages](https://github.com/onebarloop/capstone-project/tree/main/pages)
   - [/index.tsx](https://github.com/onebarloop/capstone-project/blob/main/pages/index.tsx) renders, depending on state, three different views: The Random View , handled via [Random View Component](https://github.com/onebarloop/capstone-project/blob/main/components/RandomView.tsx), the All Artists List and the Favorite Artists List, both handled via the [List Component](https://github.com/onebarloop/capstone-project/blob/main/components/List.tsx)
   - [/map.tsx](https://github.com/onebarloop/capstone-project/blob/main/pages/map.tsx) renders all components regarding the map feature (obvously...), i.e. [Map.tsx](https://github.com/onebarloop/capstone-project/blob/main/components/Map.tsx) and [Selector.tsx](https://github.com/onebarloop/capstone-project/blob/main/components/Selector.tsx)
@@ -43,7 +43,7 @@ Random View             |   Artist Page             |  Map Page |  Upload Page
   - [/[slug].tsx](https://github.com/onebarloop/capstone-project/blob/main/pages/%5Bslug%5D.tsx) is the dynamic page: It renders the Artist the user is navigating. The slug ist the name of the artists without spaces and all lowercase. Its generated during artists creation and part of the artist object.
   - The API-Routes are [/api and /api/geodata](https://github.com/onebarloop/capstone-project/tree/main/pages/api). They handle the MongoDB requests and call the [Geoapify.com](https://www.geoapify.com/) API. 
 
-### The Data
+### Data
 The data, i.e. the Artist-Objects, are stored in a MongoDB. Basis of the object is the [ArtistClass.ts](https://github.com/onebarloop/capstone-project/blob/main/lib/ArtistClass.ts). 
 The uploaded imgs are stored at cloudinary. The value of `artists.tattoos` is an array with the public IDs of the uploaded pictures.
 
