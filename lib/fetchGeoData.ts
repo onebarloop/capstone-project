@@ -5,7 +5,7 @@ type GeoDataProps = {
   APIKEY: string;
 };
 
-// The default export is only usedr in backend...
+// The default export is only used in backend...
 export default async function fetchGeoData({
   city,
   streetname,
@@ -23,7 +23,7 @@ export default async function fetchGeoData({
   return data;
 }
 
-//... while this export is used in frontend during the instantiation of the artist-object
+//... while the named export is used in frontend during the instantiation of the artist-object
 export async function fetchArtistPosition(artistLocation: {
   city: string;
   streetname: string;
